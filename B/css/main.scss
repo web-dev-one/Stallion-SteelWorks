@@ -1,0 +1,590 @@
+// Variables
+$primary: #8B4513; // SaddleBrown
+$secondary: #A0522D; // Sienna
+$accent: #CD853F; // Peru
+$light: #F5F5DC; // Beige
+$dark: #2F4F4F; // DarkSlateGray
+$white: #FFFFFF;
+$black: #000000;
+
+$font-primary: 'Montserrat', sans-serif;
+$font-secondary: 'Open Sans', sans-serif;
+
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 600px) { @content };
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: 900px) { @content };
+    }
+    @if $breakpoint == desktop {
+        @media (min-width: 1200px) { @content };
+    }
+}
+
+// Base Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px
+    scroll-behavior: smooth;
+    
+    @include respond(phone) {
+        font-size: 50%;
+    }
+}
+
+body {
+    font-family: $font-secondary;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: $dark;
+    background-color: $light;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+// Typography
+h1, h2, h3, h4 {
+    font-family: $font-primary;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.section-title {
+    font-size: 3.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $primary;
+    position: relative;
+    
+    &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: $accent;
+        margin: 1rem auto 2rem;
+    }
+}
+
+.section-subtitle {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: $secondary;
+}
+
+// Buttons
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.4rem;
+    background-color: $primary;
+    color: $white;
+    border: none;
+    border-radius: 4px;
+    font-family: $font-primary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: $transition;
+    text-decoration: none;
+    
+    &:hover {
+        background-color: darken($primary, 10%);
+        transform: translateY(-2px);
+        box-shadow: $box-shadow;
+    }
+    
+    &-hero {
+        font-size: 1.8rem;
+        padding: 1.5rem 3rem;
+    }
+    
+    &-card {
+        width: 100%;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    &-outline {
+        background-color: transparent;
+        border: 2px solid $primary;
+        color: $primary;
+        
+        &:hover {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+    
+    &-nav {
+        padding: 0.8rem 1.6rem;
+        margin-left: 1rem;
+    }
+}
+
+// Header
+header {
+    background-color: $white;
+    box-shadow: $box-shadow;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    
+    .container {
+        @include flex-center;
+        justify-content: space-between;
+    }
+    
+    .logo-container {
+        @include flex-center;
+        
+        .logo {
+            height: 5rem;
+            margin-right: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            color: $primary;
+        }
+    }
+    
+    .main-nav {
+        ul {
+            display: flex;
+            list-style: none;
+            
+            li {
+                margin-left: 2rem;
+                
+                a {
+                    text-decoration: none;
+                    color: $dark;
+                    font-family: $font-primary;
+                    font-weight: 600;
+                    font-size: 1.6rem;
+                    transition: $transition;
+                    position: relative;
+                    
+                    &:hover {
+                        color: $primary;
+                        
+                        &::after {
+                            width: 100%;
+                        }
+                    }
+                    
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -5px;
+                        left: 0;
+                        width: 0;
+                        height: 2px;
+                        background-color: $primary;
+                        transition: $transition;
+                    }
+                }
+            }
+        }
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2.4rem;
+        color: $primary;
+        cursor: pointer;
+    }
+}
+
+// Hero Section
+.hero {
+    height: 80vh;
+    min-height: 600px;
+    background: url('https://images.unsplash.com/photo-1509233725247-49e657c54213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1499&q=80') center/cover no-repeat;
+    position: relative;
+    margin-top: 7rem;
+    
+    &-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .container {
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    h2 {
+        font-size: 5rem;
+        color: $white;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    p {
+        font-size: 2rem;
+        color: $white;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    &-search {
+        width: 100%;
+        max-width: 800px;
+        background: rgba($white, 0.9);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: $box-shadow;
+        
+        .search-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            
+            button {
+                flex: 1;
+                padding: 1rem;
+                background: none;
+                border: none;
+                border-bottom: 3px solid transparent;
+                font-family: $font-primary;
+                font-weight: 600;
+                color: $dark;
+                cursor: pointer;
+                transition: $transition;
+                
+                &.active {
+                    color: $primary;
+                    border-bottom-color: $primary;
+                }
+                
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+// Flip Cards
+.services {
+    padding: 8rem 0;
+    
+    &-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+    }
+}
+
+.flip-card {
+    perspective: 1000px;
+    height: 350px;
+    
+    &-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+    
+    &:hover &-inner {
+        transform: rotateY(180deg);
+    }
+    
+    &-front, &-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+    }
+    
+    &-front {
+        background-size: cover;
+        background-position: center;
+        @include flex-center;
+        
+        .card-content {
+            background: rgba($primary, 0.8);
+            color: $white;
+            padding: 2rem;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            
+            h3 {
+                font-size: 2.4rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .rating {
+                font-size: 1.4rem;
+                
+                i {
+                    color: gold;
+                    margin: 0 1px;
+                }
+                
+                span {
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+    }
+    
+    &-back {
+        background: $white;
+        padding: 2rem;
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        
+        h3 {
+            font-size: 2.4rem;
+            color: $primary;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .specs {
+            list-style: none;
+            flex-grow: 1;
+            
+            li {
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                
+                i {
+                    margin-right: 1rem;
+                    color: $accent;
+                    width: 20px;
+                    text-align: center;
+                }
+            }
+        }
+        
+        .price {
+            font-family: $font-primary;
+            font-size: 2rem;
+            font-weight: 700;
+            color: $secondary;
+            text-align: center;
+            margin-top: auto;
+        }
+    }
+}
+
+// Project Gallery
+.projects {
+    padding: 8rem 0;
+    background: rgba($primary, 0.05);
+    
+    &-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    &-card {
+        background: $white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+        transition: $transition;
+        
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+    }
+    
+    &-info {
+        padding: 2rem;
+        
+        h3 {
+            font-size: 2rem;
+            color: $primary;
+            margin-bottom: 0.5rem;
+        }
+        
+        .location {
+            color: $secondary;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            
+            i {
+                margin-right: 0.5rem;
+            }
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+    }
+    
+    &-features {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+        
+        span {
+            display: flex;
+            align-items: center;
+            
+            i {
+                margin-right: 0.5rem;
+                color: $accent;
+            }
+        }
+    }
+    
+    &-link {
+        display: inline-flex;
+        align-items: center;
+        color: $primary;
+        font-weight: 600;
+        text-decoration: none;
+        transition: $transition;
+        
+        &:hover {
+            color: $secondary;
+            
+            i {
+                transform: translateX(3px);
+            }
+        }
+        
+        i {
+            margin-left: 0.5rem;
+            transition: $transition;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+// Responsive
+@include respond(tablet) {
+    header {
+        .main-nav {
+            position: fixed;
+            top: 7rem;
+            left: 0;
+            width: 100%;
+            background: $white;
+            box-shadow: $box-shadow;
+            transform: translateY(-150%);
+            transition: $transition;
+            
+            &.active {
+                transform: translateY(0);
+            }
+            
+            ul {
+                flex-direction: column;
+                padding: 2rem;
+                
+                li {
+                    margin: 1rem 0;
+                    
+                    a {
+                        font-size: 1.8rem;
+                    }
+                }
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+        }
+    }
+    
+    .hero {
+        height: auto;
+        padding: 15rem 0 8rem;
+        
+        h2 {
+            font-size: 3.6rem;
+        }
+        
+        p {
+            font-size: 1.8rem;
+        }
+        
+        &-search {
+            .search-tabs {
+                flex-wrap: wrap;
+                
+                button {
+                    flex: 0 0 50%;
+                    padding: 1.2rem;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+}
+
+@include respond(phone) {
+    .flip-card {
+        height: 300px;
+    }
+    
+    .projects-gallery {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stallion Steelworks - Premium Steel Structures for Equine Facilities</title>
+    <style>
+        body, h1, h2, h3, h4, p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        h1, h2, h3 {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #d4af37; /* Gold accent for elegance */
+        }
+        h2 {
+            font-size: 2rem;
+            color: #e5e5e5;
+        }
+        h3 {
+            color: #f2f2f2;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Section with Background Image */
+        header {
+            background: url('./photos/STALLION.png') no-repeat center center/cover;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+        .logo-container img {
+            max-height: 80px;  /* Adjust this to fit your header */
+            margin-bottom: 20px;
+        }
+        .logo-container h1 {
+            font-size: 2.5rem;
+            color: #d4af37;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #d4af37;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+        nav ul li a:hover {
+            background-color: #d4af37;
+            color: #121212;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1597947228254-11b8089332b5?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fGVxdWluZSUyMGRlc2lnbnxlbnwwfHx8fDE2ODc1NTk2NzY&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+            background-size: cover;
+        }
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .btn {
+            padding: 15px 30px;
+            background-color: #d4af37;
+            color: #121212;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background-color: #f2c75c;
+            color: #fff;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #2d2d2d;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .testimonial-bubble {
+            background-color: #3a3a3a;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            position: relative;
+            color: #d4af37;
+        }
+        .testimonial-bubble::before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 20px;
+            border-style: solid;
+            border-color: #3a3a3a transparent transparent transparent;
+        }
+        .client-info {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .testimonial-card {
+            background-color: #2d2d2d;
+            padding: 25px;
+            margin: 10px;
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .testimonial-card p {
+            font-size: 1rem;
+            color: #e5e5e5;
+            margin-bottom: 10px;
+        }
+        .testimonial-card .client-info {
+            font-size: 0.9rem;
+            color: #f2f2f2;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #121212;
+            padding: 40px 0;
+            color: #d4af37;
+        }
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #f2c75c;
+        }
+        /* Header Section with Background Image */
+header {
+    background: url('./photos/STALLION.png') no-repeat center center/cover;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+    background-size: 40%; /* Resize the background image to 50% */
+    background-position: center top; /* Keep it centered */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="./photos/STALLION.png" alt="Stallion Steelworks Logo" class="logo">
+                <h1>STALLION STEELWORKS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Steel for Stallions</h2>
+            <p>Premium steel structures designed specifically for equine properties across Arizona</p>
+            <a href="#contact" class="btn">Get Your Free Quote</a>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-bubble">
+                <p>"The most impressive horse shade I have ever seen. My horses stay cool even during the peak summer heat. The steel is solid, and the design is sleek. Stallion Steelworks is the best in the business!"</p>
+                <div class="client-info">
+                    <strong>Sarah Johnson</strong><br>
+                    Owner, Triple J Ranch - Phoenix, AZ
+                </div>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Our steel barn survived the monsoon season without a scratch while neighboring wood structures suffered damage. Worth every penny!"</p>
+                    <div class="client-info">
+                        <strong>Mike Reynolds</strong><br>
+                        Manager, Desert Wind Stables
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The installation team was professional, efficient, and left the site cleaner than they found it. Highly recommend!"</p>
+                    <div class="client-info">
+                        <strong>Emily Chen</strong><br>
+                        Owner, Chen Equestrian Center
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The Mare Motel is like no other. My horses love the comfort and the custom designs make all the difference. Stallion Steelworks’ attention to detail is unparalleled!"</p>
+                    <div class="client-info">
+                        <strong>Luke Matthews</strong><br>
+                        Owner, Lucky Horses Ranch
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="STALLION.png" alt="Stallion Steelworks Logo" class="logo-small">
+                    <h3>STALLION STEELWORKS</h3>
+                    <p>Steel for Stallions</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>1234 Steel Way<br>Phoenix, AZ 85001</p>
+                    <p>Phone: (602) 555-1234</p>
+                    <p>Email: info@stallionsteelworks.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Stallion Steelworks. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
