@@ -1,0 +1,8 @@
+# robots.txt for Stallion SteelWorks
+
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Crawl-delay can be adjusted if your server is slow (commented out here)
+# Crawl-delay: 5
