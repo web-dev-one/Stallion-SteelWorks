@@ -1,575 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mare Motels - Stallion Steelworks</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --neon-blue: #00f3ff;
-            --neon-pink: #ff00ff;
-            --neon-purple: #bd00ff;
-            --neon-orange: #ff5e00;
-            --dark-bg: #111;
-            --darker-bg: #0a0a0a;
-            --text-color: #f1f1f1;
-            --accent-color: #333;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), 
-                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23111"/><path d="M0 0L100 100M100 0L0 100" stroke="%23222" stroke-width="1"/></svg>');
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--darker-bg);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 28px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-color);
-            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
-        }
-        
-        .logo span {
-            color: var(--neon-blue);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-        
-        nav ul li a:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0, 243, 255, 0.1), rgba(189, 0, 255, 0.1));
-            z-index: -1;
-        }
-        
-        .hero-content {
-            max-width: 700px;
-            z-index: 1;
-        }
-        
-        .hero h2 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-color);
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: var(--neon-blue);
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid var(--neon-blue);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-            margin-right: 15px;
-        }
-        
-        .btn:hover {
-            background-color: var(--neon-blue);
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px var(--neon-blue);
-        }
-        
-        .btn-secondary {
-            color: var(--neon-pink);
-            border: 2px solid var(--neon-pink);
-            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--neon-pink);
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px var(--neon-pink);
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background-color: var(--darker-bg);
-            border-top: 1px solid var(--neon-purple);
-            border-bottom: 1px solid var(--neon-purple);
-            box-shadow: 0 0 15px rgba(189, 0, 255, 0.2);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--neon-purple);
-            text-shadow: 0 0 10px var(--neon-purple);
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .feature-card {
-            background-color: rgba(35, 35, 35, 0.5);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        
-        .feature-card:hover {
-            border: 1px solid var(--neon-orange);
-            box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--neon-orange);
-            text-shadow: 0 0 10px rgba(255, 94, 0, 0.5);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-        
-        /* Gallery Section */
-        .gallery {
-            padding: 80px 0;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .gallery-item {
-            height: 250px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            border: 2px solid var(--neon-blue);
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background-color: var(--darker-bg);
-            border-top: 1px solid var(--neon-orange);
-            border-bottom: 1px solid var(--neon-orange);
-            box-shadow: 0 0 15px rgba(255, 94, 0, 0.2);
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .testimonial-card {
-            background-color: rgba(35, 35, 35, 0.5);
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 4px solid var(--neon-pink);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--neon-pink);
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--darker-bg);
-            padding: 40px 0;
-            border-top: 1px solid var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .footer-logo h2 {
-            font-size: 1.8rem;
-            color: var(--text-color);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        .footer-logo span {
-            color: var(--neon-blue);
-        }
-        
-        .footer-links ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-left: 25px;
-        }
-        
-        .footer-links ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-        }
-        
-        /* Neon Elements */
-        .neon-text {
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--neon-blue), 0 0 20px var(--neon-blue);
-        }
-        
-        .neon-line {
-            height: 3px;
-            background: var(--neon-pink);
-            box-shadow: 0 0 10px var(--neon-pink);
-            width: 100px;
-            margin: 20px auto;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0 10px;
-            }
-            
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-links ul {
-                margin-top: 20px;
-                justify-content: center;
-            }
-            
-            .footer-links ul li {
-                margin: 0 10px;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="../pics/favicon.ico" />
+  <title>Mare Motels | Luxury Steel Horse Shelters | Stallion SteelWorks</title>
+  <meta name="description" content="Stallion SteelWorks designs and installs premium Mare Motels—architecturally precise, predator‑resistant, and desert‑tough—for Arizona's finest equine estates." />
+  <meta name="keywords" content="Stallion SteelWorks, mare motels, steel horse barns, equine shelters, predator proof horse housing, Phoenix Arizona equestrian" />
+  <meta name="author" content="Stallion SteelWorks" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Mare Motels | Luxury Steel Horse Shelters | Stallion SteelWorks" />
+  <meta property="og:description" content="Architectural steel shelters crafted for comfort, safety, and longevity. Built for elite horse properties across the Southwest." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stallionsteelworks.com/services/maremotel" />
+  <meta property="og:image" content="https://stallionsteelworks.com/pictures/stallion-og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://stallionsteelworks.com/services/maremotel" />
+
+  <!-- Fonts (match index.html if already used) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Site styles (inherits theme/colors from root) -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <!-- Page‑scoped helpers (kept minimal to stay cohesive with index theme) -->
+  <style>
+    :root {
+      /* Keep these aligned with index.html palette */
+      --ssw-bg: #0b0d10;          /* near-black steel */
+      --ssw-panel: #111418;       /* card surface */
+      --ssw-text: #e6e9ef;        /* off-white */
+      --ssw-subtle: #9aa4b2;      /* muted */
+      --ssw-accent: #d4af37;      /* premium gold */
+      --ssw-accent-2: #cc5500;    /* burnt orange option */
+      --ssw-border: #232a31;      /* hairline */
+    }
+
+    html, body { background: var(--ssw-bg); color: var(--ssw-text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+
+    /* layout */
+    .container { width: min(1200px, 92vw); margin-inline: auto; }
+    header.site { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(160%) blur(8px); background: color-mix(in srgb, var(--ssw-bg) 86%, transparent); border-bottom: 1px solid var(--ssw-border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ssw-text); font-weight: 800; letter-spacing: .4px; }
+    .brand img { height: 34px; width: auto; }
+    .nav ul { display: flex; gap: clamp(10px, 2.4vw, 22px); list-style: none; margin: 0; padding: 0; }
+    .nav a { color: var(--ssw-text); text-decoration: none; font-weight: 600; opacity: .9; }
+    .nav a:hover { opacity: 1; color: var(--ssw-accent); }
+
+    /* hero */
+    .hero { padding: clamp(64px, 10vw, 96px) 0 36px; }
+    .eyebrow { color: var(--ssw-accent); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; }
+    h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.08; margin: 10px 0 16px; }
+    .lead { color: var(--ssw-subtle); font-size: clamp(16px, 2.2vw, 18px); max-width: 68ch; }
+
+    .panel { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border: 1px solid var(--ssw-border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+
+    /* grid */
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    @media (min-width: 900px){ .grid-2 { grid-template-columns: 1.1fr .9fr; } }
+
+    /* media */
+    .media { overflow: hidden; border-radius: 14px; border: 1px solid var(--ssw-border); }
+    .media img { display: block; width: 100%; height: auto; }
+
+    /* feature list */
+    .features { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 16px; }
+    @media (min-width: 700px){ .features { grid-template-columns: repeat(2, 1fr); } }
+    .feat { padding: 14px; border: 1px dashed var(--ssw-border); border-radius: 12px; }
+    .feat b { color: var(--ssw-accent); }
+
+    /* spec table */
+    .specs { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px; border: 1px solid var(--ssw-border); }
+    .specs th, .specs td { padding: 12px 14px; border-bottom: 1px solid var(--ssw-border); text-align: left; }
+    .specs th { background: #0f1317; color: var(--ssw-accent); font-weight: 700; }
+
+    /* gallery */
+    .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    @media (min-width: 820px){ .gallery { grid-template-columns: repeat(4, 1fr); } }
+    .gallery img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--ssw-border); }
+
+    /* cta */
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0 6px; }
+    .btn { appearance: none; border: 1px solid var(--ssw-accent); background: linear-gradient(180deg, color-mix(in srgb, var(--ssw-accent) 12%, transparent), transparent); color: var(--ssw-text); padding: 12px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .12s ease, box-shadow .12s ease; box-shadow: 0 6px 16px rgba(212, 175, 55, .15); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(212, 175, 55, .25); }
+    .btn.alt { border-color: var(--ssw-accent-2); box-shadow: 0 6px 16px rgba(204,85,0,.18); }
+
+    /* breadcrumb */
+    .crumbs { display: flex; gap: 8px; align-items: center; color: var(--ssw-subtle); font-size: .9rem; margin: 4px 0 14px; }
+    .crumbs a { color: var(--ssw-subtle); text-decoration: none; }
+    .crumbs a:hover { color: var(--ssw-accent); }
+
+    /* faq */
+    details { background: var(--ssw-panel); border: 1px solid var(--ssw-border); border-radius: 12px; padding: 12px 14px; }
+    details + details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 700; color: var(--ssw-accent); }
+
+    footer { border-top: 1px solid var(--ssw-border); margin-top: 40px; }
+    .foot-inner { padding: 26px 0; display: grid; gap: 10px; }
+    .muted { color: var(--ssw-subtle); }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Stallion SteelWorks",
+    "url": "https://stallionsteelworks.com",
+    "image": "https://stallionsteelworks.com/pics/stallion-og.jpg",
+    "telephone": "+1-602-999-7756",
+    "email": "stallionsteelworks@gmail.com",
+    "address": {"@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US"},
+    "areaServed": ["Arizona", "Southwest", "USA"],
+    "sameAs": ["https://theokcorrals.com"],
+    "makesOffer": [{"@type":"Offer","itemOffered": {"@type":"Product","name":"Mare Motel (steel equine shelter)","brand":"Stallion SteelWorks"}}]
+  }
+  </script>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1>Mare <span>Motels</span></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Locations</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+  <!-- Header / Nav (kept consistent with index.html) -->
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="Stallion SteelWorks home">
+        <img src="../pics/StallionStructure.png" alt="Stallion SteelWorks logo" />
+        <span>Stallion SteelWorks</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../services/shade.html">Shade</a></li>
+          <li><a aria-current="page" href="../services/maremotel.html">Mare Motels</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
+  <main>
+    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Luxury Stable Motels</h2>
-                <div class="neon-line"></div>
-                <p>Experience the ultimate in equine hospitality with our state-of-the-art stable motels. Designed for comfort, security, and style.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn">View Locations</a>
-                    <a href="#" class="btn btn-secondary">Book Now</a>
-                </div>
-            </div>
+      <div class="container grid grid-2">
+        <div>
+          <div class="crumbs" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>›</span>
+            <a href="#">Services</a>
+            <span>›</span>
+            <span class="muted" aria-current="page">Mare Motels</span>
+          </div>
+          <span class="eyebrow">Services</span>
+          <h1>Premium Mare Motels—architected for comfort, safety, and desert longevity</h1>
+          <p class="lead">Engineered steel frameworks, predator‑resistant panels, and open‑air ventilation—precisely built for Paradise Valley, Cave Creek, Scottsdale, and elite equine estates across the Southwest.</p>
+          <div class="cta">
+            <a class="btn" href="../contact.html">Get a Free Quote</a>
+            <a class="btn alt" href="mailto:stallionsteelworks@gmail.com?subject=Mare%20Motel%20Inquiry">stallionsteelworks@gmail.com</a>
+            <a class="btn alt" href="tel:+16029997756">(602) 999‑7756</a>
+          </div>
         </div>
+        <div class="panel media">
+          <img src="../pics/Mare.jpg" alt="Stallion SteelWorks mare motel steel shelter" />
+        </div>
+      </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Premium Features</h2>
-                <div class="neon-line"></div>
+    <!-- Value Props -->
+    <section>
+      <div class="container panel" style="padding: 20px;">
+        <div class="grid" style="gap: 18px; grid-template-columns: 1fr;">
+          <div>
+            <h2 style="margin: 10px 0 6px;">Why Stallion Mare Motels</h2>
+            <div class="features">
+              <div class="feat"><b>Architectural steel:</b> square‑frame geometry with precision welds; straight, true, and built to last.</div>
+              <div class="feat"><b>Predator‑resistant:</b> panel and gate options designed to keep horses safe from coyotes and desert threats.</div>
+              <div class="feat"><b>Ventilation first:</b> shade‑forward canopies and open spans to reduce heat load and promote airflow.</div>
+              <div class="feat"><b>Finish options:</b> powder‑coat, galvanized, or raw steel with protective treatments.</div>
+              <div class="feat"><b>Custom layout:</b> add wash station, tack room, and hay barn modules for a complete equine hub.</div>
+              <div class="feat"><b>Site‑specific engineering:</b> footing, wind, and drainage tuned for your property.</div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Advanced Security</h3>
-                    <p>24/7 monitoring and state-of-the-art security systems to keep your horses safe.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-temperature-low"></i>
-                    </div>
-                    <h3>Climate Controlled</h3>
-                    <p>Maintain perfect temperature and humidity levels year-round for equine comfort.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-hand-holding-medical"></i>
-                    </div>
-                    <h3>Veterinary Care</h3>
-                    <p>On-call veterinary services and premium health monitoring facilities.</p>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Facilities</h2>
-                <div class="neon-line"></div>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23333'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2300f3ff'>Luxury Stable Interior</text></svg>" alt="Luxury Stable">
-                </div>
-                <div class="gallery-item">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23333'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23ff00ff'>Training Arena</text></svg>" alt="Training Arena">
-                </div>
-                <div class="gallery-item">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23333'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23bd00ff'>Relaxation Area</text></svg>" alt="Relaxation Area">
-                </div>
-            </div>
+    <!-- Specs / Sizes -->
+    <section>
+      <div class="container panel" style="padding: 20px;">
+        <h2>Popular sizes & configurations</h2>
+        <p class="muted" style="margin-top: -6px;">Below are starter configurations—every project is tailored.</p>
+        <div class="grid" style="grid-template-columns: 1fr; gap: 16px;">
+          <div class="panel" style="padding: 0; overflow: hidden;">
+            <table class="specs" aria-label="Mare motel size options">
+              <thead>
+                <tr><th>Configuration</th><th>Stalls</th><th>Approx. Footprint</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>10' x 10' standard</td><td>2–4</td><td>10' x 20' / 10' x 40'</td><td>Compact, budget‑friendly; ideal for small pads.</td></tr>
+                <tr><td>10' x 20' premium</td><td>2–6</td><td>12' x 24' / 12' x 48'</td><td>Extra space for comfort and storage.</td></tr>
+                <tr><td>Custom estate layout</td><td>4+ </td><td>Varies</td><td>Integrates wash station, tack room, and hay barn.</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <div class="cta">
+          <a class="btn" href="../contact.html#quote">Request sizing help</a>
+          <a class="btn alt" href="mailto:stallionsteelworks@gmail.com?subject=Mare%20Motel%20Sizing%20Help">Email our team</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Client Testimonials</h2>
-                <div class="neon-line"></div>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The Mare Motels have completely transformed how I travel with my horses. The facilities are top-notch and the security gives me peace of mind."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JD</div>
-                        <div class="author-info">
-                            <h4>John Doe</h4>
-                            <p>Professional Equestrian</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"I've stayed at many stable facilities, but none compare to Mare Motels. The attention to detail and luxury amenities are unmatched in the industry."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JS</div>
-                        <div class="author-info">
-                            <h4>Jane Smith</h4>
-                            <p>Horse Breeder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Gallery -->
+    <section>
+      <div class="container">
+        <h2>Recent installs</h2>
+        <p class="muted">Select projects across Paradise Valley, Cave Creek, Phoenix, and Scottsdale.</p>
+        <div class="gallery">
+          <img src="../pics/10FTX10FT-Shade-A1.jpg" alt="10x10 mare motel install" />
+          <img src="../pics/MareMotel.jpg" alt="Premium mare motel shade with corrals" 
+               style="height: 215px !important;width: 300px !important;"
+                />
+          <img src="../pics/MareMotelTri_Labeled_Wash_Tack_Hay_small.jpg" alt="Wash Station/Tack Room/Hay Barn/Mare motel" />
+          <img src="../pics/10x20 Shed.jpg" alt="Detail of welded steel joints and panels" />
         </div>
+      </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Experience Mare Motels?</h2>
-            <p>Book your stay today and give your horses the luxury they deserve.</p>
-            <a href="#" class="btn">Contact Us Now</a>
-        </div>
+    <!-- Testimonial -->
+    <section>
+      <div class="container panel" style="padding: 20px;">
+        <h2>What clients say</h2>
+        <blockquote class="muted" style="font-size: 1.05rem; margin: 8px 0 0;">“I've had 4 mare motels before. Yours beats them all.” — Cave Creek client</blockquote>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Mare <span>Motels</span></h2>
-                </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Locations</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Stallion Steelworks. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- FAQ -->
+    <section>
+      <div class="container grid" style="gap: 14px; grid-template-columns: 1fr;">
+        <h2>FAQs</h2>
+        <details>
+          <summary>Do you offer tack rooms, wash stations, and hay barns?</summary>
+          <p>Yes—these are popular add‑ons. We'll right‑size each module and align the roof lines for a cohesive look.</p>
+        </details>
+        <details>
+          <summary>What finishes are available?</summary>
+          <p>Common choices include powder‑coat in dark neutrals, galvanized steel for maximum durability, or sealed raw steel for an industrial aesthetic.</p>
+        </details>
+        <details>
+          <summary>Do you ship or install outside Arizona?</summary>
+          <p>We primarily serve Arizona but can discuss select out‑of‑state projects. Get in touch and share your location.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Cross‑link to OK‑Corrals (sister brand) -->
+    <section>
+      <div class="container panel" style="padding: 20px;">
+        <h2>Also see: OK‑Corrals Mare Motels</h2>
+        <p class="muted">Our sister company, <a href="https://theokcorrals.com/maremotel" target="_blank" rel="noopener">OK‑Corrals</a>, offers additional configurations and photo examples.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-inner">
+      <small class="muted">&copy; 2025 Stallion SteelWorks — Luxury steel structures for equine estates.</small>
+      <small class="muted">Questions? <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a> · <a href="tel:+16029997756">(602) 999‑7756</a></small>
+    </div>
+  </footer>
 </body>
 </html>
