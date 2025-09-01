@@ -1,0 +1,7 @@
+build/
+lambda/node_modules/
+.terraform/
+terraform.tfstate*
+# local env
+.env.local
+scripts/*.local.sh
