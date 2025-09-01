@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Crawl-delay can be adjusted if your server is slow (commented out here)
-# Crawl-delay: 5
+Crawl-delay: 3
