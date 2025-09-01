@@ -33,80 +33,73 @@
   <!-- Page‑scoped helpers (kept minimal to stay cohesive with index theme) -->
   <style>
     :root {
-      --ssw-bg: #0b0d10;
-      --ssw-panel: #111418;
-      --ssw-text: #e6e9ef;
-      --ssw-subtle: #9aa4b2;
-      --ssw-accent: #d4af37;
-      --ssw-accent-2: #cc5500;
-      --ssw-border: #232a31;
+      /* Keep these aligned with index.html palette */
+      --ssw-bg: #0b0d10;          /* near-black steel */
+      --ssw-panel: #111418;       /* card surface */
+      --ssw-text: #e6e9ef;        /* off-white */
+      --ssw-subtle: #9aa4b2;      /* muted */
+      --ssw-accent: #d4af37;      /* premium gold */
+      --ssw-accent-2: #cc5500;    /* burnt orange option */
+      --ssw-border: #232a31;      /* hairline */
     }
 
-    html, body { background: var(--ssw-bg); color: var(--ssw-text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; margin:0; }
+    html, body { background: var(--ssw-bg); color: var(--ssw-text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
 
-    /* Layout: single vertical column feel */
-    .container { width: min(1100px, 92vw); margin-inline: auto; padding-inline: clamp(10px, 3vw, 20px); }
-    main > section { padding-block: clamp(18px, 4vw, 28px); }
-
-    /* Header */
+    /* layout */
+    .container { width: min(1200px, 92vw); margin-inline: auto; }
     header.site { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(160%) blur(8px); background: color-mix(in srgb, var(--ssw-bg) 86%, transparent); border-bottom: 1px solid var(--ssw-border); }
-    .nav { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding-block: 12px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ssw-text); font-weight: 800; letter-spacing: .4px; }
+    .brand img { height: 34px; width: auto; }
+    .nav ul { display: flex; gap: clamp(10px, 2.4vw, 22px); list-style: none; margin: 0; padding: 0; }
+    .nav a { color: var(--ssw-text); text-decoration: none; font-weight: 600; opacity: .9; }
+    .nav a:hover { opacity: 1; color: var(--ssw-accent); }
 
-    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ssw-text); font-weight: 800; letter-spacing: .4px; min-width: 0; }
-    .brand img { height: 34px; width: auto; flex: 0 0 auto; }
-    .brand span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.05rem; }
-
-    /* Desktop nav */
-    nav.desktop { display: block; }
-    nav.desktop ul { display: flex; gap: clamp(10px, 2.4vw, 22px); list-style: none; margin: 0; padding: 0; }
-    nav.desktop a { color: var(--ssw-text); text-decoration: none; font-weight: 600; opacity: .9; }
-    nav.desktop a:hover { opacity: 1; color: var(--ssw-accent); }
-
-    /* Mobile menu (no JS) */
-    details.menu { display: none; }
-    details.menu > summary { list-style: none; cursor: pointer; padding: 8px 12px; border: 1px solid var(--ssw-border); border-radius: 10px; user-select: none; font-weight: 700; }
-    details.menu[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-    details.menu ul { margin: 0; padding: 10px 12px; list-style: none; border: 1px solid var(--ssw-border); border-top: 0; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background: var(--ssw-panel); }
-    details.menu li + li { margin-top: 8px; }
-    details.menu a { color: var(--ssw-text); text-decoration: none; font-weight: 600; display: block; }
-    details.menu a:hover { color: var(--ssw-accent); }
-
-    /* Hero */
-    .hero { padding-block: clamp(36px, 8vw, 72px); }
+    /* hero */
+    .hero { padding: clamp(64px, 10vw, 96px) 0 36px; }
     .eyebrow { color: var(--ssw-accent); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; }
-    h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.12; margin: 10px 0 16px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.08; margin: 10px 0 16px; }
     .lead { color: var(--ssw-subtle); font-size: clamp(16px, 2.2vw, 18px); max-width: 68ch; }
 
     .panel { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border: 1px solid var(--ssw-border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
 
+    /* grid */
     .grid { display: grid; gap: 18px; }
     .grid-2 { grid-template-columns: 1fr; }
     @media (min-width: 900px){ .grid-2 { grid-template-columns: 1.1fr .9fr; } }
 
+    /* media */
     .media { overflow: hidden; border-radius: 14px; border: 1px solid var(--ssw-border); }
     .media img { display: block; width: 100%; height: auto; }
 
+    /* feature list */
     .features { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 16px; }
     @media (min-width: 700px){ .features { grid-template-columns: repeat(2, 1fr); } }
     .feat { padding: 14px; border: 1px dashed var(--ssw-border); border-radius: 12px; }
     .feat b { color: var(--ssw-accent); }
 
+    /* spec table */
     .specs { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px; border: 1px solid var(--ssw-border); }
     .specs th, .specs td { padding: 12px 14px; border-bottom: 1px solid var(--ssw-border); text-align: left; }
     .specs th { background: #0f1317; color: var(--ssw-accent); font-weight: 700; }
 
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-    .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; border: 1px solid var(--ssw-border); }
+    /* gallery */
+    .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    @media (min-width: 820px){ .gallery { grid-template-columns: repeat(4, 1fr); } }
+    .gallery img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--ssw-border); }
 
+    /* cta */
     .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0 6px; }
     .btn { appearance: none; border: 1px solid var(--ssw-accent); background: linear-gradient(180deg, color-mix(in srgb, var(--ssw-accent) 12%, transparent), transparent); color: var(--ssw-text); padding: 12px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .12s ease, box-shadow .12s ease; box-shadow: 0 6px 16px rgba(212, 175, 55, .15); }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(212, 175, 55, .25); }
     .btn.alt { border-color: var(--ssw-accent-2); box-shadow: 0 6px 16px rgba(204,85,0,.18); }
 
-    .crumbs { display: flex; gap: 8px; align-items: center; color: var(--ssw-subtle); font-size: .9rem; margin: 4px 0 14px; flex-wrap: wrap; }
+    /* breadcrumb */
+    .crumbs { display: flex; gap: 8px; align-items: center; color: var(--ssw-subtle); font-size: .9rem; margin: 4px 0 14px; }
     .crumbs a { color: var(--ssw-subtle); text-decoration: none; }
     .crumbs a:hover { color: var(--ssw-accent); }
 
+    /* faq */
     details { background: var(--ssw-panel); border: 1px solid var(--ssw-border); border-radius: 12px; padding: 12px 14px; }
     details + details { margin-top: 10px; }
     summary { cursor: pointer; font-weight: 700; color: var(--ssw-accent); }
@@ -114,34 +107,35 @@
     footer { border-top: 1px solid var(--ssw-border); margin-top: 40px; }
     .foot-inner { padding: 26px 0; display: grid; gap: 10px; }
     .muted { color: var(--ssw-subtle); }
-
-    /* Mobile tweaks */
-    @media (max-width: 900px){
-      nav.desktop { display: none; }
-      details.menu { display: block; justify-self: end; }
-    }
-    @media (max-width: 768px){
-      .nav { padding-block: 8px; }
-      .brand img { height: 28px; }
-      .brand span { font-size: .98rem; }
-      .gallery img { height: 160px; }
-    }
-    @media (max-width: 420px){
-      .brand span { display: none; }
-    }
   </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Stallion SteelWorks",
+    "url": "https://stallionsteelworks.com",
+    "image": "https://stallionsteelworks.com/pics/stallion-og.jpg",
+    "telephone": "+1-602-999-7756",
+    "email": "stallionsteelworks@gmail.com",
+    "address": {"@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US"},
+    "areaServed": ["Arizona", "Southwest", "USA"],
+    "sameAs": ["https://theokcorrals.com"],
+    "makesOffer": [{"@type":"Offer","itemOffered": {"@type":"Product","name":"Mare Motel (steel equine shelter)","brand":"Stallion SteelWorks"}}]
+  }
+  </script>
 </head>
+
 <body>
-  <!-- Header / Nav -->
+  <!-- Header / Nav (kept consistent with index.html) -->
   <header class="site">
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="Stallion SteelWorks home">
         <img src="../pics/StallionStructure.png" alt="Stallion SteelWorks logo" />
         <span>Stallion SteelWorks</span>
       </a>
-
-      <!-- Desktop Nav -->
-      <nav class="desktop" aria-label="Primary">
+      <nav aria-label="Primary">
         <ul>
           <li><a href="../index.html">Home</a></li>
           <li><a href="../about.html">About</a></li>
@@ -150,18 +144,6 @@
           <li><a href="../contact.html">Contact</a></li>
         </ul>
       </nav>
-
-      <!-- Mobile Nav (no‑JS) -->
-      <details class="menu">
-        <summary aria-label="Toggle menu">Menu</summary>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about.html">About</a></li>
-          <li><a href="../services/shade.html">Shade</a></li>
-          <li><a aria-current="page" href="../services/maremotel.html">Mare Motels</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </details>
     </div>
   </header>
 
@@ -195,33 +177,41 @@
     <!-- Value Props -->
     <section>
       <div class="container panel" style="padding: 20px;">
-        <h2>Why Stallion Mare Motels</h2>
-        <div class="features">
-          <div class="feat"><b>Architectural steel:</b> square‑frame geometry with precision welds; straight, true, and built to last.</div>
-          <div class="feat"><b>Predator‑resistant:</b> panel and gate options designed to keep horses safe from coyotes and desert threats.</div>
-          <div class="feat"><b>Ventilation first:</b> shade‑forward canopies and open spans to reduce heat load and promote airflow.</div>
-          <div class="feat"><b>Finish options:</b> powder‑coat, galvanized, or raw steel with protective treatments.</div>
-          <div class="feat"><b>Custom layout:</b> add wash station, tack room, and hay barn modules for a complete equine hub.</div>
-          <div class="feat"><b>Site‑specific engineering:</b> footing, wind, and drainage tuned for your property.</div>
+        <div class="grid" style="gap: 18px; grid-template-columns: 1fr;">
+          <div>
+            <h2 style="margin: 10px 0 6px;">Why Stallion Mare Motels</h2>
+            <div class="features">
+              <div class="feat"><b>Architectural steel:</b> square‑frame geometry with precision welds; straight, true, and built to last.</div>
+              <div class="feat"><b>Predator‑resistant:</b> panel and gate options designed to keep horses safe from coyotes and desert threats.</div>
+              <div class="feat"><b>Ventilation first:</b> shade‑forward canopies and open spans to reduce heat load and promote airflow.</div>
+              <div class="feat"><b>Finish options:</b> powder‑coat, galvanized, or raw steel with protective treatments.</div>
+              <div class="feat"><b>Custom layout:</b> add wash station, tack room, and hay barn modules for a complete equine hub.</div>
+              <div class="feat"><b>Site‑specific engineering:</b> footing, wind, and drainage tuned for your property.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Specs -->
+    <!-- Specs / Sizes -->
     <section>
       <div class="container panel" style="padding: 20px;">
         <h2>Popular sizes & configurations</h2>
-        <p class="muted">Below are starter configurations—every project is tailored.</p>
-        <table class="specs">
-          <thead>
-            <tr><th>Configuration</th><th>Stalls</th><th>Approx. Footprint</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>10' x 10' standard</td><td>2–4</td><td>10' x 20' / 10' x 40'</td><td>Compact, budget‑friendly; ideal for small pads.</td></tr>
-            <tr><td>10' x 20' premium</td><td>2–6</td><td>12' x 24' / 12' x 48'</td><td>Extra space for comfort and storage.</td></tr>
-            <tr><td>Custom estate layout</td><td>4+</td><td>Varies</td><td>Integrates wash station, tack room, and hay barn.</td></tr>
-          </tbody>
-        </table>
+        <p class="muted" style="margin-top: -6px;">Below are starter configurations—every project is tailored.</p>
+        <div class="grid" style="grid-template-columns: 1fr; gap: 16px;">
+          <div class="panel" style="padding: 0; overflow: hidden;">
+            <table class="specs" aria-label="Mare motel size options">
+              <thead>
+                <tr><th>Configuration</th><th>Stalls</th><th>Approx. Footprint</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>10' x 10' standard</td><td>2–4</td><td>10' x 20' / 10' x 40'</td><td>Compact, budget‑friendly; ideal for small pads.</td></tr>
+                <tr><td>10' x 20' premium</td><td>2–6</td><td>12' x 24' / 12' x 48'</td><td>Extra space for comfort and storage.</td></tr>
+                <tr><td>Custom estate layout</td><td>4+ </td><td>Varies</td><td>Integrates wash station, tack room, and hay barn.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div class="cta">
           <a class="btn" href="../contact.html#quote">Request sizing help</a>
           <a class="btn alt" href="mailto:stallionsteelworks@gmail.com?subject=Mare%20Motel%20Sizing%20Help">Email our team</a>
@@ -247,7 +237,7 @@
     <section>
       <div class="container panel" style="padding: 20px;">
         <h2>What clients say</h2>
-        <blockquote class="muted">“I've had 4 mare motels before. Yours beats them all.” — Cave Creek client</blockquote>
+        <blockquote class="muted" style="font-size: 1.05rem; margin: 8px 0 0;">“I've had 4 mare motels before. Yours beats them all.” — Cave Creek client</blockquote>
       </div>
     </section>
 
@@ -270,7 +260,7 @@
       </div>
     </section>
 
-    <!-- Cross‑link -->
+    <!-- Cross‑link to OK‑Corrals (sister brand) -->
     <section>
       <div class="container panel" style="padding: 20px;">
         <h2>Also see: OK‑Corrals Mare Motels</h2>
@@ -279,5 +269,12 @@
     </section>
   </main>
 
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-inner">
+      <small class="muted">&copy; 2025 Stallion SteelWorks — Luxury steel structures for equine estates.</small>
+      <small class="muted">Questions? <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a> · <a href="tel:+16029997756">(602) 999‑7756</a></small>
+    </div>
+  </footer>
 </body>
 </html>
