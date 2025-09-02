@@ -8,20 +8,22 @@
   <meta name="description" content="Contact Stallion SteelWorks for premium steel horse shade structures, mare motels, corrals, and custom steel barns in Phoenix, Scottsdale, Paradise Valley & Cave Creek, AZ. Call 602-999-7756 or email stallionsteelworks@gmail.com for a fast quote.">
   <meta name="keywords" content="Stallion SteelWorks contact, steel horse shade Phoenix, mare motels Arizona, steel barns Scottsdale, equestrian structures Paradise Valley, corrals Cave Creek, luxury equine facilities AZ">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://www.example.com/contact">
+  <link rel="canonical" href="https://stallionsteelworks.com/contact">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact Stallion SteelWorks | Premium Equestrian Steel Structures">
   <meta property="og:description" content="Get a fast quote on steel horse shade, mare motels, corrals, and barns across the Phoenix metro. Call 602-999-7756.">
-  <meta property="og:url" content="https://www.example.com/contact">
-  <meta property="og:image" content="https://www.example.com/assets/stallion-steelworks-og.jpg">
+  <meta property="og:url" content="https://stallionsteelworks.com/contact">
+  <!-- TODO: replace with your real asset -->
+  <meta property="og:image" content="https://stallionsteelworks.com/assets/stallion-steelworks-og.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact Stallion SteelWorks">
   <meta name="twitter:description" content="Premium steel structures for luxury horse properties in Arizona. Call 602-999-7756.">
-  <meta name="twitter:image" content="https://www.example.com/assets/stallion-steelworks-og.jpg">
+  <!-- TODO: replace with your real asset -->
+  <meta name="twitter:image" content="https://stallionsteelworks.com/assets/stallion-steelworks-og.jpg">
 
   <link rel="icon" href="/favicon.ico">
 
@@ -99,7 +101,7 @@
   <!-- JSON-LD: Local Business -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"Stallion SteelWorks",
-   "url":"https://www.example.com/","telephone":"+1-602-999-7756","email":"stallionsteelworks@gmail.com",
+   "url":"https://stallionsteelworks.com/","telephone":"+1-602-999-7756","email":"stallionsteelworks@gmail.com",
    "address":{"@type":"PostalAddress","addressLocality":"Phoenix","addressRegion":"AZ","postalCode":"85001","addressCountry":"US"},
    "areaServed":[{"@type":"City","name":"Phoenix"},{"@type":"City","name":"Scottsdale"},{"@type":"City","name":"Paradise Valley"},{"@type":"City","name":"Cave Creek"}],
    "description":"Premium steel horse shade structures, mare motels, corrals, and luxury steel barns across the Phoenix metro."}
@@ -107,8 +109,8 @@
   <!-- JSON-LD: Breadcrumbs -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},
-    {"@type":"ListItem","position":2,"name":"Contact"}]}
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://stallionsteelworks.com/"},
+    {"@type":"ListItem","position":2,"name":"Contact","item":"https://stallionsteelworks.com/contact"}]}
   </script>
   <!-- JSON-LD: FAQ -->
   <script type="application/ld+json">
@@ -117,6 +119,7 @@
     {"@type":"Question","name":"How fast can I get a quote?","acceptedAnswer":{"@type":"Answer","text":"Most quotes are returned the same or next business day once we have your site details and rough dimensions."}},
     {"@type":"Question","name":"Do you ship or install outside Phoenix?","acceptedAnswer":{"@type":"Answer","text":"We primarily serve the Phoenix metro, but regional projects are considered on request."}}]}
   </script>
+ 
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
@@ -174,9 +177,11 @@
           </div>
 
           <div>
-            <label for="service">What are you looking to build?</label>
+            <label for="service" 
+                    style=" background:#0f0a11;color:#fff82f;"
+                    >What are you looking to build?</label>
             <select class="field" id="service" name="service" required>
-              <option value="" disabled selected>Select a project type</option>
+              <option value="" disabled selected >Select a project type</option>
               <option>Steel Horse Shade</option>
               <option>Mare Motel</option>
               <option>Corrals</option>
@@ -250,7 +255,8 @@
 
   <script>
     // 1) SET THIS to your deployed API Gateway HTTPS endpoint or custom domain:
-    const CONTACT_API_URL = "https://dq59cb4tm0.execute-api.us-east-1.amazonaws.com/contact"; // e.g. https://abc123.execute-api.us-west-2.amazonaws.com/contact
+    // If you later enable a pretty domain, swap to: https://api.stallionsteelworks.com/contact
+    const CONTACT_API_URL = "https://dq59cb4tm0.execute-api.us-east-1.amazonaws.com/contact";
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -268,9 +274,7 @@
 
       // Honeypot
       if (form.website && form.website.value) {
-        show(alertOk); // pretend success to bots
-        form.reset();
-        return;
+        show(alertOk); form.reset(); return;
       }
 
       // Basic validation
@@ -285,8 +289,8 @@
         userAgent: navigator.userAgent
       };
       if (!payload.name || !payload.email || !payload.service || !payload.message) {
-        show(alertErr);
-        return;
+        console.warn('Validation failed', payload);
+        show(alertErr); return;
       }
 
       submitBtn.disabled = true;
@@ -298,22 +302,29 @@
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(payload),
           mode: "cors",
-          credentials: "omit",
+          credentials: "omit"
         });
 
-        if (res.ok) {
+        // --- Option 6: improved debugging ---
+        const text = await res.text().catch(() => "");
+        if (!res.ok) {
+          console.error("API error", { status: res.status, body: text });
+          show(alertErr);
+        } else {
+          console.log("API success", text || "(no body)");
           form.reset();
           show(alertOk);
-        } else {
-          show(alertErr);
         }
       } catch (err) {
+        console.error("Network error", err);
         show(alertErr);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "Send Message";
       }
     });
+
   </script>
+  <script src="/contact.js?v=fix-no-globals" defer></script>
 </body>
 </html>
