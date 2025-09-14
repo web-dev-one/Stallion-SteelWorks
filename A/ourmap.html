@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Metro Service Area</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: linear-gradient(to bottom, #1a2a3a, #0d1b2a);
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 15px;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: rgba(18, 26, 34, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(to right, #c1440e, #87300c);
+            padding: 20px 15px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #f4b942;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #e0e0e0;
+            max-width: 100%;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+        .map-container {
+            width: 100%;
+            padding: 15px 10px;
+            order: 2;
+        }
+        .city-map {
+            width: 100%;
+            height: 350px;
+            background: #2c3e50;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #f4b942;
+            touch-action: manipulation;
+        }
+        .phoenix {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 70px;
+            height: 70px;
+            background: rgba(193, 68, 14, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 0 0 6px rgba(193, 68, 14, 0.3);
+            animation: pulse 2s infinite;
+            text-align: center;
+            padding: 5px;
+        }
+        .city {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(244, 185, 66, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a2a3a;
+            font-weight: bold;
+            font-size: 0.7rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 3px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .city:active, .city:hover {
+            transform: scale(1.1);
+            background: rgba(244, 185, 66, 1);
+            box-shadow: 0 0 10px #f4b942;
+        }
+        .mesa { top: 45%; left: 55%; }
+        .scottsdale { top: 35%; left: 50%; }
+        .tempe { top: 48%; left: 47%; }
+        .chandler { top: 55%; left: 48%; }
+        .gilbert { top: 52%; left: 55%; }
+        .glendale { top: 38%; left: 32%; }
+        .peoria { top: 32%; left: 28%; }
+        .surprise { top: 30%; left: 20%; }
+        .goodyear { top: 48%; left: 25%; }
+        .avondale { top: 52%; left: 22%; }
+        
+        .info-container {
+            width: 100%;
+            padding: 15px 10px;
+            order: 1;
+        }
+        h2 {
+            color: #f4b942;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c1440e;
+            padding-bottom: 8px;
+            font-size: 1.4rem;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .category {
+            background: rgba(41, 56, 73, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #c1440e;
+        }
+        h3 {
+            color: #f4b942;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px dotted rgba(244, 185, 66, 0.3);
+            font-size: 0.95rem;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(12, 20, 28, 0.9);
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            line-height: 1.4;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(193, 68, 14, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(193, 68, 14, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(193, 68, 14, 0); }
+        }
+        
+        /* Mobile-specific improvements */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            header {
+                padding: 15px 10px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .city-map {
+                height: 300px;
+            }
+            .phoenix {
+                width: 60px;
+                height: 60px;
+                font-size: 0.7rem;
+            }
+            .city {
+                width: 45px;
+                height: 45px;
+                font-size: 0.6rem;
+            }
+        }
+        
+        /* Landscape orientation optimization */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .city-map {
+                height: 250px;
+            }
+        }
+        
+        /* Larger mobile devices */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 90%;
+            }
+            .content {
+                flex-direction: row;
+            }
+            .map-container {
+                width: 50%;
+                order: 1;
+            }
+            .info-container {
+                width: 50%;
+                order: 2;
+            }
+            .categories {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Prevent zoom on iOS when tapping */
+        @media (max-width: 768px) {
+            select, textarea, input {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Phoenix Metropolitan Area</h1>
+            <p class="subtitle">The Valley of the Sun is the largest metropolitan area in the Southwestern United States.</p>
+        </header>
+        
+        <div class="content">
+            <div class="map-container">
+                <h2>Cities of the Valley we Serve</h2>
+                <div class="city-map">
+                    <div class="phoenix">Phoenix</div>
+                    <div class="city mesa">Mesa</div>
+                    <div class="city scottsdale">Scottsdale</div>
+                    <div class="city tempe">Tempe</div>
+                    <div class="city chandler">Chandler</div>
+                    <div class="city gilbert">Gilbert</div>
+                    <div class="city glendale">Glendale</div>
+                    <div class="city peoria">Peoria</div>
+                    <div class="city surprise">Surprise</div>
+                    <div class="city goodyear">Goodyear</div>
+                    <div class="city avondale">Avondale</div>
+                </div>
+            </div>
+            
+            <div class="info-container">
+                <h2>Major Cities in the Region</h2>
+                <div class="categories">
+                    <div class="category">
+                        <h3>Core City</h3>
+                        <ul>
+                            <li>Phoenix</li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>East Valley</h3>
+                        <ul>
+                            <li>Mesa</li>
+                            <li>Chandler</li>
+                            <li>Gilbert</li>
+                            <li>Tempe</li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>West Valley</h3>
+                        <ul>
+                            <li>Glendale</li>
+                            <li>Peoria</li>
+                            <li>Surprise</li>
+                            <li>Goodyear</li>
+                            <li>Avondale</li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>Other Areas</h3>
+                        <ul>
+                            <li>Scottsdale</li>
+                            <li>Apache Junction</li>
+                            <li>Queen Creek</li>
+                            <li>Buckeye</li>
+                            <li>Casa Grande</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>The Phoenix Metropolitan Area is home to over 5 million people, making it the 11th largest metro area in the United States.</p>
+            <p>Known for its hot desert climate, stunning landscapes, and rapid growth.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple touch optimization
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Prevent default on city elements to avoid accidental zooming
+        var cities = document.querySelectorAll('.city');
+        cities.forEach(function(city) {
+            city.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.style.transform = 'scale(1.1)';
+                this.style.background = 'rgba(244, 185, 66, 1)';
+                this.style.boxShadow = '0 0 10px #f4b942';
+            });
+            
+            city.addEventListener('touchend', function() {
+                this.style.transform = '';
+                this.style.background = '';
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
