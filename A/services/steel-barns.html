@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Premium Shade Structures | Stallion Steelworks</title>
-  <meta name="description" content="Custom-engineered steel shade structures for equestrian facilities. Premium protection from sun and weather for your horses and livestock.">
-  <meta name="keywords" content="horse shade structures, equestrian shades, steel shade solutions, custom sun protection, Stallion Steelworks">
+  <title>Premium Steel Barns | Stallion Steelworks</title>
+  <meta name="description" content="Custom-engineered steel barns for equestrian facilities. Durable, low-maintenance structures designed to protect your valuable investments.">
+  <meta name="keywords" content="steel barns, equestrian barns, metal barns, custom steel construction, Stallion Steelworks">
   <meta name="author" content="Stallion Steelworks">
-  <meta property="og:title" content="Premium Shade Structures | Stallion Steelworks">
-  <meta property="og:description" content="Custom-engineered steel shade structures for equestrian facilities.">
-  <meta property="og:image" content="../pics/shade-structure-hero.jpg">
-  <meta property="og:url" content="https://stallionsteelworks.com/services/shade-structures.html">
+  <meta property="og:title" content="Premium Steel Barns | Stallion Steelworks">
+  <meta property="og:description" content="Custom-engineered steel barns for equestrian facilities.">
+  <meta property="og:image" content="../pics/steel-barn-hero.jpg">
+  <meta property="og:url" content="https://stallionsteelworks.com/services/steel-barns.html">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="../css/styles.css">
   <style>
     /* =========
-       Base styles (inherited from main site with enhancements)
+       Base styles with purchase-focused enhancements
        ========= */
     :root {
       --steel-gold: #f4b942;
@@ -23,10 +22,9 @@
       --dark-steel: #1e1e1e;
       --black-steel: #0c0c0c;
       --steel-gray: #d0d0d0;
-      --neon-accent: #00f3ff;
-      --neon-glow: 0 0 10px rgba(0, 243, 255, 0.7),
-                   0 0 20px rgba(0, 243, 255, 0.5),
-                   0 0 30px rgba(0, 243, 255, 0.3);
+      --patina: #39CCCC;
+      --patina-glow: 0 0 10px rgba(57, 204, 204, 0.7),
+                   0 0 20px rgba(57, 204, 204, 0.5);
       
       --container: 1200px;
       --pad-x: clamp(16px, 4vw, 24px);
@@ -68,7 +66,7 @@
     }
 
     /* =========
-       Header with subtle neon enhancement
+       Header with subtle enhancements
        ========= */
     header {
       position: fixed;
@@ -103,7 +101,7 @@
 
     .logo:hover {
       filter: drop-shadow(0 0 5px var(--steel-gold)) 
-              drop-shadow(0 0 10px var(--neon-accent));
+              drop-shadow(0 0 15px var(--patina));
     }
 
     nav ul {
@@ -128,7 +126,7 @@
       padding: 6px 8px;
       border: 1px solid rgba(244,185,66,0.18);
       border-radius: 8px;
-      transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+      transition: all 0.3s ease;
     }
 
     nav a:hover { 
@@ -137,22 +135,27 @@
       box-shadow: 0 0 8px rgba(193, 68, 14, 0.6);
     }
 
-    /* Current page indicator */
-    nav a[href="shade-structures.html"] {
+    /* Current page indicator - always visible with enhanced hover */
+    nav a[href="steel-barns.html"] {
       position: relative;
-      color: var(--neon-accent);
-      border-color: rgba(0, 243, 255, 0.4);
+      color: var(--patina);
+      border-color: rgba(57, 204, 204, 0.4);
+      box-shadow: 0 0 5px rgba(57, 204, 204, 0.5);
       animation: pulse 2s infinite;
     }
 
+    nav a[href="steel-barns.html"]:hover {
+      box-shadow: 0 0 15px rgba(57, 204, 204, 0.8);
+    }
+
     @keyframes pulse {
-      0% { box-shadow: 0 0 5px rgba(0, 243, 255, 0.5); }
-      50% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.8); }
-      100% { box-shadow: 0 0 5px rgba(0, 243, 255, 0.5); }
+      0% { box-shadow: 0 0 5px rgba(57, 204, 204, 0.5); }
+      50% { box-shadow: 0 0 10px rgba(57, 204, 204, 0.7); }
+      100% { box-shadow: 0 0 5px rgba(57, 204, 204, 0.5); }
     }
 
     /* =========
-       Hero Section with Neon Enhancement
+       Hero Section with Conversion Focus
        ========= */
     .hero {
       min-height: calc(100svh - var(--header-h));
@@ -174,14 +177,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 70% 20%, rgba(0, 243, 255, 0.1) 0%, transparent 50%);
+      background: radial-gradient(circle at 70% 20%, rgba(57, 204, 204, 0.1) 0%, transparent 50%);
       z-index: -1;
     }
 
-    .hero-logo {
-      width: clamp(180px, 46vw, 320px);
-      margin-bottom: clamp(14px, 3vw, 30px);
-      filter: drop-shadow(0 0 10px var(--steel-gold));
+    .hero-content {
+      max-width: 800px;
     }
 
     h1 {
@@ -193,6 +194,16 @@
       text-shadow: 2px 2px #000;
       letter-spacing: 0.06em;
       position: relative;
+    }
+
+    .neon-highlight {
+      color: var(--patina);
+      text-shadow: 0 0 5px rgba(57, 204, 204, 0.7);
+      transition: all 0.3s ease;
+    }
+
+    h1:hover .neon-highlight {
+      text-shadow: 0 0 10px rgba(57, 204, 204, 0.9);
     }
 
     .divider {
@@ -211,7 +222,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, var(--neon-accent), transparent);
+      background: linear-gradient(90deg, transparent, var(--patina), transparent);
       animation: shine 3s infinite;
     }
 
@@ -226,12 +237,11 @@
       color: var(--steel-gray);
       max-width: 680px;
       margin: 10px auto 22px;
-      padding: 0 var(--pad-x);
     }
 
     .cta-button {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 8px;
       background: var(--rust-red);
       color: #fff;
@@ -241,6 +251,10 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 10px 5px;
     }
 
     .cta-button::before {
@@ -264,8 +278,49 @@
       left: 100%;
     }
 
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--patina);
+      color: var(--patina);
+      box-shadow: 0 0 8px rgba(57, 204, 204, 0.3);
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(57, 204, 204, 0.1);
+      box-shadow: 0 0 15px rgba(57, 204, 204, 0.5);
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      background: rgba(30, 30, 30, 0.7);
+      padding: 10px 15px;
+      border-radius: 50px;
+      border: 1px solid rgba(57, 204, 204, 0.3);
+      box-shadow: 0 0 5px rgba(57, 204, 204, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      border-color: var(--patina);
+      box-shadow: 0 0 10px rgba(57, 204, 204, 0.4);
+    }
+
+    .badge i {
+      margin-right: 8px;
+      color: var(--patina);
+    }
+
     /* =========
-       Benefits Section with Interactive Cards
+       Benefits Section with Enhanced Hover Effects
        ========= */
     .benefits-section {
       padding: clamp(48px, 8vw, 80px) 0;
@@ -280,11 +335,6 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       padding: 0 var(--pad-x);
-    }
-
-    h2 .neon-highlight {
-      color: var(--neon-accent);
-      text-shadow: 0 0 5px rgba(0, 243, 255, 0.7);
     }
 
     .benefits-grid {
@@ -310,12 +360,13 @@
 
     .benefit-card {
       background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
-      border: 1px solid rgba(244, 185, 66, 0.2);
+      border: 1px solid rgba(57, 204, 204, 0.3);
       border-radius: 12px;
       padding: 25px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 0 10px rgba(57, 204, 204, 0.2);
     }
 
     .benefit-card::before {
@@ -324,34 +375,47 @@
       top: 0;
       left: 0;
       width: 3px;
-      height: 0;
-      background: var(--neon-accent);
-      transition: height 0.5s ease;
+      height: 100%;
+      background: var(--patina);
+      transition: all 0.5s ease;
     }
 
     .benefit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      border-color: var(--neon-accent);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(57, 204, 204, 0.4);
+      border-color: var(--patina);
     }
 
     .benefit-card:hover::before {
-      height: 100%;
+      box-shadow: 0 0 20px var(--patina);
     }
 
     .benefit-icon {
       font-size: 2.5rem;
-      color: var(--steel-gold);
+      color: var(--patina);
       margin-bottom: 15px;
       text-align: center;
+      filter: drop-shadow(0 0 5px rgba(57, 204, 204, 0.5));
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px rgba(57, 204, 204, 0.8));
     }
 
     .benefit-card h3 {
       font-size: 1.3rem;
-      color: var(--steel-gold);
+      color: var(--patina);
       margin-top: 0;
       margin-bottom: 15px;
       text-align: center;
+      text-shadow: 0 0 5px rgba(57, 204, 204, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover h3 {
+      text-shadow: 0 0 10px rgba(57, 204, 204, 0.6);
     }
 
     .benefit-card p {
@@ -393,6 +457,12 @@
       border-radius: 10px;
       aspect-ratio: 4 / 3;
       cursor: pointer;
+      box-shadow: 0 0 10px rgba(57, 204, 204, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 0 20px rgba(57, 204, 204, 0.5);
     }
 
     .gallery-item img {
@@ -440,7 +510,7 @@
     }
 
     /* =========
-       Customization Options
+       Customization Options with Pricing
        ========= */
     .customization-section {
       padding: clamp(48px, 8vw, 80px) 0;
@@ -464,7 +534,14 @@
       background: rgba(30, 30, 30, 0.7);
       border-radius: 12px;
       padding: 25px;
-      border: 1px solid rgba(244, 185, 66, 0.2);
+      border: 1px solid rgba(57, 204, 204, 0.3);
+      box-shadow: 0 0 10px rgba(57, 204, 204, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .option-list:hover {
+      border-color: var(--patina);
+      box-shadow: 0 0 15px rgba(57, 204, 204, 0.4);
     }
 
     .option-item {
@@ -472,6 +549,11 @@
       border-bottom: 1px solid rgba(244, 185, 66, 0.1);
       display: flex;
       align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .option-item:hover {
+      background-color: rgba(57, 204, 204, 0.05);
     }
 
     .option-item:last-child {
@@ -479,9 +561,10 @@
     }
 
     .option-icon {
-      color: var(--neon-accent);
+      color: var(--patina);
       margin-right: 15px;
       font-size: 1.2rem;
+      filter: drop-shadow(0 0 3px rgba(57, 204, 204, 0.5));
     }
 
     .option-text {
@@ -490,8 +573,9 @@
 
     .option-text h4 {
       margin: 0 0 5px 0;
-      color: var(--steel-gold);
+      color: var(--patina);
       font-size: 1.1rem;
+      text-shadow: 0 0 3px rgba(57, 204, 204, 0.3);
     }
 
     .option-text p {
@@ -500,19 +584,27 @@
       font-size: 0.95rem;
     }
 
-    .size-chart {
+    .pricing-chart {
       background: rgba(30, 30, 30, 0.7);
       border-radius: 12px;
       padding: 25px;
-      border: 1px solid rgba(244, 185, 66, 0.2);
+      border: 1px solid rgba(57, 204, 204, 0.3);
+      box-shadow: 0 0 10px rgba(57, 204, 204, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .size-chart h3 {
-      color: var(--steel-gold);
+    .pricing-chart:hover {
+      border-color: var(--patina);
+      box-shadow: 0 0 15px rgba(57, 204, 204, 0.4);
+    }
+
+    .pricing-chart h3 {
+      color: var(--patina);
       margin-top: 0;
       text-align: center;
       padding-bottom: 15px;
-      border-bottom: 1px solid rgba(244, 185, 66, 0.2);
+      border-bottom: 1px solid rgba(57, 204, 204, 0.3);
+      text-shadow: 0 0 5px rgba(57, 204, 204, 0.3);
     }
 
     table {
@@ -536,8 +628,81 @@
       color: var(--steel-gray);
     }
 
+    .price {
+      color: var(--patina);
+      font-weight: bold;
+      text-shadow: 0 0 3px rgba(57, 204, 204, 0.3);
+    }
+
     tr:hover {
-      background-color: rgba(0, 243, 255, 0.05);
+      background-color: rgba(57, 204, 204, 0.05);
+    }
+
+    /* =========
+       Testimonials with Social Proof
+       ========= */
+    .testimonials-section {
+      padding: clamp(48px, 8vw, 80px) 0;
+      background: radial-gradient(ellipse at center, rgba(30, 30, 30, 0.9) 0%, var(--black-steel) 100%);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 40px;
+      padding: 0 var(--pad-x);
+    }
+
+    @media (min-width: 768px) {
+      .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+    }
+
+    .testimonial {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
+      border-radius: 12px;
+      padding: 25px;
+      border-left: 4px solid var(--patina);
+      position: relative;
+      box-shadow: 0 0 10px rgba(57, 204, 204, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .testimonial:hover {
+      box-shadow: 0 0 15px rgba(57, 204, 204, 0.4);
+    }
+
+    .testimonial:before {
+      content: '"';
+      font-size: 4.2rem;
+      color: rgba(57, 204, 204, 0.08);
+      position: absolute;
+      top: 4px;
+      left: 10px;
+      line-height: 1;
+    }
+
+    .testimonial p { 
+      position: relative; 
+      z-index: 1; 
+      font-style: italic; 
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-author { 
+      font-weight: bold; 
+      color: var(--steel-gold); 
+      margin-top: 12px; 
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-author i {
+      margin-right: 8px;
+      color: var(--patina);
     }
 
     /* =========
@@ -559,8 +724,8 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 70%, rgba(0, 243, 255, 0.1) 0%, transparent 25%),
-        radial-gradient(circle at 80% 30%, rgba(0, 243, 255, 0.1) 0%, transparent 25%);
+        radial-gradient(circle at 20% 70%, rgba(57, 204, 204, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(57, 204, 204, 0.1) 0%, transparent 25%);
       z-index: 0;
     }
 
@@ -572,8 +737,8 @@
     }
 
     .cta-highlight {
-      color: var(--neon-accent);
-      text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+      color: var(--patina);
+      text-shadow: 0 0 8px rgba(57, 204, 204, 0.5);
     }
 
     .contact-methods {
@@ -612,12 +777,22 @@
 
     .contact-button.phone {
       background: rgba(30, 30, 30, 0.8);
-      border: 1px solid var(--neon-accent);
+      border: 1px solid var(--patina);
+      box-shadow: 0 0 8px rgba(57, 204, 204, 0.3);
     }
 
     .contact-button.phone:hover {
-      background: rgba(0, 243, 255, 0.1);
-      box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+      background: rgba(57, 204, 204, 0.1);
+      box-shadow: 0 0 15px rgba(57, 204, 204, 0.5);
+    }
+
+    .urgency-note {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(193, 68, 14, 0.1);
+      border-radius: 8px;
+      border-left: 4px solid var(--rust-red);
+      font-size: 0.9rem;
     }
 
     /* =========
@@ -664,7 +839,7 @@
     }
 
     .footer-section a:hover { 
-      color: var(--neon-accent); 
+      color: var(--patina); 
     }
 
     .copyright {
@@ -695,15 +870,21 @@
       .benefit-card {
         padding: 20px;
       }
-    }
 
-    @media (max-width: 480px) {
       .contact-methods {
         flex-direction: column;
       }
+    }
+
+    @media (max-width: 480px) {
+      .cta-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
       
-      .contact-button {
-        width: 100%;
+      .hero-badges {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -719,7 +900,7 @@
           <li><a href="../index.html#gallery">Gallery</a></li>
           <li><a href="../index.html#about">About</a></li>
           <li><a href="../index.html#testimonials">Testimonials</a></li>
-          <li><a href="./shade-structures.html">Shade Structures</a></li>
+          <li><a href="steel-barns.html">Steel Barns</a></li>
           <li><a href="../contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -728,95 +909,106 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div>
-      <h1>Premium <span class="neon-highlight">Shade Structures</span></h1>
+    <div class="hero-content">
+      <h1>Premium <span class="neon-highlight">Steel Barns</span></h1>
       <div class="divider"></div>
-      <p>Engineered steel shade solutions that provide optimal protection from sun and weather while enhancing your property's aesthetic appeal.</p>
-      <a href="../contact.html" class="cta-button">Get a Custom Quote</a>
+      <p>Custom-engineered steel barns that provide superior protection for your horses, equipment, and investments. Built to last generations with minimal maintenance.</p>
+      
+      <div>
+        <a href="#contact" class="cta-button">Get a Custom Quote</a>
+        <a href="tel:+16029997756" class="cta-button secondary">Call Now: (602) 999-7756</a>
+      </div>
+      
+      <div class="hero-badges">
+        <div class="badge">
+          <i>✓</i> <span>35-Year Warranty for cracking, peeling, and color fade</span>
+        </div>
+        <div class="badge">
+          <i>✓</i> <span>Weather-Resistant</span>
+        </div>
+        <div class="badge">
+          <i>✓</i> <span>Custom Designs</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Benefits Section -->
   <section class="benefits-section container">
-    <h2>Why Choose Our <span class="neon-highlight">Shade Structures</span></h2>
+    <h2>Why Choose Our <span class="neon-highlight">Steel Barns</span></h2>
     
     <div class="benefits-grid">
       <div class="benefit-card">
-        <div class="benefit-icon">☀️</div>
-        <h3>Superior Sun Protection</h3>
-        <p>Our shades block up to 98% of harmful UV rays, keeping your horses cooler and reducing heat stress during hot summer months.</p>
+        <div class="benefit-icon">🛡️</div>
+        <h3>Superior Durability</h3>
+        <p>Our steel barns withstand extreme weather conditions, from heavy snow loads to high winds, protecting your valuable assets year-round.</p>
+      </div>
+      
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <h3>Low Maintenance</h3>
+        <p>Unlike wood structures, our steel barns won't rot, warp, or attract pests, saving you time and money on maintenance for decades.</p>
       </div>
       
       <div class="benefit-card">
         <div class="benefit-icon">⚡</div>
-        <h3>Durable Steel Construction</h3>
-        <p>Built with heavy-duty steel frames that withstand extreme weather conditions, from high winds to heavy snow loads.</p>
+        <h3>Quick Installation</h3>
+        <p>Engineered components allow for faster construction compared to traditional barns, getting you under cover sooner.</p>
       </div>
       
       <div class="benefit-card">
-        <div class="benefit-icon">🛡️</div>
-        <h3>Low Maintenance</h3>
-        <p>Unlike wood structures, our steel shades won't rot, warp, or attract pests, saving you time and money on maintenance.</p>
+        <div class="benefit-icon">🔥</div>
+        <h3>Fire Resistant</h3>
+        <p>Steel construction provides superior fire resistance compared to wood structures, offering peace of mind for your investments.</p>
       </div>
       
       <div class="benefit-card">
         <div class="benefit-icon">🎨</div>
         <h3>Customizable Designs</h3>
-        <p>Choose from various sizes, colors, and configurations to match your property's aesthetic and functional needs.</p>
+        <p>Choose from various sizes, layouts, and finishes to create the perfect barn for your specific needs and property aesthetic.</p>
       </div>
       
       <div class="benefit-card">
-        <div class="benefit-icon">💧</div>
-        <h3>Water & Weather Resistant</h3>
-        <p>Our shade fabrics are treated to resist water absorption and mildew growth, ensuring long-lasting performance.</p>
-      </div>
-      
-      <div class="benefit-card">
-        <div class="benefit-icon">📐</div>
-        <h3>Professional Installation</h3>
-        <p>Our expert team handles every aspect of installation with minimal disruption to your property.</p>
+        <div class="benefit-icon">🌱</div>
+        <h3>Eco-Friendly</h3>
+        <p>Steel is one of the most recycled materials on earth, and our barns often incorporate recycled content while being fully recyclable.</p>
       </div>
     </div>
   </section>
 
   <!-- Gallery Section -->
   <section class="gallery-section container">
-    <h2>Our <span class="neon-highlight">Shade Structure</span> Portfolio</h2>
+    <h2>Our <span class="neon-highlight">Steel Barn</span> Portfolio</h2>
     
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="../pics/10FTX10FT-Shade-A1.jpg" alt="10x10 Shade Structure">
-        <div class="gallery-caption">10'x10' Standard Shade</div>
+        <img src="../pics/steel-barn-1.jpg" alt="Luxury Steel Horse Barn">
+        <div class="gallery-caption">Luxury 4-Stall Horse Barn</div>
       </div>
       
       <div class="gallery-item">
-        <img src="../pics/40x48-Shade-H.jpg" alt="Large Custom Shade">
-        <div class="gallery-caption">40'x48' Custom Arena Shade</div>
+        <img src="../pics/steel-barn-2.jpg" alt="Custom Equipment Barn">
+        <div class="gallery-caption">Custom Equipment Storage Barn</div>
       </div>
       
       <div class="gallery-item">
-        <img src="../pics/shade-installation.jpg" alt="Shade Structure Installation">
-        <div class="gallery-caption">Professional Installation Process</div>
+        <img src="../pics/steel-barn-3.jpg" alt="Interior Barn View">
+        <div class="gallery-caption">Spacious Interior with Ample Light</div>
       </div>
       
       <div class="gallery-item">
-       
-            <div class="gallery-caption">Premium Construction Details</div>
-            <video autoplay  muted playsinline width="450" height="275"  style="border-radius: 30px;">
-             <source src="../video/Shade Staircase with slope.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
+        <img src="../pics/steel-barn-4.jpg" alt="Run-in Shed">
+        <div class="gallery-caption">Durable Run-in Shed for Pastures</div>
       </div>
       
       <div class="gallery-item">
-        <img src="../pics/Corrals-with-Shade-for-sale.jpg" alt="Shade Structure">
-        <div class="gallery-caption">Mare Motel Shade for Multiple Horses</div>
+        <img src="../pics/steel-barn-5.jpg" alt>
+        <div class="gallery-caption">Indoor Arena with attached Barn</div>
       </div>
       
       <div class="gallery-item">
-        <img src="../pics/Extra Large Shade.jpg" alt="Large Shade Structure">
-        <div class="gallery-caption">Large Arena Shade Solution</div>
+        <img src="../pics/steel-barn-6.jpg" alt="Barn Details">
+        <div class="gallery-caption">Premium Construction Details</div>
       </div>
     </div>
   </section>
@@ -827,21 +1019,21 @@
     
     <div class="options-container">
       <div class="option-list">
-        <h3 style="color: var(--steel-gold); text-align: center; margin-top: 0;">Available Features</h3>
+        <h3 style="color: var(--patina); text-align: center; margin-top: 0; text-shadow: 0 0 5px rgba(57, 204, 204, 0.3);">Available Features</h3>
         
         <div class="option-item">
           <div class="option-icon">✓</div>
           <div class="option-text">
             <h4>Multiple Size Options</h4>
-            <p>From small run-in shades to large arena covers</p>
+            <p>From small equipment sheds to large stable complexes</p>
           </div>
         </div>
         
         <div class="option-item">
           <div class="option-icon">✓</div>
           <div class="option-text">
-            <h4>Various Roof Pitches</h4>
-            <p>Choose the optimal angle for your climate</p>
+            <h4>Various Roof Styles</h4>
+            <p>Gable, monitor, single slope, and custom designs</p>
           </div>
         </div>
         
@@ -856,58 +1048,96 @@
         <div class="option-item">
           <div class="option-icon">✓</div>
           <div class="option-text">
-            <h4>Additional Side Panels</h4>
-            <p>For increased wind and weather protection</p>
+            <h4>Ventilation Systems</h4>
+            <p>Ridge vents, cupolas, and side vents for optimal airflow</p>
           </div>
         </div>
         
         <div class="option-item">
           <div class="option-icon">✓</div>
           <div class="option-text">
-            <h4>Fan Systems</h4>
-            <p>Direct heat away from shaded areas with high powered fans</p>
+            <h4>Custom Stall Layouts</h4>
+            <p>Design the perfect configuration for your needs</p>
           </div>
         </div>
       </div>
       
-      <div class="size-chart">
-        <h3>Standard Size Chart</h3>
+      <div class="pricing-chart">
+        <h3>Standard Pricing Guide</h3>
         <table>
           <thead>
             <tr>
               <th>Size</th>
-              <th>Horse Capacity</th>
+              <th>Starting Price</th>
               <th>Ideal For</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>10' x 10'</td>
-              <td>1-2 horses</td>
-              <td>Small paddocks, individual shelters</td>
+              <td>24' x 24'</td>
+              <td class="price">$12,500</td>
+              <td>Equipment storage, 2-stall barn</td>
             </tr>
             <tr>
-              <td>12' x 16'</td>
-              <td>2-3 horses</td>
-              <td>Medium paddocks, small groups</td>
+              <td>30' x 40'</td>
+              <td class="price">$18,900</td>
+              <td>4-stall barn, workshop space</td>
             </tr>
             <tr>
-              <td>20' x 20'</td>
-              <td>4-6 horses</td>
-              <td>Larger pastures, herd protection</td>
+              <td>40' x 60'</td>
+              <td class="price">$28,500</td>
+              <td>6-8 stall barn, large equipment</td>
             </tr>
             <tr>
-              <td>24' x 36'</td>
-              <td>6-10 horses</td>
-              <td>Large herds, arena adjacent</td>
+              <td>60' x 100'</td>
+              <td class="price">$49,900</td>
+              <td>Commercial use, indoor arena</td>
             </tr>
             <tr>
               <td>Custom Sizes</td>
-              <td>Any number</td>
-              <td>Special requirements, commercial use</td>
+              <td class="price">Call for Quote</td>
+              <td>Special requirements, unique layouts</td>
             </tr>
           </tbody>
         </table>
+        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--steel-gray);">
+          Prices include materials and installation. Financing available.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section container">
+    <h2>Client <span class="neon-highlight">Testimonials</span></h2>
+    
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Our steel barn has withstood three monsoon seasons without a single issue. The quality is exceptional, and it still looks brand new. Best investment we've made for our property."</p>
+        <div class="testimonial-author">
+          <i>⭐</i> Mark & Sarah J., Cave Creek
+        </div>
+      </div>
+      
+      <div class="testimonial">
+        <p>"After comparing several options, Stallion Steelworks offered the best value. The installation crew was professional, and the barn was up in just a few days. Our horses are much more comfortable now."</p>
+        <div class="testimonial-author">
+          <i>⭐</i> Robert T., Scottsdale
+        </div>
+      </div>
+      
+      <div class="testimonial">
+        <p>"I was worried about the Arizona heat, but the ventilation system keeps the barn surprisingly cool. The custom stall layout works perfectly for our operation."</p>
+        <div class="testimonial-author">
+          <i>⭐</i> Jennifer L., Queen Creek
+        </div>
+      </div>
+      
+      <div class="testimonial">
+        <p>"The maintenance savings alone have made this barn worth it. No more repainting or repairing rotten wood. The steel construction is virtually maintenance-free."</p>
+        <div class="testimonial-author">
+          <i>⭐</i> Michael K., Gilbert
+        </div>
       </div>
     </div>
   </section>
@@ -916,17 +1146,21 @@
   <section id="contact" class="cta-section">
     <div class="container">
       <div class="cta-content">
-        <h2>Ready for <span class="cta-highlight">Premium Protection</span>?</h2>
-        <p>Contact us today to discuss your shade structure needs. Our team will provide a custom quote tailored to your specific requirements.</p>
+        <h2>Ready for a <span class="cta-highlight">Superior Barn</span>?</h2>
+        <p>Contact us today to discuss your steel barn needs. Our team will provide a custom quote tailored to your specific requirements.</p>
         
         <div class="contact-methods">
           <a href="tel:+16029997756" class="contact-button phone">
             <span>📞</span> Call (602) 999-7756
           </a>
           
-          <a href="mailto:stallionsteelworks@gmail.com?subject=Shade Structure Inquiry" class="contact-button">
+          <a href="mailto:stallionsteelworks@gmail.com?subject=Steel Barn Inquiry" class="contact-button">
             <span>✉️</span> Email Us
           </a>
+        </div>
+        
+        <div class="urgency-note">
+          <p><strong>Limited Time Offer:</strong> Schedule your consultation this month and receive a free upgraded ventilation system (a $1,500 value).</p>
         </div>
       </div>
     </div>
@@ -946,11 +1180,11 @@
 
       <div class="footer-section">
         <h3>Services</h3>
-        <a href="./maremotel.html">Mare Motels</a>
-        <a href="./shade-structures.html">Shade Structures</a>
-        <a href="./steel-barns.html">Steel Barns</a>
-        <a href="./services/pipe-corrals.html">Pipe Corrals</a>
-        <a href="./riding-arenas.html">Riding Arenas</a>
+        <a href="maremotel.html">Mare Motels</a>
+        <a href="shade-structures.html">Shade Structures</a>
+        <a href="steel-barns.html">Steel Barns</a>
+        <a href="pipe-corrals.html">Pipe Corrals</a>
+        <a href="riding-arenas.html">Riding Arenas</a>
       </div>
 
       <div class="footer-section">
