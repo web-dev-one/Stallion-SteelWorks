@@ -621,6 +621,82 @@
       &copy; 2025 Stallion Steelworks. All rights reserved.
     </div>
   </footer>
-  
+  <script>
+/* Bottom-trigger redirect to the visual link map.
+   - Keyboard: Hold ArrowDown ~2s *while near bottom*.
+   - Touch: Reach bottom with a downward drag, then do a second downward drag within 3s. */
+(() => {
+  const DEST = "/links-map.html";         // << change if you put the map elsewhere
+  const HOLD_MS = 2000;
+  const BOTTOM_LEEWAY = 40;               // px
+  const MOVE_TOL = 16;
+
+  const docEl = document.documentElement, body = document.body;
+  const scrollTop = () => docEl.scrollTop || body.scrollTop || 0;
+  const scrollHeight = () => Math.max(docEl.scrollHeight, body.scrollHeight);
+  const clientHeight = () => window.innerHeight || docEl.clientHeight;
+  const atBottom = () => (scrollHeight() - (scrollTop() + clientHeight())) <= BOTTOM_LEEWAY
+                       || scrollHeight() <= clientHeight() + 1;
+
+  function go(){ window.location.href = DEST; }
+
+  // --- Keyboard hold (ArrowDown) while at bottom
+  let kTimer = null, holding = false;
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowDown' || holding) return;
+    if (!atBottom()) return;
+    holding = true;
+    clearTimeout(kTimer);
+    kTimer = setTimeout(go, HOLD_MS);
+  });
+  window.addEventListener('keyup', (e) => {
+    if (e.key !== 'ArrowDown') return;
+    holding = false;
+    clearTimeout(kTimer); kTimer = null;
+  });
+  window.addEventListener('scroll', () => {
+    if (!atBottom()) { clearTimeout(kTimer); kTimer = null; holding = false; }
+  }, {passive:true});
+
+  // --- Touch double-downward gesture at bottom
+  let touchActive = false, startY = 0, armedOnce = false, armTimeout = null, countedSwipe = false;
+
+  function armSecondSwipe() {
+    armedOnce = true;
+    clearTimeout(armTimeout);
+    armTimeout = setTimeout(() => { armedOnce = false; }, 3000); // 3s to do second downward
+  }
+
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    touchActive = true;
+    startY = e.touches[0].clientY;
+    countedSwipe = false;
+  }, {passive:true});
+
+  window.addEventListener('touchmove', (e) => {
+    if (!touchActive) return;
+    const y = e.touches[0].clientY;
+    const dy = y - startY;
+    if (!countedSwipe && dy > MOVE_TOL && atBottom()) {
+      countedSwipe = true;
+      if (!armedOnce) {
+        // First downward at bottom: arm
+        armSecondSwipe();
+      } else {
+        // Second downward at bottom: GO
+        clearTimeout(armTimeout);
+        go();
+      }
+    }
+  }, {passive:true});
+
+  window.addEventListener('touchend', () => {
+    touchActive = false;
+    countedSwipe = false;
+  }, {passive:true});
+})();
+</script>
+
 </body>
 </html>

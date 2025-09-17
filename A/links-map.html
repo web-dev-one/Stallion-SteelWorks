@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stallion Steelworks – Visual Site & Brand Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive open-graph map of Stallion Steelworks pages and partner brands." />
+  <style>
+    :root{
+      --gold:#f4b942; --rust:#c1440e; --bg:#0c0c0c; --edge:#5e5130; --node:#222; --text:#e2e2e2;
+    }
+    html,body{margin:0;height:100%;background:radial-gradient(circle at center,#1e1e1e 0%, #0c0c0c 100%);color:var(--text);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;}
+    header{padding:14px 18px;border-bottom:1px solid rgba(244,185,66,.25);display:flex;align-items:center;gap:12px;position:sticky;top:0;background:rgba(12,12,12,.8);backdrop-filter:blur(6px)}
+    header h1{margin:0;font-size:1.1rem;letter-spacing:.03em;color:var(--gold)}
+    #wrap{height:calc(100% - 56px);display:grid;grid-template-columns:1fr 300px}
+    #stage{position:relative;overflow:hidden}
+    #legend{border-left:1px solid rgba(244,185,66,.2);padding:12px;overflow:auto}
+    #legend h2{font-size:.95rem;margin:.2rem 0 .6rem;color:var(--gold)}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(244,185,66,.3);border-radius:999px;margin:4px 4px 0 0;color:var(--text);text-decoration:none}
+    .badge:hover{border-color:var(--gold)}
+    .pill{display:inline-block;padding:3px 8px;border-radius:8px;background:rgba(244,185,66,.12);border:1px solid rgba(244,185,66,.25);margin-right:6px}
+    .hint{font-size:.85rem;color:#c7c7c7}
+    .btn{appearance:none;border:1px solid rgba(244,185,66,.35);background:#181818;color:var(--gold);padding:6px 10px;border-radius:8px;font-weight:600;cursor:pointer}
+    .btn:hover{border-color:var(--gold)}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <header>
+    <button class="btn" id="homeBtn">← Back</button>
+    <h1>Visual Site & Partner Map</h1>
+  </header>
+  <div id="wrap">
+    <div id="stage">
+      <svg id="graph" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice"></svg>
+    </div>
+    <aside id="legend">
+      <h2>Filters</h2>
+      <div class="row" id="filters"></div>
+      <h2 style="margin-top:14px;">Groups</h2>
+      <p><span class="pill">Brand</span> External partner sites</p>
+      <p><span class="pill">Core</span> Your top pages</p>
+      <p><span class="pill">Services</span> All service pages</p>
+      <p><span class="pill">Utility</span> Maps & sitemap</p>
+      <h2 style="margin-top:14px;">How to use</h2>
+      <p class="hint">Drag nodes to explore. Scroll to zoom. Click a node (or label) to open.</p>
+      <h2 style="margin-top:14px;">Quick Links</h2>
+      <a class="badge" href="/index.html">🏠 Home</a>
+      <a class="badge" href="/ourservicesmap.html">🗺️ Service Area Map</a>
+      <a class="badge" href="/sitemap.xml" target="_blank" rel="noopener">🧭 sitemap.xml</a>
+      <a class="badge" href="/contact.html">✉️ Contact</a>
+    </aside>
+  </div>
+
+  <script>
+  // -------- Data (edit/expand anytime) --------
+  const N = (id, label, url, group) => ({ id, label, url, group });
+  const nodes = [
+    // brands
+    N('okcorrals','The OK Corrals','https://theokcorrals.com/','Brand'),
+    N('stallion','Stallion SteelWorks','https://stallionsteelworks.com/','Brand'),
+    N('dog','Pet Safe Kennels','https://pet-safe-kennels.com/','Brand'),
+    N('cat','Pet Safe Catios','https://petsafecatios.com/','Brand'),
+    N('equine','Equine Estate Contractors','http://equineestatecontractors.com/','Brand'),
+    N('kennel','PetSafeKennels.com','https://www.petsafekennels.com/','Brand'),
+    // core
+    N('home','Home','/index.html','Core'),
+    N('about','About','/index.html#about','Core'),
+    N('gallery','Gallery','/index.html#gallery','Core'),
+    N('testimonials','Testimonials','/index.html#testimonials','Core'),
+    N('contact','Contact','/contact.html','Core'),
+    // services
+    N('services','Services','/index.html#services','Services'),
+    N('maremotel','Mare Motels','/services/maremotel.html','Services'),
+    N('shade','Shade Structures','/services/shade-structures.html','Services'),
+    N('steelbarns','Steel Barns','/services/steel-barns.html','Services'),
+    N('corrals','Pipe Corrals','/services/pipe-corrals.html','Services'),
+    N('arenas','Riding Arenas','/services/riding-arenas.html','Services'),
+    N('customfab','Custom Fabrication','/services/custom-fabrication.html','Services'),
+    // utility
+    N('svcmap','Service Area Map','/ourservicesmap.html','Utility'),
+    N('sitemap','sitemap.xml','/sitemap.xml','Utility'),
+    N('linksmap','Links Graph (this)','/links-map.html','Utility')
+  ];
+
+  // Connect everything sensibly
+  const links = [
+    // core hub
+    {source:'home', target:'services'}, {source:'home', target:'about'},
+    {source:'home', target:'gallery'}, {source:'home', target:'testimonials'},
+    {source:'home', target:'contact'}, {source:'home', target:'svcmap'},
+    // services cluster
+    {source:'services', target:'maremotel'},
+    {source:'services', target:'shade'},
+    {source:'services', target:'steelbarns'},
+    {source:'services', target:'corrals'},
+    {source:'services', target:'arenas'},
+    {source:'services', target:'customfab'},
+    // brands hub to home
+    {source:'home', target:'okcorrals'}, {source:'home', target:'stallion'},
+    {source:'home', target:'dog'}, {source:'home', target:'cat'},
+    {source:'home', target:'equine'}, {source:'home', target:'kennel'},
+    // utility
+    {source:'home', target:'sitemap'}, {source:'home', target:'linksmap'},
+  ];
+
+  // -------- Simple force layout (no libs) --------
+  const svg = document.getElementById('graph');
+  const W = 1200, H = 800;
+  let scale = 1, offsetX = 0, offsetY = 0;
+
+  // group colors & emoji
+  const groupStyle = {
+    Brand: { color:'#7cc4ff', emoji:'🔗' },
+    Core:  { color:'#f4b942', emoji:'⭐' },
+    Services: { color:'#c1440e', emoji:'🛠️' },
+    Utility: { color:'#9be39b', emoji:'🧭' }
+  };
+
+  // init positions
+  const nodeMap = new Map(nodes.map(n => [n.id, n]));
+  nodes.forEach((n, i) => {
+    n.x = W/2 + (Math.cos(i)*200 + (Math.random()*80-40));
+    n.y = H/2 + (Math.sin(i)*200 + (Math.random()*80-40));
+    n.vx = 0; n.vy = 0;
+  });
+
+  // adjacency
+  const adj = {};
+  links.forEach(l => {
+    (adj[l.source] ||= []).push(l.target);
+    (adj[l.target] ||= []).push(l.source);
+  });
+
+  function tick() {
+    const kCenter = 0.002;
+    const kCharge = 8000;     // repulsion strength
+    const kSpring = 0.02;     // link spring
+    const linkLen = 120;      // rest length
+    const damp = 0.85;
+
+    // springs
+    for (const l of links) {
+      const a = nodeMap.get(l.source), b = nodeMap.get(l.target);
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.max(0.01, Math.hypot(dx,dy));
+      const f = (d - linkLen) * kSpring;
+      const fx = f * dx/d, fy = f * dy/d;
+      a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+    }
+    // repulsion
+    for (let i=0; i<nodes.length; i++){
+      for (let j=i+1; j<nodes.length; j++){
+        const a = nodes[i], b = nodes[j];
+        const dx = b.x - a.x, dy = b.y - a.y;
+        const d2 = dx*dx + dy*dy + 0.01;
+        const f = kCharge / d2;
+        const fx = f * dx/Math.sqrt(d2), fy = f * dy/Math.sqrt(d2);
+        a.vx -= fx; a.vy -= fy; b.vx += fx; b.vy += fy;
+      }
+    }
+    // gentle center pull
+    for (const n of nodes){
+      n.vx += (W/2 - n.x) * kCenter;
+      n.vy += (H/2 - n.y) * kCenter;
+    }
+    // integrate
+    for (const n of nodes){
+      n.x += n.vx; n.y += n.vy;
+      n.vx *= damp; n.vy *= damp;
+    }
+  }
+
+  // SVG elements
+  const gAll = document.createElementNS('http://www.w3.org/2000/svg','g');
+  svg.appendChild(gAll);
+
+  const gEdges = document.createElementNS('http://www.w3.org/2000/svg','g');
+  const gNodes = document.createElementNS('http://www.w3.org/2000/svg','g');
+  gAll.appendChild(gEdges); gAll.appendChild(gNodes);
+
+  const edgeEls = links.map(l => {
+    const el = document.createElementNS('http://www.w3.org/2000/svg','line');
+    el.setAttribute('stroke', 'var(--edge)');
+    el.setAttribute('stroke-width', '1.4');
+    el.setAttribute('stroke-linecap', 'round');
+    gEdges.appendChild(el);
+    return {el, l};
+  });
+
+  const nodeEls = nodes.map(n => {
+    const group = groupStyle[n.group] || { color:'#888', emoji:'•' };
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('r', 18);
+    circle.setAttribute('fill', '#141414');
+    circle.setAttribute('stroke', group.color);
+    circle.setAttribute('stroke-width', '2.5');
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+    text.textContent = group.emoji + ' ' + n.label;
+    text.setAttribute('fill', 'white');
+    text.setAttribute('font-size', '12');
+    text.setAttribute('dominant-baseline', 'middle');
+    text.setAttribute('x', 24);
+    text.style.textShadow = '0 0 4px black';
+
+    g.appendChild(circle); g.appendChild(text); gNodes.appendChild(g);
+
+    // drag to reposition
+    let dragging = false, last = null;
+    g.addEventListener('mousedown', e => { dragging = true; last = {x:e.clientX, y:e.clientY}; e.stopPropagation(); });
+    window.addEventListener('mousemove', e => {
+      if(!dragging) return;
+      const dx = (e.clientX - last.x) / scale;
+      const dy = (e.clientY - last.y) / scale;
+      n.x += dx; n.y += dy; n.vx = n.vy = 0;
+      last = {x:e.clientX, y:e.clientY};
+    });
+    window.addEventListener('mouseup', () => dragging=false);
+
+    // click to open
+    g.style.cursor = 'pointer';
+    g.addEventListener('click', (e) => {
+      if (!n.url) return;
+      const isExternal = /^https?:\/\//i.test(n.url);
+      window.open(n.url, isExternal ? '_blank' : '_self');
+      e.stopPropagation();
+    });
+
+    return {g, circle, text, node:n};
+  });
+
+  function render() {
+    // update edges
+    edgeEls.forEach(({el,l}) => {
+      const a = nodeMap.get(l.source), b = nodeMap.get(l.target);
+      el.setAttribute('x1', a.x); el.setAttribute('y1', a.y);
+      el.setAttribute('x2', b.x); el.setAttribute('y2', b.y);
+    });
+    // update nodes
+    nodeEls.forEach(({g, circle, text, node}) => {
+      g.setAttribute('transform', `translate(${node.x},${node.y})`);
+    });
+  }
+
+  // zoom/pan
+  let isPanning=false, lastPan=null;
+  svg.addEventListener('mousedown', (e)=>{ if(e.target===svg){ isPanning=true; lastPan={x:e.clientX,y:e.clientY}; }});
+  window.addEventListener('mousemove', (e)=>{ if(!isPanning) return; const dx=e.clientX-lastPan.x, dy=e.clientY-lastPan.y; offsetX+=dx; offsetY+=dy; lastPan={x:e.clientX,y:e.clientY}; updateView(); });
+  window.addEventListener('mouseup', ()=> isPanning=false);
+  svg.addEventListener('wheel', (e)=>{ const s = Math.exp(-e.deltaY*0.001); scale*=s; updateView(); }, {passive:true});
+  function updateView(){ gAll.setAttribute('transform', `translate(${offsetX},${offsetY}) scale(${scale})`); }
+
+  // filters
+  const groups = [...new Set(nodes.map(n=>n.group))];
+  const filtersWrap = document.getElementById('filters');
+  const active = new Set(groups);
+  groups.forEach(gr => {
+    const btn = document.createElement('button');
+    btn.className='btn'; btn.textContent = gr;
+    btn.dataset.group = gr;
+    btn.onclick = () => {
+      if (active.has(gr)) active.delete(gr); else active.add(gr);
+      nodeEls.forEach(({g,node}) => g.style.display = active.has(node.group) ? '' : 'none');
+      edgeEls.forEach(({el,l}) => {
+        const a = nodeMap.get(l.source), b = nodeMap.get(l.target);
+        el.style.display = (active.has(a.group) && active.has(b.group)) ? '' : 'none';
+      });
+    };
+    filtersWrap.appendChild(btn);
+  });
+
+  // loop
+  function loop(){
+    tick(); render(); requestAnimationFrame(loop);
+  }
+  loop();
+
+  // back button
+  document.getElementById('homeBtn').onclick = () => history.length>1 ? history.back() : (window.location.href='/index.html');
+  </script>
+</body>
+</html>

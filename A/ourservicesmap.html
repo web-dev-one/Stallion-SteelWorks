@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Service Area – Stallion Steelworks (All Arizona Cities)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="We serve all cities in Arizona. Primary service cities: Phoenix, Scottsdale, Paradise Valley, Gilbert, Peoria, Tempe, Mesa." />
+  <style>
+    :root{ --gold:#f4b942; --bg:#0c0c0c; --ink:#e8e8e8; }
+    html,body{margin:0;height:100%;background:#0c0c0c;color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+    header{padding:14px 18px;border-bottom:1px solid rgba(244,185,66,.25);display:flex;align-items:center;gap:12px;background:#111;position:sticky;top:0;z-index:2}
+    header h1{margin:0;font-size:1.05rem;color:var(--gold)}
+    #wrap{height:calc(100vh - 56px);display:grid;grid-template-columns:1fr 340px;min-height:420px}
+    #map{position:relative;background:linear-gradient(180deg,#1b1b1b,#0f0f0f);min-height:320px}
+    #panel{border-left:1px solid rgba(244,185,66,.25);padding:14px;overflow:auto;background:#0e0e0e}
+    .btn{appearance:none;border:1px solid rgba(244,185,66,.35);background:#181818;color:var(--gold);padding:6px 10px;border-radius:8px;font-weight:600;cursor:pointer}
+    .btn:hover{border-color:var(--gold)}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(244,185,66,.3);border-radius:999px;margin:4px 4px 0 0;color:#eee;text-decoration:none}
+    .hint{font-size:.92rem;color:#cfcfcf}
+    .pill{display:inline-block;padding:3px 8px;border-radius:8px;background:rgba(244,185,66,.12);border:1px solid rgba(244,185,66,.25);margin-right:6px}
+    .city-link{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;border:1px solid rgba(244,185,66,.18);text-decoration:none;color:#eaeaea;margin:6px 0}
+    .city-link:hover{border-color:var(--gold);background:#161616}
+    .tag{font-size:.78rem;opacity:.8}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="./index.html" ><button class="btn" id="backBtn">← Back</button></a>
+    <h1>Service Area: All Arizona Cities (Primary: Phoenix • Scottsdale • Paradise Valley • Gilbert • Peoria • Tempe • Mesa)</h1>
+  </header>
+
+  <div id="wrap">
+    <div id="map"><canvas id="c" style="display:block;width:100%;height:100%"></canvas></div>
+
+    <aside id="panel">
+      <p class="hint">
+        We serve <strong>every city in Arizona</strong>. Primary focus across the Phoenix metro: <span class="pill">Phoenix</span>
+        <span class="pill">Scottsdale</span> <span class="pill">Paradise Valley</span> <span class="pill">Gilbert</span>
+        <span class="pill">Peoria</span> <span class="pill">Tempe</span> <span class="pill">Mesa</span>.
+      </p>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 14px;">
+        <button class="btn" id="fitAZ">Fit Arizona</button>
+        <button class="btn" id="zoomOut">Zoom Out More</button>
+        <button class="btn" id="showMain">Show Main Cities</button>
+        <button class="btn" id="showAll">Show All Cities</button>
+      </div>
+
+      <h3 style="color:var(--gold); margin:.4rem 0 .3rem;">Primary Cities</h3>
+      <div id="primaryList"></div>
+
+      <h3 style="color:var(--gold); margin:1rem 0 .3rem;">Other Arizona Cities (sample)</h3>
+      <div id="otherList"></div>
+
+      <h3 style="color:var(--gold); margin:1rem 0 .3rem;">Quick Links</h3>
+      <a class="badge" href="/links-map.html">Open Graph of Links</a>
+      <a class="badge" href="/index.html#services">Services</a>
+      <a class="badge" href="/contact.html">Contact</a>
+      <a class="badge" href="/sitemap.xml" target="_blank" rel="noopener">sitemap.xml</a>
+    </aside>
+  </div>
+
+  <script>
+  // ===== Canvas setup =====
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+
+  function fitCanvas(){
+    const container = document.getElementById('map');
+    const r = container.getBoundingClientRect();
+    const width = Math.max(320, r.width || container.clientWidth || window.innerWidth - 360);
+    const height = Math.max(300, r.height || container.clientHeight || Math.floor(window.innerHeight*0.6));
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  // ===== Projection & state =====
+  const CENTER = { x:-111.93, y:34.2 }; // lon, lat (rough AZ centroid)
+  let scale = 5200; // will be set by fitArizona()
+  let offsetX = 0, offsetY = 0; // pan
+  let showMainOnly = true;
+
+  function proj(lon,lat){
+    const x = (lon - CENTER.x) * Math.cos(CENTER.y * Math.PI/180);
+    const y = (lat - CENTER.y);
+    return { x:x*scale + canvas.width/2 + offsetX, y: -y*scale + canvas.height/2 + offsetY };
+  }
+
+  // ===== Geometry =====
+  // Simplified Arizona outline (approx)
+  const AZ_POLY = [
+    [-114.80,32.30], [-114.65,33.00], [-114.53,33.40], [-114.53,34.20],
+    [-114.55,34.75], [-114.40,35.00], [-114.30,35.10], [-114.15,36.10],
+    [-114.05,36.50], [-114.05,36.99], [-109.05,36.99],
+    [-109.05,31.33], [-112.00,31.33], [-114.81,32.05]
+  ];
+
+  const MAIN = [
+    {name:'Phoenix',        lon:-112.074, lat:33.448,   pop:'1.6M+'},
+    {name:'Scottsdale',     lon:-111.926, lat:33.494,   pop:'240k+'},
+    {name:'Paradise Valley',lon:-111.942, lat:33.531,   pop:'13k+'},
+    {name:'Gilbert',        lon:-111.789, lat:33.352,   pop:'270k+'},
+    {name:'Peoria',         lon:-112.237, lat:33.581,   pop:'195k+'},
+    {name:'Tempe',          lon:-111.940, lat:33.425,   pop:'180k+'},
+    {name:'Mesa',           lon:-111.831, lat:33.415,   pop:'520k+'}
+  ];
+  const OTHERS = [
+    {name:'Tucson',        lon:-110.974, lat:32.222}, {name:'Flagstaff',  lon:-111.651, lat:35.198},
+    {name:'Yuma',          lon:-114.624, lat:32.692}, {name:'Prescott',   lon:-112.469, lat:34.541},
+    {name:'Sedona',        lon:-111.760, lat:34.869}, {name:'Lake Havasu',lon:-114.322, lat:34.482},
+    {name:'Kingman',       lon:-114.053, lat:35.189}, {name:'Sierra Vista',lon:-110.305,lat:31.555},
+    {name:'Casa Grande',   lon:-111.757, lat:32.879}, {name:'Show Low',   lon:-110.031, lat:34.254},
+    {name:'Winslow',       lon:-110.697, lat:35.025}, {name:'Payson',     lon:-111.325, lat:34.231},
+    {name:'Glendale',      lon:-112.185, lat:33.538}, {name:'Chandler',   lon:-111.841, lat:33.306},
+    {name:'Goodyear',      lon:-112.359, lat:33.435}, {name:'Surprise',   lon:-112.367, lat:33.629},
+    {name:'Maricopa',      lon:-112.047, lat:33.058}, {name:'San Tan Valley', lon:-111.528, lat:33.191},
+    {name:'Queen Creek',   lon:-111.634, lat:33.248}, {name:'Buckeye',    lon:-112.586, lat:33.370}
+  ];
+
+  // ===== Utils =====
+  function roundRect(ctx,x,y,w,h,r){
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x,y,w,h,r); return; }
+    const rr = Math.max(0, Math.min(r, Math.min(w,h)/2));
+    ctx.beginPath();
+    ctx.moveTo(x+rr,y);
+    ctx.arcTo(x+w,y,x+w,y+h,rr);
+    ctx.arcTo(x+w,y+h,x,y+h,rr);
+    ctx.arcTo(x,y+h,x,y,rr);
+    ctx.arcTo(x,y,x+w,y,rr);
+  }
+
+  // Compute a scale/offset that fits the AZ polygon to the canvas with margins
+  // extraShrink < 1 makes Arizona smaller inside the viewport.
+  function fitArizona(marginPx = 120, extraShrink = 0.65){
+    const cosC = Math.cos(CENTER.y * Math.PI/180);
+    let minLon= Infinity, maxLon=-Infinity, minLat= Infinity, maxLat=-Infinity;
+    AZ_POLY.forEach(([lon,lat]) => {
+      if (lon < minLon) minLon = lon;
+      if (lon > maxLon) maxLon = lon;
+      if (lat < minLat) minLat = lat;
+      if (lat > maxLat) maxLat = lat;
+    });
+    const widthDeg  = (maxLon - minLon) * cosC;
+    const heightDeg = (maxLat - minLat);
+
+    const dpr = Math.max(1, window.devicePixelRatio||1);
+    const w = canvas.width / dpr;
+    const h = canvas.height / dpr;
+
+    const scaleX = (w - marginPx*2) / widthDeg;
+    const scaleY = (h - marginPx*2) / heightDeg;
+    scale = Math.max(300, Math.min(scaleX, scaleY) * extraShrink);
+
+    // recenter on polygon center
+    const centerLon = (minLon + maxLon)/2;
+    const centerLat = (minLat + maxLat)/2;
+    const pCenter = proj(centerLon, centerLat);
+    offsetX += (w/2 - pCenter.x);
+    offsetY += (h/2 - pCenter.y);
+  }
+
+  // ===== Drawing =====
+  function draw(){
+    const dpr = Math.max(1, window.devicePixelRatio||1);
+    const w = canvas.width / dpr;
+    const h = canvas.height / dpr;
+
+    ctx.clearRect(0,0,w,h);
+
+    // background grid
+    ctx.save();
+    ctx.globalAlpha = 0.14;
+    ctx.strokeStyle = '#3f3f3f'; ctx.lineWidth = 1;
+    for (let x=0; x<w; x+=100) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for (let y=0; y<h; y+=100){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+    ctx.restore();
+
+    // Arizona polygon
+    ctx.fillStyle = 'rgba(244,185,66,0.08)';
+    ctx.strokeStyle = 'rgba(244,185,66,0.55)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    const p0 = proj(AZ_POLY[0][0], AZ_POLY[0][1]);
+    ctx.moveTo(p0.x, p0.y);
+    for (let i=1;i<AZ_POLY.length;i++){ const p = proj(AZ_POLY[i][0], AZ_POLY[i][1]); ctx.lineTo(p.x, p.y); }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+
+    // Title badge
+    const badge = 'Statewide Service • All Arizona Cities';
+    ctx.font = 'bold 14px system-ui, Arial'; ctx.textBaseline='top';
+    const tw = ctx.measureText(badge).width + 20;
+    ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.strokeStyle = 'rgba(244,185,66,0.35)'; ctx.lineWidth = 1.5;
+    roundRect(ctx, 14, 14, tw, 28, 8); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.fillText(badge, 24, 21);
+
+    // Pins
+    function pin({name, lon, lat}, style){
+      const p = proj(lon, lat);
+      // shadow
+      ctx.save();
+      ctx.globalAlpha = 0.25; ctx.fillStyle = '#000';
+      ctx.beginPath(); ctx.ellipse(p.x, p.y+6, 8, 3, 0, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+      // marker
+      ctx.beginPath(); ctx.fillStyle = style.fill; ctx.strokeStyle = style.stroke; ctx.lineWidth = style.w;
+      ctx.arc(p.x, p.y, style.r, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+      // label
+      ctx.font = '13px system-ui, Arial';
+      ctx.fillStyle = '#fff'; ctx.textBaseline='middle';
+      ctx.fillText(name, p.x + 12, p.y);
+    }
+    const mainStyle = { fill:'#f4b942', stroke:'#1a1a1a', w:2, r:6 };
+    const otherStyle= { fill:'#8fa7ff', stroke:'#1a1a1a', w:1.5, r:4 };
+
+    MAIN.forEach(c => pin(c, mainStyle));
+    if (!showMainOnly) OTHERS.forEach(c => pin(c, otherStyle));
+  }
+
+  // ===== Interactions =====
+  // Pan
+  let pan = null;
+  canvas.addEventListener('mousedown', e=>{ pan={x:e.clientX,y:e.clientY}; });
+  window.addEventListener('mousemove', e=>{
+    if(!pan) return;
+    offsetX += (e.clientX-pan.x);
+    offsetY += (e.clientY-pan.y);
+    pan={x:e.clientX,y:e.clientY};
+    draw();
+  });
+  window.addEventListener('mouseup', ()=> pan=null);
+
+  // Zoom (keeps cursor focus)
+  canvas.addEventListener('wheel', e=>{
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.max(1, window.devicePixelRatio||1);
+    const mx = (e.clientX - rect.left) * dpr - canvas.width/2 - offsetX*dpr;
+    const my = (e.clientY - rect.top)  * dpr - canvas.height/2 - offsetY*dpr;
+
+    const s = Math.exp(-e.deltaY*0.0015);
+    scale *= s;
+
+    offsetX += (mx/dpr)*(1 - s);
+    offsetY += (my/dpr)*(1 - s);
+
+    draw();
+  }, {passive:false});
+
+  // Touch
+  let t0=null;
+  canvas.addEventListener('touchstart', e=>{
+    if(e.touches.length===1){ const t=e.touches[0]; t0={x:t.clientX,y:t.clientY, dist:null}; }
+  }, {passive:true});
+  canvas.addEventListener('touchmove', e=>{
+    if(!t0) return;
+    if(e.touches.length===1){
+      const t=e.touches[0];
+      offsetX += (t.clientX - t0.x);
+      offsetY += (t.clientY - t0.y);
+      t0={x:t.clientX,y:t.clientY,dist:null};
+      draw();
+    } else if (e.touches.length===2){
+      const a=e.touches[0], b=e.touches[1];
+      const d=Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY);
+      if(t0.dist==null){ t0.dist=d; return; }
+      const s = d/t0.dist;
+      scale *= s; t0.dist=d; draw();
+    }
+  }, {passive:true});
+  canvas.addEventListener('touchend', ()=>{ t0=null; }, {passive:true});
+
+  // Sidebar lists
+  const primaryList = document.getElementById('primaryList');
+  const otherList = document.getElementById('otherList');
+
+  function cityRow(city, isMain){
+    const a = document.createElement('a');
+    a.href = "javascript:void(0)";
+    a.className = 'city-link';
+    a.innerHTML = `<span>${city.name}</span><span class="tag">${isMain ? 'Primary' : 'AZ'}</span>`;
+    a.onclick = () => {
+      const dpr = Math.max(1, window.devicePixelRatio||1);
+      const w = canvas.width / dpr, h = canvas.height / dpr;
+      const p = proj(city.lon, city.lat);
+      offsetX += (w/2 - p.x);
+      offsetY += (h/2 - p.y);
+      if (isMain) scale = Math.max(scale, 6500);
+      draw();
+    };
+    return a;
+  }
+  MAIN.forEach(c => primaryList.appendChild(cityRow(c, true)));
+  OTHERS.forEach(c => otherList.appendChild(cityRow(c, false)));
+
+  // Buttons
+  document.getElementById('backBtn').onclick = () =>
+    history.length>1 ? history.back() : (window.location.href='/index.html');
+
+  document.getElementById('fitAZ').onclick = () => { fitCanvas(); fitArizona(140, 0.6); draw(); };
+  document.getElementById('zoomOut').onclick = () => { scale *= 0.85; draw(); };
+  document.getElementById('showMain').onclick = () => { showMainOnly = true; draw(); };
+  document.getElementById('showAll').onclick  = () => { showMainOnly = false; draw(); };
+
+  // ===== Bootstrap =====
+  function init(){
+    fitCanvas();
+    // Start clearly zoomed out (smaller AZ)
+    fitArizona(160, 0.55);
+    draw();
+  }
+  window.addEventListener('load', init);
+  window.addEventListener('resize', () => { fitCanvas(); draw(); });
+  setTimeout(() => { fitCanvas(); fitArizona(160, 0.55); draw(); }, 100);
+  </script>
+</body>
+</html>
