@@ -887,6 +887,33 @@
         align-items: center;
       }
     }
+
+    h1 {
+  font-size: clamp(1.8rem, 5.5vw, 3.2rem); /* Slightly reduced max size */
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--steel-gold);
+  text-shadow: 2px 2px #000;
+  letter-spacing: 0.04em; /* Reduced letter spacing */
+  position: relative;
+  line-height: 1.1; /* Better line height for large text */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 0 10px; /* Added padding to prevent edge cutting */
+}
+
+.neon-highlight {
+  color: var(--patina);
+  text-shadow: 0 0 5px rgba(57, 204, 204, 0.7);
+  transition: all 0.3s ease;
+  display: inline-block; /* Helps with text wrapping */
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 15px; /* Added padding to ensure content doesn't touch edges */
+}
   </style>
 </head>
 <body>
@@ -982,7 +1009,7 @@
     
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="../pics/steel-barn-1.jpg" alt="Luxury Steel Horse Barn">
+        <img src="../pics/Barn-1.png" alt="Luxury Steel Horse Barn">
         <div class="gallery-caption">Luxury 4-Stall Horse Barn</div>
       </div>
       
