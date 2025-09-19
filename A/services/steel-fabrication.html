@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Steel Fabrication | Stallion Steelworks</title>
+    <meta name="description" content="Bespoke steel fabrication for equestrian facilities. Custom gates, stall fronts, and architectural elements crafted to your specifications.">
+    <meta name="keywords" content="custom steel fabrication, steel gates, stall fronts, architectural steel, metal fabrication, Stallion Steelworks">
+    <meta name="author" content="Stallion Steelworks">
+    <meta property="og:title" content="Custom Steel Fabrication | Stallion Steelworks">
+    <meta property="og:description" content="Bespoke steel fabrication for equestrian facilities.">
+    <meta property="og:image" content="../pics/custom-fabrication-hero.jpg">
+    <meta property="og:url" content="https://stallionsteelworks.com/services/custom-fabrication.html">
+    <meta property="og:type" content="website">
+    <style>
+        /* =========
+           Base styles with conversion-focused neon enhancements
+           ========= */
+        :root {
+            --steel-gold: #f4b942;
+            --rust-red: #c1440e;
+            --dark-steel: #1e1e1e;
+            --black-steel: #0c0c0c;
+            --steel-gray: #d0d0d0;
+            
+            /* Custom fabrication neon color scheme */
+            --neon-primary: #ff5e00;      /* Vibrant orange - suggests creativity/craftsmanship */
+            --neon-secondary: #00ffc8;    /* Bright teal - suggests precision/quality */
+            --neon-accent: #ff00aa;       /* Hot pink - draws attention to CTAs */
+            
+            --neon-glow-primary: 0 0 10px rgba(255, 94, 0, 0.7),
+                                0 0 20px rgba(255, 94, 0, 0.5),
+                                0 0 30px rgba(255, 94, 0, 0.3);
+            
+            --neon-glow-secondary: 0 0 10px rgba(0, 255, 200, 0.7),
+                                  0 0 20px rgba(0, 255, 200, 0.5);
+            
+            --neon-glow-accent: 0 0 10px rgba(255, 0, 170, 0.7),
+                               0 0 20px rgba(255, 0, 170, 0.5);
+            
+            --container: 1200px;
+            --pad-x: clamp(16px, 4vw, 24px);
+            --header-h: 64px;
+            --ring: 0 0 0 3px color-mix(in oklab, var(--rust-red) 40%, transparent);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, var(--dark-steel) 0%, var(--black-steel) 100%);
+            color: var(--steel-gold);
+            font-family: ui-serif, Georgia, serif;
+            line-height: 1.6;
+            min-height: 100svh;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding-left: max(var(--pad-x), env(safe-area-inset-left));
+            padding-right: max(var(--pad-x), env(safe-area-inset-right));
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: none;
+            box-shadow: var(--ring);
+            border-radius: 8px;
+        }
+
+        /* =========
+           Header with enhanced neon effects
+           ========= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(12, 12, 12, 0.95);
+            z-index: 1000;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--rust-red);
+            backdrop-filter: saturate(1.1) blur(6px);
+            padding-left: max(var(--pad-x), env(safe-area-inset-left));
+            padding-right: max(var(--pad-x), env(safe-area-inset-right));
+            box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0;
+            gap: 12px;
+            min-height: var(--header-h);
+        }
+
+        .logo {
+            width: clamp(140px, 28vw, 180px);
+            filter: drop-shadow(0 0 5px var(--steel-gold)) 
+                    drop-shadow(0 0 10px var(--neon-primary));
+            transition: filter 0.5s ease;
+        }
+
+        .logo:hover {
+            filter: drop-shadow(0 0 8px var(--steel-gold)) 
+                    drop-shadow(0 0 15px var(--neon-primary))
+                    drop-shadow(0 0 25px var(--neon-secondary));
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav li { margin: 0; }
+
+        nav a {
+            color: var(--steel-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.06em;
+            font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+            padding: 6px 8px;
+            border: 1px solid rgba(244,185,66,0.18);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover { 
+            color: var(--neon-primary); 
+            border-color: var(--neon-primary);
+            box-shadow: 0 0 8px rgba(255, 94, 0, 0.6);
+        }
+
+        /* Current page indicator - always visible with enhanced neon */
+        nav a[href="custom-fabrication.html"] {
+            position: relative;
+            color: var(--neon-primary);
+            border-color: rgba(255, 94, 0, 0.4);
+            box-shadow: 0 0 5px rgba(255, 94, 0, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        nav a[href="custom-fabrication.html"]:hover {
+            box-shadow: 0 0 15px rgba(255, 94, 0, 0.8);
+        }
+
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 5px rgba(255, 94, 0, 0.5),
+                          0 0 10px rgba(0, 255, 200, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 10px rgba(255, 94, 0, 0.7),
+                          0 0 20px rgba(0, 255, 200, 0.5);
+            }
+            100% { 
+                box-shadow: 0 0 5px rgba(255, 94, 0, 0.5),
+                          0 0 10px rgba(0, 255, 200, 0.3);
+            }
+        }
+
+        /* =========
+           Hero Section with Conversion Focus
+           ========= */
+        .hero {
+            min-height: calc(100svh - var(--header-h));
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding-top: calc(var(--header-h) + 12px);
+            padding-bottom: 32px;
+            padding-left: max(var(--pad-x), env(safe-area-inset-left));
+            padding-right: max(var(--pad-x), env(safe-area-inset-right));
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../pics/custom-fabrication-hero.jpg') center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 94, 0, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 200, 0.1) 0%, transparent 30%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+        }
+
+        /* Animated floating neon elements */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--neon-primary) 0%, transparent 70%);
+            opacity: 0.1;
+            filter: blur(20px);
+            animation: float 15s infinite ease-in-out;
+            top: 20%;
+            left: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-30px) translateX(20px); }
+            50% { transform: translateY(0) translateX(40px); }
+            75% { transform: translateY(30px) translateX(20px); }
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+            margin: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--steel-gold);
+            text-shadow: 2px 2px #000;
+            letter-spacing: 0.04em;
+            position: relative;
+            line-height: 1.1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            padding: 0 10px;
+        }
+
+        .neon-highlight {
+            color: var(--neon-primary);
+            text-shadow: var(--neon-glow-primary);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .neon-secondary {
+            color: var(--neon-secondary);
+            text-shadow: var(--neon-glow-secondary);
+        }
+
+        h1:hover .neon-highlight {
+            text-shadow: 0 0 15px rgba(255, 94, 0, 0.9),
+                        0 0 30px rgba(255, 94, 0, 0.6);
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background-color: var(--rust-red);
+            margin: 18px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3.2vw, 1.3rem);
+            color: var(--steel-gray);
+            max-width: 680px;
+            margin: 10px auto 22px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, var(--rust-red), #a3380b);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 10px 5px;
+            box-shadow: 0 0 10px rgba(193, 68, 14, 0.5);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(193, 68, 14, 0.4),
+                        0 0 15px var(--neon-accent);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--neon-primary);
+            color: var(--neon-primary);
+            box-shadow: var(--neon-glow-primary);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 94, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 94, 0, 0.8);
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            box-shadow: 0 0 5px rgba(255, 94, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            border-color: var(--neon-primary);
+            box-shadow: var(--neon-glow-primary);
+            transform: translateY(-3px);
+        }
+
+        .badge i {
+            margin-right: 8px;
+            color: var(--neon-primary);
+        }
+
+        /* =========
+           Benefits Section with Enhanced Hover Effects
+           ========= */
+        .benefits-section {
+            padding: clamp(48px, 8vw, 80px) 0;
+            background: radial-gradient(ellipse at top, rgba(30, 30, 30, 0.8) 0%, var(--black-steel) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--neon-secondary) 0%, transparent 70%);
+            opacity: 0.05;
+            filter: blur(30px);
+            bottom: 10%;
+            right: 10%;
+            animation: pulse-slow 8s infinite ease-in-out;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.05; transform: scale(1); }
+            50% { opacity: 0.1; transform: scale(1.1); }
+        }
+
+        h2 {
+            font-size: clamp(1.4rem, 4.6vw, 2.5rem);
+            color: var(--steel-gold);
+            text-align: center;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0 var(--pad-x);
+            position: relative;
+        }
+
+        h2 .neon-highlight {
+            position: relative;
+        }
+
+        h2 .neon-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-primary);
+            box-shadow: var(--neon-glow-primary);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+            padding: 0 var(--pad-x);
+        }
+
+        @media (min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .benefit-card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 94, 0, 0.2);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--neon-primary);
+            transition: all 0.5s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--neon-glow-primary);
+            border-color: var(--neon-primary);
+        }
+
+        .benefit-card:hover::before {
+            box-shadow: var(--neon-glow-primary);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--neon-primary);
+            margin-bottom: 15px;
+            text-align: center;
+            filter: drop-shadow(0 0 5px rgba(255, 94, 0, 0.5));
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(255, 94, 0, 0.8));
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            color: var(--neon-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(255, 94, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover h3 {
+            text-shadow: var(--neon-glow-primary);
+        }
+
+        .benefit-card p {
+            color: var(--steel-gray);
+            margin: 0;
+        }
+
+        /* =========
+           Gallery Section with Hover Effects
+           ========= */
+        .gallery-section {
+            padding: clamp(48px, 8vw, 80px) 0;
+            background-color: rgba(12, 12, 12, 0.7);
+            position: relative;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--neon-accent) 0%, transparent 70%);
+            opacity: 0.05;
+            filter: blur(25px);
+            top: 20%;
+            left: 5%;
+            animation: pulse-slow 6s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 0 var(--pad-x);
+        }
+
+        @media (min-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 94, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--neon-glow-primary);
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            color: white;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* =========
+           Process Section
+           ========= */
+        .process-section {
+            padding: clamp(48px, 8vw, 80px) 0;
+            position: relative;
+        }
+
+        .process-section::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--neon-secondary) 0%, transparent 70%);
+            opacity: 0.05;
+            filter: blur(20px);
+            bottom: 15%;
+            left: 5%;
+            animation: pulse-slow 7s infinite ease-in-out;
+            animation-delay: 0.5s;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+            counter-reset: step;
+        }
+
+        @media (min-width: 768px) {
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .process-step {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            box-shadow: 0 0 10px rgba(255, 94, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-step:hover {
+            border-color: var(--neon-primary);
+            box-shadow: var(--neon-glow-primary);
+            transform: translateY(-5px);
+        }
+
+        .process-step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 50px;
+            height: 50px;
+            background: var(--neon-primary);
+            color: var(--black-steel);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: var(--neon-glow-primary);
+            z-index: 2;
+        }
+
+        .process-step h3 {
+            color: var(--neon-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            text-shadow: 0 0 5px rgba(255, 94, 0, 0.3);
+        }
+
+        .process-step p {
+            color: var(--steel-gray);
+            margin: 0;
+        }
+
+        /* =========
+           Applications Section
+           ========= */
+        .applications-section {
+            padding: clamp(48px, 8vw, 80px) 0;
+            background: radial-gradient(ellipse at center, rgba(30, 30, 30, 0.9) 0%, var(--black-steel) 100%);
+            position: relative;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+            padding: 0 var(--pad-x);
+        }
+
+        @media (min-width: 768px) {
+            .applications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .application-card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid var(--neon-primary);
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 94, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .application-card:hover {
+            box-shadow: var(--neon-glow-primary);
+            transform: translateY(-3px);
+        }
+
+        .application-card h3 {
+            color: var(--neon-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(255, 94, 0, 0.3);
+        }
+
+        .application-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .application-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(244, 185, 66, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .application-features li:last-child {
+            border-bottom: none;
+        }
+
+        .application-features i {
+            color: var(--neon-primary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            filter: drop-shadow(0 0 3px rgba(255, 94, 0, 0.5));
+        }
+
+        /* =========
+           Testimonials with Social Proof
+           ========= */
+        .testimonials-section {
+            padding: clamp(48px, 8vw, 80px) 0;
+            background: radial-gradient(ellipse at center, rgba(30, 30, 30, 0.9) 0%, var(--black-steel) 100%);
+            position: relative;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+            padding: 0 var(--pad-x);
+        }
+
+        @media (min-width: 768px) {
+            .testimonials {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        .testimonial {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid var(--neon-primary);
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 94, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            box-shadow: var(--neon-glow-primary);
+            transform: translateY(-3px);
+        }
+
+        .testimonial:before {
+            content: '"';
+            font-size: 4.2rem;
+            color: rgba(255, 94, 0, 0.08);
+            position: absolute;
+            top: 4px;
+            left: 10px;
+            line-height: 1;
+        }
+
+        .testimonial p { 
+            position: relative; 
+            z-index: 1; 
+            font-style: italic; 
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author { 
+            font-weight: bold; 
+            color: var(--steel-gold); 
+            margin-top: 12px; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author i {
+            margin-right: 8px;
+            color: var(--neon-primary);
+        }
+
+        /* =========
+           CTA Section with Enhanced Visuals
+           ========= */
+        .cta-section {
+            padding: clamp(48px, 8vw, 80px) 0;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(30, 30, 30, 0.9) 0%, var(--black-steel) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 70%, rgba(255, 94, 0, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 30%, rgba(0, 255, 200, 0.1) 0%, transparent 25%);
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-highlight {
+            color: var(--neon-primary);
+            text-shadow: var(--neon-glow-primary);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-methods {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: var(--rust-red);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .contact-button:hover {
+            background: #a3380b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(193, 68, 14, 0.4),
+                        0 0 15px var(--neon-accent);
+        }
+
+        .contact-button:hover::before {
+            left: 100%;
+        }
+
+        .contact-button.phone {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--neon-primary);
+            box-shadow: var(--neon-glow-primary);
+        }
+
+        .contact-button.phone:hover {
+            background: rgba(255, 94, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 94, 0, 0.8);
+        }
+
+        .urgency-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(193, 68, 14, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--rust-red);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .urgency-note::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        /* =========
+           Footer
+           ========= */
+        footer {
+            background-color: var(--black-steel);
+            padding: clamp(28px, 6vw, 40px) 0;
+            text-align: center;
+            padding-left: max(var(--pad-x), env(safe-area-inset-left));
+            padding-right: max(var(--pad-x), env(safe-area-inset-right));
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            max-width: var(--container);
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        @media (min-width: 780px) {
+            .footer-content { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+        .footer-section {
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: var(--steel-gold);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: clamp(1rem, 2.6vw, 1.3rem);
+        }
+
+        .footer-section a {
+            color: var(--steel-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover { 
+            color: var(--neon-primary); 
+        }
+
+        .copyright {
+            margin-top: 24px;
+            color: var(--steel-gray);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        /* =========
+           Responsive Adjustments
+           ========= */
+        @media (max-width: 768px) {
+            .header-container { 
+                flex-direction: column; 
+                align-items: stretch; 
+                gap: 10px; 
+            }
+            
+            nav ul { 
+                justify-content: center; 
+            }
+            
+            .hero { 
+                padding-top: calc(var(--header-h) + 24px); 
+            }
+            
+            .benefit-card {
+                padding: 20px;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+            
+            .process-step::before {
+                top: -10px;
+                left: -10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html"><img src="../pics/Stallions.png" alt="Stallion Steelworks Logo" class="logo" /></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../index.html#gallery">Gallery</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#testimonials">Testimonials</a></li>
+                    <li><a href="custom-fabrication.html">Custom Fabrication</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Custom <span class="neon-highlight">Steel Fabrication</span></h1>
+            <div class="divider"></div>
+            <p>Bespoke steel elements including gates, stall fronts, and architectural details crafted to elevate your equestrian facility. Transform your vision into reality with our expert craftsmanship.</p>
+            
+            <div>
+                <a href="#contact" class="cta-button">Start Your Project</a>
+                <a href="tel:+16029997756" class="cta-button secondary">Call (602) 999-7756</a>
+            </div>
+            
+            <div class="hero-badges">
+                <div class="badge">
+                    <i>✓</i> <span>100% Custom Designs</span>
+                </div>
+                <div class="badge">
+                    <i>✓</i> <span>Precision Craftsmanship</span>
+                </div>
+                <div class="badge">
+                    <i>✓</i> <span>Lifetime Structural Warranty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section container">
+        <h2>Why Choose Our <span class="neon-highlight">Custom Fabrication</span></h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⚒️</div>
+                <h3>Artisan Craftsmanship</h3>
+                <p>Each piece is handcrafted by skilled artisans with decades of experience in metalworking and equestrian-specific design.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🎨</div>
+                <h3>Complete Customization</h3>
+                <p>From initial concept to final installation, we create exactly what you envision with endless design possibilities.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>Superior Materials</h3>
+                <p>We use only premium-grade steel and finishes that withstand the test of time and harsh equestrian environments.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Quick Turnaround</h3>
+                <p>Our efficient process means you get custom pieces faster than traditional fabrication shops without compromising quality.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🔒</div>
+                <h3>Enhanced Security</h3>
+                <p>Custom fabricated pieces provide superior security for your valuable horses and equipment.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">💎</div>
+                <h3>Property Value</h3>
+                <p>Beautiful custom steelwork significantly increases the value and appeal of your equestrian property.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section container">
+        <h2>Our <span class="neon-highlight">Fabrication</span> Portfolio</h2>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="../pics/custom-gate-1.jpg" alt="Custom Steel Gate">
+                <div class="gallery-caption">Custom Ornamental Driveway Gate</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="../pics/stall-front-1.jpg" alt="Custom Stall Front">
+                <div class="gallery-caption">Designer Stall Front with Dutch Doors</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="../pics/arch-details-1.jpg" alt="Architectural Details">
+                <div class="gallery-caption">Architectural Elements with Scrollwork</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="../pics/custom-railings.jpg" alt="Custom Railings">
+                <div class="gallery-caption">Custom Viewing Area Railings</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="../pics/fabrication-process.jpg" alt="Fabrication Process">
+                <div class="gallery-caption">Precision Fabrication in Progress</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="../pics/finished-installation.jpg" alt="Finished Installation">
+                <div class="gallery-caption">Completed Custom Installation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section container">
+        <h2>Our <span class="neon-highlight">Fabrication Process</span></h2>
+        
+        <div class="process-steps">
+            <div class="process-step">
+                <h3>Consultation & Design</h3>
+                <p>We begin with an in-depth consultation to understand your vision, needs, and aesthetic preferences. Our designers create detailed plans for your approval.</p>
+            </div>
+            
+            <div class="process-step">
+                <h3>Material Selection</h3>
+                <p>Choose from various steel types, finishes, and decorative elements. We guide you to the best options for your specific application and budget.</p>
+            </div>
+            
+            <div class="process-step">
+                <h3>Precision Fabrication</h3>
+                <p>Our master fabricators bring your design to life with meticulous attention to detail, using both traditional techniques and modern technology.</p>
+            </div>
+            
+            <div class="process-step">
+                <h3>Finishing & Treatment</h3>
+                <p>Each piece receives appropriate finishing treatments—from powder coating to specialized patinas—ensuring durability and visual appeal.</p>
+            </div>
+            
+            <div class="process-step">
+                <h3>Quality Inspection</h3>
+                <p>Every custom piece undergoes rigorous quality checks to ensure it meets our exacting standards for craftsmanship and safety.</p>
+            </div>
+            
+            <div class="process-step">
+                <h3>Professional Installation</h3>
+                <p>Our experienced team handles the complete installation process, ensuring your custom pieces are perfectly placed and fully functional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="applications-section container">
+        <h2>Custom <span class="neon-highlight">Fabrication Applications</span></h2>
+        
+        <div class="applications-grid">
+            <div class="application-card">
+                <h3>Gates & Entryways</h3>
+                <ul class="application-features">
+                    <li><i>✓</i> Driveway gates with custom designs</li>
+                    <li><i>✓</i> Paddock and pasture gates</li>
+                    <li><i>✓</i> Arena access gates</li>
+                    <li><i>✓</i> Decorative walk-through gates</li>
+                    <li><i>✓</i> Automated gate systems</li>
+                </ul>
+            </div>
+            
+            <div class="application-card">
+                <h3>Stall Systems</h3>
+                <ul class="application-features">
+                    <li><i>✓</i> Custom stall fronts and dividers</li>
+                    <li><i>✓</i> Dutch door systems</li>
+                    <li><i>✓</i> Feeding and watering integrations</li>
+                    <li><i>✓</i> Ventilation systems</li>
+                    <li><i>✓</i> Decorative stall grilles</li>
+                </ul>
+            </div>
+            
+            <div class="application-card">
+                <h3>Architectural Elements</h3>
+                <ul class="application-features">
+                    <li><i>✓</i> Custom railings and balustrades</li>
+                    <li><i>✓</i> Decorative scrollwork and accents</li>
+                    <li><i>✓</i> Signage and property identification</li>
+                    <li><i>✓</i> Lighting fixtures and posts</li>
+                    <li><i>✓</i> Architectural columns and supports</li>
+                </ul>
+            </div>
+            
+            <div class="application-card">
+                <h3>Specialty Items</h3>
+                <ul class="application-features">
+                    <li><i>✓</i> Custom saddle racks and tack holders</li>
+                    <li><i>✓</i> Hay feeders and storage solutions</li>
+                    <li><i>✓</i> Wash rack equipment</li>
+                    <li><i>✓</i> Horse trailer modifications</li>
+                    <li><i>✓</i> Barn office and lounge fixtures</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section container">
+        <h2>Client <span class="neon-highlight">Testimonials</span></h2>
+        
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"The custom stall fronts completely transformed our barn. The craftsmanship is exceptional, and the functionality improvements have made daily chores so much easier. Worth every penny."</p>
+                <div class="testimonial-author">
+                    <i>⭐</i> Sarah M., Dressage Facility Owner
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"Our custom driveway gate is the talk of the neighborhood. The design team captured exactly what we envisioned, and the fabrication quality is beyond anything we could have imagined."</p>
+                <div class="testimonial-author">
+                    <i>⭐</i> James T., Equestrian Estate Owner
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"As a professional trainer, I appreciate both form and function. The custom paddock gates are not only beautiful but also incredibly durable and safe. The installation team was professional and efficient."</p>
+                <div class="testimonial-author">
+                    <i>⭐</i> Michelle R., Professional Horse Trainer
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"We needed specialized equipment for our therapeutic riding program. The team designed and built perfect custom mounting blocks and support rails that are both safe and aesthetically pleasing."</p>
+                <div class="testimonial-author">
+                    <i>⭐</i> David L., Therapeutic Riding Center Director
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to <span class="cta-highlight">Create Something Unique</span>?</h2>
+                <p>Bring your vision to life with our custom steel fabrication services. Contact us today to discuss your project and receive a personalized quote.</p>
+                
+                <div class="contact-methods">
+                    <a href="tel:+16029997756" class="contact-button phone">
+                        <span>📞</span> Call (602) 999-7756
+                    </a>
+                    
+                    <a href="mailto:stallionsteelworks@gmail.com?subject=Custom Fabrication Inquiry" class="contact-button">
+                        <span>✉️</span> Email Us
+                    </a>
+                    
+                    <a href="../contact.html" class="contact-button">
+                        <span>📋</span> Project Consultation Form
+                    </a>
+                </div>
+                
+                <div class="urgency-note">
+                    <p><strong>Limited Capacity:</strong> We accept only 8 custom projects per month to ensure exceptional quality and attention to detail. Reserve your spot now.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="../index.html#services">Services</a>
+                <a href="../index.html#gallery">Gallery</a>
+                <a href="../index.html#about">About Us</a>
+                <a href="../index.html#testimonials">Testimonials</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="maremotel.html">Mare Motels</a>
+                <a href="shade-structures.html">Shade Structures</a>
+                <a href="steel-barns.html">Steel Barns</a>
+                <a href="pipe-corrals.html">Pipe Corrals</a>
+                <a href="riding-arenas.html">Riding Arenas</a>
+                <a href="custom-fabrication.html">Custom Fabrication</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Stallion Steelworks</p>
+                <p>Phoenix, AZ</p>
+                <a href="tel:+16029997756">📞 (602) 999-7756</a>
+                <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2025 Stallion Steelworks. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
