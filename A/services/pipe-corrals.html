@@ -133,6 +133,10 @@
     .cta-button:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 28px rgba(208, 74, 22, 0.45); filter: saturate(1.08); }
     .cta-button.secondary { background: transparent; border: 2px solid var(--patina); color: var(--patina); box-shadow: 0 0 10px rgba(63,215,215,.35); }
     .cta-button.secondary:hover { background: rgba(63,215,215,.1); box-shadow: 0 0 16px rgba(63,215,215,.6); }
+     .benefit-icon.usa-flag svg {
+  filter: drop-shadow(0 0 6px rgba(63,215,215,0.6));
+  border-radius: 4px;
+}
 
     .hero-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
     .badge { display: flex; align-items: center; background: rgba(30, 30, 30, 0.72); padding: 10px 14px; border-radius: 999px; border: 1px solid rgba(63,215,215,0.35); box-shadow: 0 0 6px rgba(63,215,215,0.25); font-weight: 700; }
@@ -236,6 +240,47 @@
       .hero-badges { flex-direction: column; align-items: center; }
       .sticky-cta { width: calc(100% - 24px); justify-content: space-between; }
     }
+
+    /* --- Mobile header/hero overlap fix --- */
+@media (max-width: 768px) {
+  :root {
+    /* promo height varies a bit across devices—36–44px is typical */
+    --promo-h: 40px;
+  }
+
+  /* Keep the promo visible but in-flow so it doesn't overlap content */
+  .promo {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+  }
+
+  /* Make header sticky (not fixed) so it occupies layout space on mobile */
+  header {
+    position: sticky;
+    top: var(--promo-h);
+    z-index: 1000;
+  }
+
+  /* Since header is now in-flow, we can dial back the big hero padding */
+  .hero {
+    padding-top: clamp(24px, 6vh, 64px);
+    /* Keep full-screen feel without pushing under header */
+    min-height: calc(100svh - var(--promo-h) - 12px);
+  }
+
+  /* Ensure internal anchors (e.g., #contact) don't hide under the sticky header */
+  [id] {
+    scroll-margin-top: calc(var(--promo-h) + var(--header-h) + 16px);
+  }
+}
+
+/* Optional: tiny devices need a smidge more room */
+@media (max-width: 420px) {
+  :root { --promo-h: 44px; }
+  .hero { padding-top: clamp(28px, 7vh, 72px); }
+}
+
   </style>
 </head>
 <body>
@@ -273,7 +318,7 @@
       <div class="hero-badges">
         <div class="badge"><i>✓</i> <span>Powder‑Coated / Galvanized Options</span></div>
         <div class="badge"><i>✓</i> <span>Licensed • Bonded • Insured</span></div>
-        <div class="badge"><i>✓</i> <span>Financing Available</span></div>
+        <!-- <div class="badge"><i>✓</i> <span>Financing Available</span></div> -->
       </div>
     </div>
   </section>
@@ -308,11 +353,42 @@
         <p>Kick‑proof heights, safe gap spacing, welded latch plates, and quiet hinges. Horse‑first details baked in.</p>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">🇺🇸</div>
-        <h3>American Made</h3>
-        <p>Designed, engineered, and fabricated locally using domestic‑grade steel with Arizona crews for accountability.</p>
-      </div>
-    </div>
+  <div class="benefit-icon usa-flag" aria-label="American Flag" title="American Made">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7410 3900" style="width:2.6rem; height:auto;">
+      <rect width="7410" height="3900" fill="#b22234"/>
+      <path fill="#fff" d="M0,450h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0z"/>
+      <rect width="2964" height="2100" fill="#3c3b6e"/>
+      <g fill="#fff">
+        <g id="s">
+          <polygon points="247,90 323,303 146,185 348,185 171,303"/>
+        </g>
+        <use href="#s" x="247"/>
+        <use href="#s" x="494"/>
+        <use href="#s" x="741"/>
+        <use href="#s" x="988"/>
+        <use href="#s" x="1235"/>
+        <use href="#s" x="1482"/>
+        <use href="#s" x="1729"/>
+        <use href="#s" x="1976"/>
+        <use href="#s" x="2223"/>
+        <use href="#s" x="2470"/>
+        <use href="#s" x="123" y="210"/>
+        <use href="#s" x="370" y="210"/>
+        <use href="#s" x="617" y="210"/>
+        <use href="#s" x="864" y="210"/>
+        <use href="#s" x="1111" y="210"/>
+        <use href="#s" x="1358" y="210"/>
+        <use href="#s" x="1605" y="210"/>
+        <use href="#s" x="1852" y="210"/>
+        <use href="#s" x="2099" y="210"/>
+        <use href="#s" x="2346" y="210"/>
+      </g>
+    </svg>
+  </div>
+  <h3>American Made</h3>
+  <p>Designed, engineered, and fabricated locally using domestic-grade steel with Arizona crews for accountability.</p>
+</div>
+
   </section>
 
   <!-- Gallery -->
@@ -425,7 +501,6 @@
         <a href="shade-structures.html">Shade Structures</a>
         <a href="steel-barns.html">Steel Barns</a>
         <a href="pipe-corrals.html">Pipe Corrals</a>
-        <a href="riding-arenas.html">Riding Arenas</a>
       </div>
       <div class="footer-section">
         <h3>Contact</h3>
