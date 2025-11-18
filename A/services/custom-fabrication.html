@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>Custom Steel Fabrication | Stallion Steelworks</title>
+  <meta name="description" content="Custom steel gates, stall fronts, railings, and architectural details for luxury horse estates. Designed, welded, and installed by Stallion Steelworks." />
+  <meta name="keywords" content="custom steel fabrication, steel gates, stall fronts, ranch entry, equestrian steelwork, Stallion Steelworks" />
+  <meta name="author" content="Stallion Steelworks" />
+  <meta property="og:title" content="Custom Steel Fabrication | Stallion Steelworks" />
+  <meta property="og:description" content="Bespoke steel elements that turn your horse property into a showpiece." />
+  <meta property="og:image" content="../pics/custom-fabrication-hero.jpg" />
+  <meta property="og:url" content="https://stallionsteelworks.com/services/custom-fabrication.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* =========
+       Theme: Stallion Steelworks + 5% more impulse
+       ========= */
+    :root {
+      --steel-gold: #f6c255;
+      --rust-red: #d04a16;
+      --dark-steel: #171717;
+      --black-steel: #0a0a0a;
+      --steel-gray: #d8d8d8;
+
+      /* New accent: “molten copper” for shimmer (5% shift from patina teal) */
+      --accent: #ff914d;
+      --accent-soft: rgba(255, 145, 77, 0.6);
+      --accent-glow: 0 0 10px rgba(255, 145, 77, 0.7), 0 0 22px rgba(255, 145, 77, 0.5);
+
+      --cta-gradient: linear-gradient(180deg, #ffb347, #d04a16);
+
+      --container: 1200px;
+      --pad-x: clamp(16px, 4vw, 24px);
+      --header-h: 64px;
+      --ring: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, var(--dark-steel) 0%, var(--black-steel) 100%);
+      color: var(--steel-gold);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+      line-height: 1.6;
+      min-height: 100svh;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 8px;
+    }
+
+    /* =========
+       Promo bar – impulse nudge
+       ========= */
+    .promo {
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+      background: rgba(208, 74, 22, 0.12);
+      border-bottom: 1px solid rgba(208, 74, 22, 0.7);
+      backdrop-filter: saturate(1.2) blur(4px);
+      color: var(--steel-gold);
+      font-weight: 700;
+      text-align: center;
+      padding: 10px 12px;
+      letter-spacing: 0.02em;
+      font-size: 0.95rem;
+    }
+    .promo strong {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(208, 74, 22, 0.7);
+    }
+
+    /* =========
+       Header
+       ========= */
+    header {
+      position: fixed;
+      top: 42px;
+      left: 0;
+      width: 100%;
+      background-color: rgba(10, 10, 10, 0.92);
+      z-index: 1000;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rust-red);
+      backdrop-filter: saturate(1.1) blur(6px);
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--container);
+      margin: 0 auto;
+      gap: 12px;
+      min-height: var(--header-h);
+    }
+
+    .logo {
+      width: clamp(140px, 28vw, 180px);
+      filter: drop-shadow(0 0 5px var(--steel-gold));
+      transition: filter 0.4s ease;
+    }
+
+    .logo:hover {
+      filter:
+        drop-shadow(0 0 6px var(--steel-gold))
+        drop-shadow(0 0 12px rgba(255, 145, 77, 0.8));
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav li { margin: 0; }
+
+    nav a {
+      color: var(--steel-gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+      padding: 6px 8px;
+      border: 1px solid rgba(244, 185, 66, 0.18);
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
+
+    nav a:hover {
+      color: #101010;
+      background: var(--steel-gold);
+      border-color: var(--steel-gold);
+      box-shadow: 0 0 14px rgba(246, 194, 85, 0.5);
+    }
+
+    /* Current page highlight */
+    nav a[href="custom-fabrication.html"] {
+      color: #0c0c0c;
+      background: var(--accent);
+      border-color: rgba(255, 145, 77, 0.9);
+      box-shadow: 0 0 10px rgba(255, 145, 77, 0.9);
+      position: relative;
+      animation: pulseAccent 2.2s infinite;
+    }
+    nav a[href="custom-fabrication.html"]:hover {
+      filter: brightness(1.05);
+    }
+
+    @keyframes pulseAccent {
+      0% { box-shadow: 0 0 8px rgba(255,145,77,0.6); }
+      50% { box-shadow: 0 0 18px rgba(255,145,77,0.95); }
+      100% { box-shadow: 0 0 8px rgba(255,145,77,0.6); }
+    }
+
+    /* =========
+       Hero with gold shimmer
+       ========= */
+    .hero {
+      min-height: calc(100svh - (var(--header-h) + 42px));
+      padding-top: calc(var(--header-h) + 90px);
+      padding-bottom: 40px;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Shimmer background – different color from pipe-corrals */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(246, 194, 85, 0.14), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(255, 145, 77, 0.18), transparent 60%);
+      z-index: -2;
+      animation: heroPulse 9s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -120%;
+      left: -120%;
+      width: 320%;
+      height: 320%;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(246, 194, 85, 0.08), transparent 60%),
+        linear-gradient(115deg, transparent 40%, rgba(255, 145, 77, 0.25) 50%, transparent 60%);
+      background-repeat: no-repeat;
+      z-index: -1;
+      animation: heroShine 13s linear infinite;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    @keyframes heroShine {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.65; }
+      50% { transform: translate(20%, 18%) rotate(8deg); opacity: 1; }
+      100% { transform: translate(0, 0) rotate(0deg); opacity: 0.65; }
+    }
+
+    @keyframes heroPulse {
+      0% { opacity: 0.55; transform: scale(1); }
+      100% { opacity: 0.9; transform: scale(1.04); }
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-copy {
+      max-width: 640px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5.6vw, 3.4rem);
+      margin: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--steel-gold);
+      text-shadow: 2px 2px #000;
+      letter-spacing: 0.05em;
+      line-height: 1.08;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .neon-highlight {
+      color: var(--accent);
+      text-shadow: 0 0 6px var(--accent-soft);
+      display: inline-block;
+      animation: shimmerText 3.1s infinite ease-in-out;
+    }
+
+    @keyframes shimmerText {
+      0%, 100% {
+        text-shadow:
+          0 0 6px rgba(255, 145, 77, 0.7),
+          0 0 16px rgba(255, 145, 77, 0.45);
+      }
+      50% {
+        text-shadow:
+          0 0 16px rgba(255, 145, 77, 1),
+          0 0 26px rgba(255, 145, 77, 0.7);
+      }
+    }
+
+    .divider {
+      width: 92px;
+      height: 5px;
+      background: var(--rust-red);
+      margin: 18px 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+
+    .divider::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, #ffffff, transparent);
+      transform: translateX(-100%);
+      animation: shineBar 3s infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes shineBar {
+      0% { transform: translateX(-100%); }
+      20% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .hero p {
+      font-size: clamp(1.02rem, 3.2vw, 1.2rem);
+      color: var(--steel-gray);
+      margin: 10px 0 22px;
+    }
+
+    .cta-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 10px;
+      background: var(--cta-gradient);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(208, 74, 22, 0.45);
+      filter: saturate(1.08);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 145, 77, 0.35);
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(255, 145, 77, 0.08);
+      box-shadow: 0 0 18px rgba(255, 145, 77, 0.6);
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      font-size: 0.92rem;
+      color: var(--steel-gray);
+    }
+
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid rgba(255, 145, 77, 0.4);
+      box-shadow: 0 0 8px rgba(255, 145, 77, 0.3);
+    }
+
+    .hero-visual {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(10, 10, 10, 0.95));
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(246, 194, 85, 0.35);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255, 145, 77, 0.12);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 145, 77, 0.7);
+      color: var(--steel-gold);
+    }
+
+    .hero-card img {
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+      object-fit: cover;
+      width: 100%;
+      max-height: 260px;
+    }
+
+    .hero-card-caption {
+      font-size: 0.95rem;
+      color: var(--steel-gray);
+    }
+
+    .hero-card-caption strong {
+      color: var(--steel-gold);
+    }
+
+    /* =========
+       Sections
+       ========= */
+    section {
+      padding: clamp(48px, 8vw, 80px) 0;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4.8vw, 2.6rem);
+      color: var(--steel-gold);
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    p {
+      color: var(--steel-gray);
+      font-size: clamp(0.98rem, 2.9vw, 1.05rem);
+    }
+
+    /* =========
+       Benefits grid – “Why custom steel?”
+       ========= */
+    .benefits-section {
+      background: radial-gradient(ellipse at top, rgba(30, 30, 30, 0.88) 0%, var(--black-steel) 72%);
+    }
+
+    .benefits-intro {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .benefits-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .benefit-card {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(12, 12, 12, 0.96));
+      border-radius: 14px;
+      padding: 22px;
+      border: 1px solid rgba(255, 145, 77, 0.35);
+      box-shadow: 0 0 12px rgba(255, 145, 77, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 32px rgba(255, 145, 77, 0.45);
+      border-color: var(--accent);
+    }
+
+    .benefit-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      text-align: center;
+      color: var(--accent);
+      filter: drop-shadow(0 0 5px rgba(255, 145, 77, 0.6));
+    }
+
+    .benefit-card h3 {
+      margin: 0 0 10px;
+      color: var(--steel-gold);
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .benefit-card p {
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    /* =========
+       “Most Popular Custom Pieces” – price anchors
+       ========= */
+    .packages {
+      background-color: rgba(12, 12, 12, 0.82);
+    }
+
+    .packages-intro {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    @media (min-width: 900px) {
+      .pkg-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .pkg {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.94), rgba(10, 10, 10, 0.98));
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid rgba(246, 194, 85, 0.3);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .pkg:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(246, 194, 85, 0.3);
+      border-color: rgba(255, 145, 77, 0.7);
+    }
+
+    .pkg-label {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 4px 9px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      background: rgba(255, 145, 77, 0.16);
+      border: 1px solid rgba(255, 145, 77, 0.8);
+      color: var(--steel-gold);
+    }
+
+    .pkg h3 {
+      margin: 0 0 6px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 1.05rem;
+      color: var(--steel-gold);
+    }
+
+    .pkg .price {
+      text-align: center;
+      font-weight: 900;
+      font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .pkg .note {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--steel-gray);
+      margin-bottom: 10px;
+    }
+
+    .pkg ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 0.92rem;
+      color: var(--steel-gray);
+    }
+
+    .pkg ul li + li {
+      margin-top: 4px;
+    }
+
+    .pkg .btn {
+      display: block;
+      margin: 16px auto 0;
+      max-width: 230px;
+      text-align: center;
+    }
+
+    /* =========
+       Gallery – show-offs
+       ========= */
+    .gallery-section {
+      background-color: rgba(12, 12, 12, 0.9);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 26px;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.7);
+      transition: all 0.25s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 14px;
+      color: #ffffff;
+      transform: translateY(100%);
+      transition: transform 0.25s ease;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      z-index: 1;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+    /* =========
+       CTA Section – final push
+       ========= */
+    .cta-section {
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(30, 30, 30, 0.94) 0%, var(--black-steel) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 75%, rgba(255, 145, 77, 0.14) 0%, transparent 26%),
+        radial-gradient(circle at 80% 25%, rgba(246, 194, 85, 0.14) 0%, transparent 26%);
+      z-index: 0;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .cta-highlight {
+      color: var(--accent);
+      text-shadow: 0 0 8px rgba(255, 145, 77, 0.6);
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-methods {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 10px;
+      background: var(--cta-gradient);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      transition: all 0.25s ease;
+      gap: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(208, 74, 22, 0.45);
+    }
+
+    .contact-button.phone {
+      background: rgba(30, 30, 30, 0.88);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 12px rgba(255, 145, 77, 0.38);
+      color: var(--accent);
+    }
+
+    .contact-button.phone:hover {
+      background: rgba(255, 145, 77, 0.08);
+      box-shadow: 0 0 18px rgba(255, 145, 77, 0.7);
+    }
+
+    .urgency-note {
+      margin-top: 18px;
+      padding: 14px;
+      background: rgba(208, 74, 22, 0.14);
+      border-radius: 10px;
+      border-left: 4px solid var(--rust-red);
+      font-size: 0.94rem;
+      text-align: left;
+    }
+
+    /* =========
+       Sticky mobile CTA – impulse bar
+       ========= */
+    .sticky-cta {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1200;
+      display: flex;
+      gap: 10px;
+      background: rgba(10, 10, 10, 0.94);
+      border: 1px solid rgba(255, 145, 77, 0.6);
+      border-radius: 999px;
+      padding: 8px 10px;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    .sticky-cta a {
+      text-decoration: none;
+      font-weight: 900;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .sticky-cta .q {
+      background: var(--cta-gradient);
+      color: #ffffff;
+    }
+
+    .sticky-cta .c {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      .sticky-cta {
+        width: calc(100% - 24px);
+        justify-content: space-between;
+      }
+    }
+
+    /* =========
+       Footer – same vibe
+       ========= */
+    footer {
+      background-color: var(--black-steel);
+      padding: clamp(28px, 6vw, 40px) 0;
+      text-align: center;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: var(--container);
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    @media (min-width: 780px) {
+      .footer-content {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .footer-section {
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      color: var(--steel-gold);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: clamp(1rem, 2.6vw, 1.3rem);
+    }
+
+    .footer-section a {
+      color: var(--steel-gray);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.25s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      margin-top: 24px;
+      color: var(--steel-gray);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* =========
+       Responsive tweaks & header/hero overlap fix
+       ========= */
+    @media (max-width: 900px) {
+      header { top: 42px; }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --promo-h: 40px;
+      }
+
+      .promo {
+        position: sticky;
+        top: 0;
+        z-index: 1100;
+      }
+
+      header {
+        position: sticky;
+        top: var(--promo-h);
+        z-index: 1000;
+      }
+
+      .hero {
+        padding-top: clamp(26px, 7vh, 60px);
+        min-height: calc(100svh - var(--promo-h) - 12px);
+      }
+
+      [id] {
+        scroll-margin-top: calc(var(--promo-h) + var(--header-h) + 16px);
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .cta-wrap {
+        justify-content: center;
+      }
+
+      .hero-trust {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      :root { --promo-h: 44px; }
+      .hero { padding-top: clamp(30px, 7.5vh, 70px); }
+    }
+
+
+/* Header – make it sticky instead of fixed */
+header {
+  position: sticky;
+  top: 42px; /* sits right under the promo bar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.92);
+  z-index: 1000;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rust-red);
+  backdrop-filter: saturate(1.1) blur(6px);
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+}
+
+/* Hero – no longer needs to clear a fixed header */
+.hero {
+  min-height: 100svh;
+  padding-top: clamp(40px, 10vh, 80px);
+  padding-bottom: 40px;
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+  position: relative;
+  overflow: hidden;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Promo bar -->
+  <div class="promo">
+    Custom project calendar: <strong>Only 2 fabrication slot left this month</strong> — claim it before it’s gone.
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="../index.html"><img src="../pics/Stallions.png" alt="Stallion Steelworks Logo" class="logo" /></a>
+      <nav>
+        <ul>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#gallery">Gallery</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#testimonials">Testimonials</a></li>
+          <li><a href="steel-barns.html">Steel Barns</a></li>
+          <li><a href="pipe-corrals.html">Pipe Corrals</a></li>
+          <li><a href="custom-fabrication.html">Custom Steel</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Bespoke <span class="neon-highlight">Custom Steel Fabrication</span></h1>
+        <div class="divider"></div>
+        <p>
+          Ranch entries, stall fronts, gates, railings, and architectural details that look like they belong on a magazine cover — built in real steel, welded by pros, and installed to line up perfectly on your property.
+        </p>
+        <div class="cta-wrap">
+          <a href="#contact" class="cta-button">Get My Custom Quote</a>
+          <a href="tel:+16029997756" class="cta-button secondary">Call Now: (602) 999-7756</a>
+        </div>
+        <div class="hero-trust">
+          <span>★ Hand-built in Arizona</span>
+          <span>✓ One-off designs & repeatable runs</span>
+          <span>🛡️ We don’t cut corners — just steel</span>
+        </div>
+      </div>
+
+      <!-- <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-tag">Client Favorite</div>
+          <img src="../pics/custom-gate-or-rail.jpg" alt="Custom steel ranch entry gate" />
+          <div class="hero-card-caption">
+            <strong>Ranch Entry Gate:</strong> laser-clean lines, hidden welds, and a finish that pops from the road — designed around the client’s brand.
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2>Why Go Custom Steel?</h2>
+      <div class="benefits-intro">
+        <p>
+          When you’re spending serious money on your horses and your property, the details matter. Custom steel is where your ranch’s first impression and daily workflow both get an upgrade.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🧱</div>
+          <h3>Match Your Vision</h3>
+          <p>
+            Bring a sketch, Pinterest board, or just vibes. We engineer, refine, and build pieces that match your brand, your house, and your existing barns — not a catalog page.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📏</div>
+          <h3>Precision Fit & Finish</h3>
+          <p>
+            We measure twice, weld once. Rails line up, gaps are safe, and every hinge, latch, and frame feels solid when you put hands on it.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔥</div>
+          <h3>Built to Take Abuse</h3>
+          <p>
+            Horses, weather, daily use — no problem. We spec real-world materials and finishes so your pieces stay sharp and straight for years.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎨</div>
+          <h3>Signature Ranch Details</h3>
+          <p>
+            Cut-out logos, brand marks, monograms, and pattern work that give your entry or barn a “that has to be theirs” identity.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <h3>Design • Fabricate • Install</h3>
+          <p>
+            One team from concept to weld to installation. No finger-pointing between vendors — we own the whole process.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⏱️</div>
+          <h3>Fast, Clear Timelines</h3>
+          <p>
+            You’ll know what’s happening, when it’s happening, and when we’ll be on site. No ghosting. No mystery delays.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages / “Most popular pieces”
+  <section class="packages">
+    <div class="container">
+      <h2>Most Popular Custom Pieces</h2>
+      <div class="packages-intro">
+        <p>
+          Every project is quoted to your dimensions and finish choices, but these ranges will give you a feel for where we typically land.
+        </p>
+      </div>
+
+      <div class="pkg-grid">
+        <div class="pkg">
+          <div class="pkg-label">Entry Upgrade</div>
+          <h3>Ranch Entry Gate</h3>
+          <div class="price">From $<span aria-label="price">4,9xx</span></div>
+          <p class="note">Single or double swing gate with your brand front and center.</p>
+          <ul>
+            <li>Heavy-wall steel frame</li>
+            <li>Custom logo / monogram cut-outs</li>
+            <li>Powder-coat finish options</li>
+          </ul>
+          <a href="#contact" class="cta-button btn">Price My Gate</a>
+        </div>
+
+        <div class="pkg">
+          <div class="pkg-label">Barn Glow-Up</div>
+          <h3>Stall Front Package</h3>
+          <div class="price">From $<span aria-label="price">7,9xx</span></div>
+          <p class="note">Matched fronts that make your barn look like a show facility.</p>
+          <ul>
+            <li>Adjustable grills & doors</li>
+            <li>Safe, smooth edges & hardware</li>
+            <li>Coordinated finishes with existing steel</li>
+          </ul>
+          <a href="#contact" class="cta-button btn">Get Stall Front Quote</a>
+        </div>
+
+        <div class="pkg">
+          <div class="pkg-label">High-Impact Detail</div>
+          <h3>Railings & Accents</h3>
+          <div class="price">From $<span aria-label="price">2,4xx</span></div>
+          <p class="note">Porch railings, balcony details, and feature pieces that tie it all together.</p>
+          <ul>
+            <li>On-site measure & layout</li>
+            <li>Custom patterns & infill</li>
+            <li>Exterior-grade coatings</li>
+          </ul>
+          <a href="#contact" class="cta-button btn">Lock in a Slot</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- 
+ 
+  <section class="gallery-section">
+    <div class="container">
+      <h2>Recent Custom Fabrication</h2>
+      <p style="text-align:center; max-width:760px; margin:0 auto;">
+        A few of the pieces we’ve built for discerning horse and ranch clients. Photos don’t capture how solid they feel in person — but they’re a start.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../pics/custom-gate-or-rail-2.jpg" alt="Custom ranch entry gate" />
+          <div class="gallery-caption">Ranch Entry Gate with Brand Logo</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../pics/custom-stall-front-1.jpg" alt="Custom stall fronts" />
+          <div class="gallery-caption">Matching Stall Fronts & Doors</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../pics/custom-railings-1.jpg" alt="Steel railings and balcony details" />
+          <div class="gallery-caption">Steel Railings & Balcony Details</div>
+        </div>
+      </div>
+    </div>
+  </section> --> 
+-->
+  <!-- CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Design Your <span class="cta-highlight">Signature Steel Piece</span>?</h2>
+        <p>
+          Tell us what you’re dreaming about — gate, stall fronts, entry arch, railing, or something completely different. We’ll map it out, price it cleanly, and give you a clear build/install timeline.
+        </p>
+        <div class="contact-methods">
+          <a href="tel:+16029997756" class="contact-button phone"><span>📞</span> Call (602) 999-7756</a>
+          <a href="mailto:stallionsteelworks@gmail.com?subject=Custom%20Steel%20Fabrication%20Inquiry" class="contact-button"><span>✉️</span> Email Us Details</a>
+        </div>
+        <div class="urgency-note">
+          <strong>Pro tip:</strong> Custom projects stack up fast. Getting on the calendar now protects your place in line and locks in today’s pricing while we dial in the design.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta" aria-label="Quick actions">
+    <a class="q" href="#contact">Get Custom Quote</a>
+    <a class="c" href="tel:+16029997756">Call</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#gallery">Gallery</a>
+        <a href="../index.html#about">About Us</a>
+        <a href="../index.html#testimonials">Testimonials</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Services</h3>
+        <a href="maremotel.html">Mare Motels</a>
+        <a href="shade-structures.html">Shade Structures</a>
+        <a href="steel-barns.html">Steel Barns</a>
+        <a href="pipe-corrals.html">Pipe Corrals</a>
+        <a href="custom-fabrication.html">Custom Steel Fabrication</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Stallion Steelworks</p>
+        <p>Phoenix, AZ</p>
+        <a href="tel:+16029997756">📞 (602) 999-7756</a>
+        <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a>
+      </div>
+    </div>
+    <div class="copyright">&copy; 2025 Stallion Steelworks. All rights reserved.</div>
+  </footer>
+</body>
+</html>
