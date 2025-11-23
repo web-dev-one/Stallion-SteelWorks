@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riding Arenas | Stallion Steelworks</title>
+  <meta name="description" content="Clear-span steel riding arenas engineered for airflow, light, and serious riding. Custom sizes, footing, and shade-tailored for equestrian estates.">
+  <meta name="keywords" content="riding arenas, steel riding arena, covered arena, equestrian arena, indoor arena, Stallion Steelworks">
+  <meta name="author" content="Stallion Steelworks">
+  <meta property="og:title" content="Riding Arenas | Stallion Steelworks">
+  <meta property="og:description" content="Custom-engineered steel riding arenas for high-performance equestrian facilities.">
+  <meta property="og:image" content="../pics/arena-hero.png">
+  <meta property="og:url" content="https://stallionsteelworks.com/services/riding-arenas.html">
+  <meta property="og:type" content="website">
+  <style>
+    /* =========
+       Base styles with COOL neon palette (blues/teals)
+       ========= */
+    :root {
+      --steel-gold: #f4f0d2;
+      --rust-red: #c1440e;
+      --dark-steel: #101321;
+      --black-steel: #05060b;
+      --steel-gray: #c7d0df;
+
+      /* Cooler neon colors vs hot index page */
+      --neon-primary: #00e0ff;     /* electric cyan */
+      --neon-secondary: #7b61ff;   /* indigo */
+      --neon-accent: #00ff9d;      /* mint */
+
+      --neon-glow-primary: 0 0 10px rgba(0, 224, 255, 0.8),
+                          0 0 20px rgba(0, 224, 255, 0.6),
+                          0 0 30px rgba(0, 224, 255, 0.3);
+
+      --neon-glow-secondary: 0 0 10px rgba(123, 97, 255, 0.8),
+                            0 0 20px rgba(123, 97, 255, 0.5);
+
+      --neon-glow-accent: 0 0 10px rgba(0, 255, 157, 0.8),
+                         0 0 20px rgba(0, 255, 157, 0.5);
+
+      --container: 1200px;
+      --pad-x: clamp(16px, 4vw, 24px);
+      --header-h: 64px;
+      --ring: 0 0 0 3px color-mix(in oklab, var(--neon-primary) 40%, transparent);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at top, #14192a 0%, var(--black-steel) 60%),
+        radial-gradient(circle at bottom, #05060b 0%, #05060b 60%);
+      color: var(--steel-gold);
+      font-family: ui-serif, Georgia, serif;
+      line-height: 1.6;
+      min-height: 100svh;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 8px;
+    }
+
+    /* =========
+       Header (same structure, cooler glow)
+       ========= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(5, 6, 11, 0.96);
+      z-index: 1000;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 224, 255, 0.4);
+      backdrop-filter: saturate(1.2) blur(8px);
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      box-shadow: 0 0 18px rgba(0, 224, 255, 0.35);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0;
+      gap: 12px;
+      min-height: var(--header-h);
+    }
+
+    .logo {
+      width: clamp(140px, 28vw, 180px);
+      filter: drop-shadow(0 0 5px var(--steel-gold))
+              drop-shadow(0 0 10px var(--neon-primary));
+      transition: filter 0.4s ease, transform 0.3s ease;
+    }
+
+    .logo:hover {
+      filter: drop-shadow(0 0 8px var(--steel-gold))
+              drop-shadow(0 0 18px var(--neon-primary))
+              drop-shadow(0 0 26px var(--neon-secondary));
+      transform: translateY(-2px);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav li { margin: 0; }
+
+    nav a {
+      color: var(--steel-gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+      padding: 6px 8px;
+      border: 1px solid rgba(196, 208, 239, 0.25);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--neon-primary);
+      border-color: var(--neon-primary);
+      box-shadow: 0 0 8px rgba(0, 224, 255, 0.7);
+    }
+
+    /* Current page indicator */
+    nav a[href="riding-arenas.html"] {
+      position: relative;
+      color: var(--neon-primary);
+      border-color: rgba(0, 224, 255, 0.6);
+      box-shadow: var(--neon-glow-primary);
+      animation: pulse 2.4s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 6px rgba(0, 224, 255, 0.6),
+                    0 0 10px rgba(123, 97, 255, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 12px rgba(0, 224, 255, 0.9),
+                    0 0 22px rgba(123, 97, 255, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 6px rgba(0, 224, 255, 0.6),
+                    0 0 10px rgba(123, 97, 255, 0.4);
+      }
+    }
+
+    /* =========
+       Hero: split layout (10% different from custom fabrication)
+       ========= */
+    .hero {
+      min-height: calc(100svh - var(--header-h));
+      padding-top: calc(var(--header-h) + 24px);
+      padding-bottom: 40px;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(0, 224, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(123, 97, 255, 0.18) 0%, transparent 50%);
+    }
+
+    .hero-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: clamp(24px, 5vw, 40px);
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 0 18px rgba(0, 224, 255, 0.35);
+      background: radial-gradient(circle at top, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top right, rgba(5,6,11,0.8), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-image-wrap:hover img {
+      transform: scale(1.06);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 5vw, 3.2rem);
+      margin: 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--steel-gold);
+      text-shadow: 2px 2px #000;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      padding-right: 12px;
+    }
+
+    .neon-highlight {
+      color: var(--neon-primary);
+      text-shadow: var(--neon-glow-primary);
+      display: inline-block;
+      transition: text-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    h1:hover .neon-highlight {
+      text-shadow: 0 0 16px rgba(0, 224, 255, 0.9),
+                   0 0 30px rgba(0, 224, 255, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: var(--steel-gray);
+      margin-top: 14px;
+      margin-bottom: 16px;
+    }
+
+    .divider {
+      width: 90px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--neon-secondary), var(--neon-primary));
+      margin: 14px 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #ffffff, transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      25% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .hero-body {
+      font-size: 0.98rem;
+      color: var(--steel-gray);
+      max-width: 540px;
+    }
+
+    /* Hero CTA group */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: linear-gradient(45deg, #004d6d, #0086b3);
+      color: #f5f9ff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 134, 179, 0.7);
+      transition: all 0.3s ease;
+      gap: 8px;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 134, 179, 0.8),
+                  0 0 18px rgba(0, 255, 157, 0.5);
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--neon-primary);
+      color: var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(0, 224, 255, 0.12);
+      box-shadow: 0 0 22px rgba(0, 224, 255, 0.9);
+    }
+
+    .cta-button.ghost {
+      background: rgba(11, 14, 26, 0.9);
+      border: 1px solid rgba(199, 208, 223, 0.5);
+      color: var(--steel-gray);
+      box-shadow: 0 0 10px rgba(10, 20, 40, 0.8);
+    }
+
+    .cta-button.ghost:hover {
+      background: rgba(18, 26, 48, 0.9);
+      box-shadow: 0 0 18px rgba(123, 97, 255, 0.7);
+      color: var(--steel-gold);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      font-size: 0.86rem;
+      color: var(--steel-gray);
+    }
+
+    .hero-stat {
+      flex: 1 1 120px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: radial-gradient(circle at top left, rgba(0,224,255,0.25), rgba(10,12,26,0.9));
+      border: 1px solid rgba(0, 224, 255, 0.4);
+      box-shadow: 0 0 12px rgba(0, 224, 255, 0.3);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--neon-accent);
+      margin-bottom: 2px;
+    }
+
+    /* =========
+       Sections
+       ========= */
+    section {
+      padding: clamp(48px, 8vw, 80px) 0;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 4.6vw, 2.5rem);
+      color: var(--steel-gold);
+      text-align: center;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0 var(--pad-x);
+      position: relative;
+    }
+
+    h2 .neon-highlight {
+      position: relative;
+    }
+
+    h2 .neon-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--neon-secondary);
+      box-shadow: var(--neon-glow-secondary);
+    }
+
+    h3 {
+      font-size: clamp(1.1rem, 3.6vw, 1.7rem);
+      color: var(--steel-gold);
+      margin: 22px 0 10px;
+    }
+
+    p {
+      font-size: clamp(0.98rem, 2.9vw, 1.05rem);
+      color: var(--steel-gray);
+      margin: 0 0 16px;
+    }
+
+    /* =========
+       Arena Benefits (grid cards)
+       ========= */
+    .benefits-section {
+      background: radial-gradient(ellipse at top, #181d2f 0%, #05060b 65%);
+      border-top: 1px solid rgba(0, 224, 255, 0.2);
+      border-bottom: 1px solid rgba(0, 224, 255, 0.15);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .benefit-card {
+      background: linear-gradient(145deg, rgba(13, 18, 35, 0.95), rgba(4, 6, 14, 0.96));
+      border-radius: 16px;
+      padding: 22px;
+      border: 1px solid rgba(0, 224, 255, 0.35);
+      box-shadow: 0 0 16px rgba(0, 224, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      width: 140%;
+      height: 2px;
+      top: 0;
+      left: -20%;
+      background: linear-gradient(90deg, transparent, var(--neon-primary), var(--neon-secondary), transparent);
+      opacity: 0.7;
+      transform: translateY(-2px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .benefit-icon {
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 7px rgba(0, 224, 255, 0.7));
+    }
+
+    .benefit-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--neon-primary);
+      margin-bottom: 8px;
+      text-shadow: 0 0 6px rgba(0, 224, 255, 0.6);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    .benefit-card:hover::before {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* =========
+       Arena Types
+       ========= */
+    .types-section {
+      background-color: rgba(5, 6, 11, 0.9);
+      border-top: 1px solid rgba(123, 97, 255, 0.25);
+      border-bottom: 1px solid rgba(123, 97, 255, 0.2);
+    }
+
+    .types-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    @media (min-width: 840px) {
+      .types-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .type-card {
+      background: radial-gradient(circle at top left, rgba(123, 97, 255, 0.22), rgba(10, 11, 24, 0.96));
+      border-radius: 18px;
+      padding: 22px 22px 18px;
+      border: 1px solid rgba(123, 97, 255, 0.4);
+      box-shadow: 0 0 16px rgba(123, 97, 255, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .type-card h3 {
+      margin-top: 0;
+      color: var(--steel-gold);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 8px;
+      font-size: 0.8rem;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(5, 6, 11, 0.8);
+      border: 1px solid rgba(199, 208, 223, 0.4);
+      color: var(--steel-gray);
+    }
+
+    .type-features {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0 0;
+      font-size: 0.92rem;
+    }
+
+    .type-features li {
+      padding: 4px 0;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .type-features li span.icon {
+      color: var(--neon-accent);
+      margin-top: 1px;
+      filter: drop-shadow(0 0 4px rgba(0, 255, 157, 0.7));
+    }
+
+    .type-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--neon-glow-secondary);
+    }
+
+    /* =========
+       Process / Specs
+       ========= */
+    .process-section {
+      background: radial-gradient(ellipse at center, #14192a 0%, #05060b 85%);
+    }
+
+    .process-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .process-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-steps {
+      counter-reset: step;
+      display: grid;
+      gap: 16px;
+    }
+
+    .process-step {
+      background: rgba(10, 13, 26, 0.95);
+      border-radius: 12px;
+      padding: 16px 16px 16px 50px;
+      position: relative;
+      border: 1px solid rgba(0, 224, 255, 0.35);
+      box-shadow: 0 0 10px rgba(0, 224, 255, 0.2);
+      font-size: 0.95rem;
+    }
+
+    .process-step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-secondary), var(--neon-primary));
+      color: #05060b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: var(--neon-glow-secondary);
+    }
+
+    .spec-card {
+      background: rgba(5, 6, 11, 0.95);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(199, 208, 223, 0.35);
+      box-shadow: 0 0 14px rgba(5, 6, 11, 0.85);
+      font-size: 0.95rem;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(199, 208, 223, 0.3);
+    }
+
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .spec-label {
+      color: var(--steel-gray);
+    }
+
+    .spec-value {
+      color: var(--neon-accent);
+      font-weight: 600;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 0.86rem;
+      color: rgba(199, 208, 223, 0.9);
+    }
+
+    /* =========
+       Gallery (arenas only)
+       ========= */
+    .gallery-section {
+      background-color: rgba(5, 6, 11, 0.9);
+      border-top: 1px solid rgba(0, 224, 255, 0.2);
+      border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+    }
+
+    .arena-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    @media (min-width: 720px) {
+      .arena-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 14px rgba(0,0,0,0.6);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,6,11,0.85), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      right: 12px;
+      font-size: 0.86rem;
+      color: #f5f9ff;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========
+       Testimonials
+       ========= */
+    .testimonials-section {
+      background: radial-gradient(ellipse at center, #14192a 0%, #05060b 85%);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    @media (min-width: 840px) {
+      .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .testimonial {
+      background: linear-gradient(145deg, rgba(10, 12, 25, 0.96), rgba(7, 9, 18, 0.98));
+      border-radius: 14px;
+      padding: 20px 20px 18px;
+      border-left: 4px solid var(--neon-primary);
+      position: relative;
+      box-shadow: 0 0 16px rgba(0, 224, 255, 0.25);
+      font-size: 0.95rem;
+      overflow: hidden;
+    }
+
+    .testimonial::before {
+      content: '"';
+      font-size: 4.2rem;
+      color: rgba(0, 224, 255, 0.12);
+      position: absolute;
+      top: -4px;
+      left: 8px;
+      line-height: 1;
+    }
+
+    .testimonial p {
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--steel-gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author span.star {
+      color: var(--neon-accent);
+      filter: drop-shadow(0 0 4px rgba(0,255,157,0.8));
+    }
+
+    /* =========
+       CTA / Contact
+       ========= */
+    .cta-section {
+      background: radial-gradient(ellipse at center, #111623 0%, #05060b 90%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 70%, rgba(0, 224, 255, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(123, 97, 255, 0.18) 0%, transparent 45%);
+      opacity: 0.9;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-highlight {
+      color: var(--neon-primary);
+      text-shadow: var(--neon-glow-primary);
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 26px;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: linear-gradient(45deg, #004d6d, #0086b3);
+      color: #f5f9ff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 134, 179, 0.7);
+      transition: all 0.3s ease;
+      gap: 8px;
+    }
+
+    .contact-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 134, 179, 0.9),
+                  0 0 18px rgba(0, 255, 157, 0.7);
+    }
+
+    .contact-button:hover::before {
+      left: 100%;
+    }
+
+    .contact-button.phone {
+      background: rgba(5, 6, 11, 0.95);
+      border: 1px solid var(--neon-primary);
+      color: var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    .urgency-note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: rgba(12, 42, 62, 0.7);
+      border-radius: 10px;
+      border-left: 4px solid rgba(0, 224, 255, 0.8);
+      font-size: 0.9rem;
+      text-align: left;
+      color: var(--steel-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .urgency-note::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,157,0.12), transparent);
+      animation: shine 3.4s infinite;
+    }
+
+    /* =========
+       Footer
+       ========= */
+    footer {
+      background-color: var(--black-steel);
+      padding: clamp(28px, 6vw, 40px) 0;
+      text-align: center;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: var(--container);
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    @media (min-width: 780px) {
+      .footer-content { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .footer-section {
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      color: var(--steel-gold);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: clamp(1rem, 2.6vw, 1.3rem);
+    }
+
+    .footer-section a {
+      color: var(--steel-gray);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--neon-primary);
+    }
+
+    .copyright {
+      margin-top: 24px;
+      color: var(--steel-gray);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* =========
+       Responsive tweaks
+       ========= */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      .hero {
+        padding-top: calc(var(--header-h) + 30px);
+      }
+      .hero-actions,
+      .contact-methods {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .benefit-card,
+      .type-card,
+      .process-step,
+      .spec-card {
+        padding: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cta-button,
+      .contact-button {
+        padding: 11px 18px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="../index.html">
+        <img src="../pics/Stallions.png" alt="Stallion Steelworks Logo" class="logo" />
+      </a>
+      <nav>
+        <ul>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#gallery">Gallery</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#testimonials">Testimonials</a></li>
+          <li><a href="riding-arenas.html">Riding Arenas</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Clear-Span <span class="neon-highlight">Riding Arenas</span></h1>
+        <div class="divider"></div>
+        <p class="hero-sub">
+          Cool, shaded, and engineered for serious work. Stallion Steelworks riding arenas keep you riding when the sun
+          and weather tell everyone else to go home.
+        </p>
+        <p class="hero-body">
+          From boutique training barns to full-scale equestrian estates, our arenas are designed for airflow, light
+          diffusion, and rock-solid performance. You focus on your horses—we handle the steel.
+        </p>
+
+        <div class="hero-actions">
+          <a href="tel:+16029997756" class="cta-button">
+            📞 Call Now: (602) 999-7756
+          </a>
+          <a href="../contact.html" class="cta-button secondary">
+            📋 Arena Quote Request
+          </a>
+          <a href="mailto:stallionsteelworks@gmail.com?subject=Riding%20Arena%20Inquiry" class="cta-button ghost">
+            ✉️ Email Arena Specs
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>100'+ Clear Span</strong>
+            No interior posts in your way—just uninterrupted riding lanes.
+          </div>
+          <div class="hero-stat">
+            <strong>Shade</strong>
+            Engineered roof pitches and heights for cool, usable space.
+          </div>
+          
+          <div class="hero-stat">
+            <strong>AZ-Proof Steel</strong>
+            Built to shrug off sun, wind, and monsoon season.
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <img src="../pics/arena-hero.png" alt="Steel riding arena with horses under shade">
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2>Why Riders Choose Our <span class="neon-highlight">Arenas</span></h2>
+      <p style="text-align:center; max-width:720px; margin:0 auto;">
+        Your arena is where progress happens. We engineer every structure to ride better, feel cooler, and last longer
+        than anything off-the-shelf.
+      </p>
+
+      <div class="benefits-grid">
+       
+         <div class="benefit-card">
+  <div class="benefit-icon">⏱️</div>
+  <div class="benefit-title">More Ride Time</div>
+  <p>
+    Arenas designed so you can ride when everyone else is hiding from the sun—early, late,
+    and through the hottest months—without cooking yourself or your horses.
+  </p>
+</div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💡</div>
+          <div class="benefit-title">Soft, Even Light</div>
+          <p>Shade, orientation, and optional lighting layouts tuned so horses see clearly without harsh glares or shadows.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <div class="benefit-title">Monsoon-Ready</div>
+          <p>Overbuilt frames, bracing, and connections designed to handle Arizona wind and weather without flinching.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arena Types -->
+  <section class="types-section">
+    <div class="container">
+      <h2>Arena <span class="neon-highlight">Configurations</span></h2>
+      <p style="text-align:center; max-width:760px; margin:0 auto;">
+        Every property and program is different. We design around how you actually ride—discipline, headcount, and future expansion plans.
+      </p>
+
+      <div class="types-grid">
+        <div class="type-card">
+          <h3>Covered Riding Arenas</h3>
+          <div class="tag-row">
+            <span class="tag">Most Popular</span>
+            <span class="tag">All-Weather</span>
+            <span class="tag">Day & Night Use</span>
+          </div>
+          <ul class="type-features">
+            <li><span class="icon">•</span><span>Full roof coverage with open or partially enclosed sides for maximum airflow.</span></li>
+            <li><span class="icon">•</span><span>Ideal for jumping, dressage, western, and lesson programs that can’t stop for weather.</span></li>
+            <li><span class="icon">•</span><span>Lighting, fans, and misters pre-planned in the structure layout.</span></li>
+          </ul>
+        </div>
+
+        <div class="type-card">
+          <h3>Open space Arenas</h3>
+          <div class="tag-row">
+            <span class="tag">Budget-Friendly</span>
+            <span class="tag">No Shade</span>
+          </div>
+          <ul class="type-features">
+            <li><span class="icon">•</span><span>Open, expansive rideable shade.</span></li>
+            <li><span class="icon">•</span><span>Perfect for clients who ride early, late, and all year long.</span></li>
+            <li><span class="icon">•</span><span>Pairs perfectly with existing fencing or new custom pipe rail.</span></li>
+          </ul>
+        </div>
+
+        <!-- <div class="type-card">
+          <h3>Warm-Up & Lunging Arenas</h3>
+          <div class="tag-row">
+            <span class="tag">Round Pens</span>
+            <span class="tag">Pre-Show Warmup</span>
+          </div>
+          <ul class="type-features">
+            <li><span class="icon">•</span><span>Scaled-down structures designed for controlled circles and focused work.</span></li>
+            <li><span class="icon">•</span><span>Shade solutions that keep horses cool before they ever step in the show ring.</span></li>
+            <li><span class="icon">•</span><span>Can be integrated into a larger arena complex or built stand-alone.</span></li>
+          </ul>
+        </div>
+
+        <div class="type-card">
+          <h3>Custom Arena Complexes</h3>
+          <div class="tag-row">
+            <span class="tag">Training Facilities</span>
+            <span class="tag">Event Venues</span>
+          </div>
+          <ul class="type-features">
+            <li><span class="icon">•</span><span>Multiple covered arenas, viewing decks, barns, and shade structures tied into one master plan.</span></li>
+            <li><span class="icon">•</span><span>Designed for shows, clinics, boarding barns, and pro programs.</span></li>
+            <li><span class="icon">•</span><span>Future expansion, parking, and trailer flow factored in from day one.</span></li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- Process / Specs -->
+  <section class="process-section">
+    <div class="container">
+      <h2>How Your <span class="neon-highlight">Arena Build</span> Works</h2>
+
+      <div class="process-layout">
+        <div>
+          <p>
+            We keep the process simple and predictable, even on big, complex arenas. You’ll always know what’s happening, what’s next, and what we need from you.
+          </p>
+
+          <div class="process-steps">
+            <div class="process-step">
+              <strong>Property Walk & Ride Plan</strong>
+              <p>We walk the site, talk about wind, sun, drainage, and how you ride today—and how you want to ride in 5 years.</p>
+            </div>
+            <div class="process-step">
+              <strong>Concept, Size & Orientation</strong>
+              <p>We recommend ideal arena dimensions, roof height, and orientation based on discipline, headcount, and budget.</p>
+            </div>
+            <div class="process-step">
+              <strong>Engineering & Fabrication</strong>
+              <p>We handle engineering and fabricate your arena in steel tuned for your local code, soil, and weather loads.</p>
+            </div>
+            <div class="process-step">
+              <strong>Footing & Finishes</strong>
+              <p>We coordinate with your footing contractor or help connect you with one so the surface matches the steel.</p>
+            </div>
+            <div class="process-step">
+              <strong>Installation & Handover</strong>
+              <p>Our crews install with minimal disruption so you’re back in the saddle fast—and we stand behind it when the first storm hits.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <h3 style="margin-top:0;">Typical Arena Specs</h3>
+          <div class="spec-row">
+            <span class="spec-label">Popular Sizes</span>
+            <span class="spec-value">80x140 · 100x200 · 120x240</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Roof Heights</span>
+            <span class="spec-value">14'–22' clear</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Frame Type</span>
+            <span class="spec-value">Engineered steel, clear-span</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Finish Options</span>
+            <span class="spec-value">Painted, powder coated, galvanized</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Add-Ons</span>
+            <span class="spec-value">Lighting, fans, misters, rail, viewing decks</span>
+          </div>
+          <p class="note">
+            These are starting points. Every arena is custom-sized to your property and riding goals.
+            If you already know your exact dimensions, we can jump straight into engineering and pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <h2>Arena <span class="neon-highlight">Gallery</span></h2>
+      <p style="text-align:center; max-width:720px; margin:0 auto;">
+        A few examples of the kind of shade, scale, and presence your arena can have when it’s built in steel.
+      </p>
+
+      <div class="arena-gallery">
+        <div class="gallery-item">
+          <img src="../pics/arena-hero.png" alt="Covered steel riding arena at sunset">
+          <div class="gallery-caption">Covered clear-span arena oriented for evening rides.</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../pics/cowboys.jpg" alt="Shade only riding arena structure">
+          <div class="gallery-caption">Shade-only arena turning mid-day sun into usable work time.</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../pics/horse arena 3 pipe post.jpg" alt="Riding arena with viewing rail and lighting">
+          <div class="gallery-caption">Arena with viewing rail and integrated lighting for shows and clinics.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <!-- <section class="testimonials-section">
+    <div class="container">
+      <h2>What Riders <span class="neon-highlight">Say</span></h2>
+
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>"We went from riding only early mornings to riding all day. The arena feels cooler than the open pasture and the horses relaxed into the space right away."</p>
+          <div class="testimonial-author">
+            <span class="star">★</span> Scottsdale Dressage Client
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"Our training program depends on reliable footing and shade. The arena handled its first monsoon season without a single issue. This thing is solid."</p>
+          <div class="testimonial-author">
+            <span class="star">★</span> Performance Barn in Cave Creek
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to <span class="cta-highlight">Ride Under Shade</span> Instead of Sun?</h2>
+        <p>
+          Send us your rough arena size, your discipline, and your zip code. We’ll come back with a
+          realistic game plan and arena options that fit your budget and your horses.
+        </p>
+
+        <div class="contact-methods">
+          <a href="tel:+16029997756" class="contact-button phone">
+            📞 Call (602) 999-7756
+          </a>
+          <a href="mailto:stallionsteelworks@gmail.com?subject=Riding%20Arena%20Inquiry" class="contact-button">
+            ✉️ Email Arena Details
+          </a>
+          <a href="../contact.html" class="contact-button">
+            📋 Full Contact Form
+          </a>
+        </div>
+
+        <div class="urgency-note">
+          <p><strong>Scheduling note:</strong> Arena builds book out faster than smaller projects. If you’re thinking
+          about riding under shade next season, now is the time to lock in your spot on the calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#gallery">Gallery</a>
+        <a href="../index.html#about">About Us</a>
+        <a href="../index.html#testimonials">Testimonials</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Services</h3>
+        <a href="maremotel.html">Mare Motels</a>
+        <a href="shade-structures.html">Shade Structures</a>
+        <a href="steel-barns.html">Steel Barns</a>
+        <a href="pipe-corrals.html">Pipe Corrals</a>
+        <a href="riding-arenas.html">Riding Arenas</a>
+        <a href="custom-fabrication.html">Custom Fabrication</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Stallion Steelworks</p>
+        <p>Phoenix, AZ</p>
+        <a href="tel:+16029997756">📞 (602) 999-7756</a>
+        <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Stallion Steelworks. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
