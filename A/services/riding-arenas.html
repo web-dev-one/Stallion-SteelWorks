@@ -1051,6 +1051,21 @@
         font-size: 0.9rem;
       }
     }
+
+    /* Fix header overlap on small and mid-size screens */
+@media (max-width: 820px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 50px) !important;
+  }
+}
+
+/* Extra padding for very small phones */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 100px) !important;
+  }
+}
+
   </style>
 </head>
 <body>
