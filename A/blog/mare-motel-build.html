@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Mare Motel Build Story: Wash Station, Tack Room, Hay Barn, Shade & Free-Flow Layout | Stallion Steelworks</title>
+  <meta name="description" content="A deep-dive story of an expensive, high-end mare motel build: custom welded wash station, tack room designed to stay dry, hay barn, huge shade with 3 corrals, and a layout wide enough to drive a vehicle through—plus the concrete subcontract and build sequence." />
+  <link rel="canonical" href="https://stallionsteelworks.com/blog/mare-motel-build-story.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mare Motel Build Story: Wash Station, Tack Room, Hay Barn, Shade & Free-Flow Layout" />
+  <meta property="og:description" content="Behind the scenes of a premium mare motel build—engineering, sequencing, and the details that make it safer, cleaner, and easier to live with." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://stallionsteelworks.com/blog/mare-motel-build-story.html" />
+  <meta property="og:image" content="https://stallionsteelworks.com/pics/MareMotel.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --text:#111;
+      --muted:#5b5b5b;
+      --border:#e9e9e9;
+      --bg:#ffffff;
+      --soft:#f7f7f7;
+      --accent:#111;
+      --maxw: 980px;
+    }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.75;
+    }
+
+    header{
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg, #fff 0%, #fff 55%, #fafafa 100%);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Hero image (subtle) */
+    header::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.92) 55%, rgba(255,255,255,.96) 100%),
+        url("../pics/MareMotel.png");
+      background-size:cover;
+      background-position:center;
+      filter:saturate(1.05) contrast(1.05);
+      transform:scale(1.02);
+      z-index:0;
+    }
+
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:22px 18px; position:relative; z-index:1;}
+    .crumbs a{color:var(--accent); text-decoration:none; font-weight:800;}
+    h1{margin:10px 0 8px; font-size:34px; line-height:1.2;}
+    .meta{color:var(--muted); font-size:14px;}
+
+    .hero-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(255,255,255,.92);
+      padding:14px;
+      margin-top:14px;
+    }
+    .hero-card img{
+      width:100%;
+      height:auto;
+      border-radius:14px;
+      border:1px solid var(--border);
+      display:block;
+    }
+    .hero-card .small{margin-top:8px;}
+
+    .toc{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
+      background:var(--soft);
+      margin:18px 0 0;
+    }
+    .toc strong{display:block; margin-bottom:6px;}
+    .toc a{color:#111; text-decoration:none;}
+    .toc a:hover{text-decoration:underline;}
+
+    main{padding:8px 0 40px;}
+    h2{margin:34px 0 8px; font-size:26px; line-height:1.25;}
+    h3{margin:24px 0 6px; font-size:20px; line-height:1.3;}
+    p{margin:10px 0;}
+    ul{margin:8px 0 8px 22px;}
+    li{margin:6px 0;}
+
+    .callout{
+      border:1px solid #111;
+      border-radius:16px;
+      padding:16px;
+      margin:26px 0;
+      background:#fff;
+    }
+    .callout strong{display:block; margin-bottom:6px;}
+    .callout a{
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid #111;
+      text-decoration:none;
+      color:#111;
+      font-weight:900;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin:18px 0;
+    }
+    .card{
+      grid-column:span 12;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+    }
+    .card h3{margin-top:0;}
+    @media(min-width:820px){
+      .card.half{grid-column:span 6;}
+    }
+
+    .note{
+      border-left:4px solid #111;
+      padding:10px 14px;
+      background:var(--soft);
+      border-radius:10px;
+      margin:14px 0;
+    }
+
+    .checklist{
+      background:var(--soft);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      margin:18px 0;
+    }
+
+    .small{font-size:14px;color:var(--muted);}
+    hr{border:none;border-top:1px solid var(--border); margin:28px 0;}
+
+    footer{border-top:1px solid var(--border); background:#fff;}
+    .btn-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid #111;
+      text-decoration:none;
+      color:#111;
+      font-weight:900;
+      background:#fff;
+    }
+    .btn:hover{opacity:.88}
+    .btn.secondary{border-color:var(--border); font-weight:800;}
+
+    .faq details{border:1px solid var(--border); border-radius:12px; padding:12px 14px; background:#fff; margin:10px 0;}
+    .faq summary{font-weight:900; cursor:pointer;}
+    code{background:#f2f2f2; padding:2px 6px; border-radius:8px;}
+
+    /* Share bar */
+    .sharebar{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+      margin:18px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+  </style>
+
+  <!-- Article Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Mare Motel Build Story: Wash Station, Tack Room, Hay Barn, Shade & Free-Flow Layout",
+    "description":"A detailed behind-the-scenes look at a premium mare motel build: custom welded wash station, dry-protected tack room, hay barn, a huge shade with 3 corrals, concrete subcontracting, and the sequencing decisions that made it work.",
+    "author":{"@type":"Organization","name":"Stallion Steelworks"},
+    "publisher":{"@type":"Organization","name":"Stallion Steelworks"},
+    "image":["https://stallionsteelworks.com/pics/MareMotel.png"],
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://stallionsteelworks.com/blog/mare-motel-build-story.html"}
+  }
+  </script>
+
+  <script>
+    // Share helpers (no dependencies)
+    function shareToFacebook(){
+      const url = encodeURIComponent(window.location.href);
+      window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "noopener,noreferrer");
+    }
+    async function copyLink(){
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        const el = document.getElementById("copyStatus");
+        if(el){ el.textContent = "Link copied ✅"; setTimeout(()=>el.textContent="", 2000); }
+      }catch(e){
+        alert("Copy failed. You can manually copy the URL from your browser.");
+      }
+    }
+  </script>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="crumbs"><a href="./">← Back to Blog</a></div>
+
+    <h1>The Mare Motel Build: A Wash Station, Tack Room, Hay Barn, Massive Shade + A Layout Built to Actually Work</h1>
+    <div class="meta">Updated: 2025-12-20 • Read time: ~12–16 minutes • Category: Mare Motel / Steel Barns / Custom Fabrication</div>
+
+    <div class="hero-card" aria-label="Mare motel project photo">
+      <img src="../pics/MareMotel.png" alt="Mare motel build by Stallion Steelworks featuring wash station, tack room, hay barn, shade and corrals" />
+      <div class="small">
+        A facility isn’t “finished” when it looks good. It’s finished when it <em>flows</em>—cleaning is easy, horses are safer, and your daily routine feels simple.
+      </div>
+    </div>
+
+    <div class="toc" aria-label="Table of contents">
+      <strong>Jump to:</strong>
+      <ul>
+        <li><a href="#why-this-build">Why this mare motel build mattered (and why it was expensive)</a></li>
+        <li><a href="#layout">The layout: wash station + tack room + hay barn + shade with 3 corrals</a></li>
+        <li><a href="#wash-station">The custom welded wash station (built low on purpose)</a></li>
+        <li><a href="#tack-room">The tack room: designed to stay dry, even next to a wash bay</a></li>
+        <li><a href="#hay-barn">The hay barn: storage, access, and day-to-day efficiency</a></li>
+        <li><a href="#concrete">Concrete work: why we subcontracted it and how sequencing mattered</a></li>
+        <li><a href="#details">Details people don’t see: clearance, drainage, and “future-proofing”</a></li>
+        <li><a href="#collage">Project collage (quick visual recap)</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="small">Tip: If you want the “build lessons,” jump to <a href="#details">the details section</a>.</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="sharebar" aria-label="Share this post">
+      <div>
+        <strong>Enjoyed this story?</strong>
+        <div class="small">Share it with someone who’s planning a mare motel, barn, or wash bay.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" type="button" onclick="shareToFacebook()">Share to Facebook</button>
+        <button class="btn secondary" type="button" onclick="copyLink()">Copy Link</button>
+        <span id="copyStatus" class="small"></span>
+      </div>
+    </div>
+
+    <p>
+      Some projects are “build it and move on.” This one wasn’t.
+      This mare motel was a <strong>premium, high-investment facility</strong>—the kind where every choice either saves
+      years of headaches or creates them.
+    </p>
+
+    <p>
+      The goal wasn’t just a nice-looking structure. The goal was a facility that feels effortless in real life:
+      <strong>easy to clean</strong>, <strong>safe to move horses through</strong>, <strong>dry where it must stay dry</strong>,
+      and <strong>built tough enough</strong> to handle daily use, weather, and time.
+    </p>
+
+    <div class="callout">
+      <strong>Want a mare motel that’s designed, not guessed?</strong>
+      If you want help planning a build that fits your property, workflow, and budget, we can walk through layout options
+      and recommend a practical design that holds up over time.
+      <br />
+      <a href="../contact.html">Request a Mare Motel Quote →</a>
+    </div>
+
+    <hr />
+
+    <h2 id="why-this-build">Why this mare motel build mattered (and why it was expensive)</h2>
+    <p>
+      “Expensive” isn’t about fancy finishes—it’s about doing the hard parts the right way:
+      correct layout, correct sequencing, and the kind of fabrication that doesn’t wobble, warp, or become a maintenance problem.
+      This project had multiple zones that had to work together like one system:
+      the <strong>wash station</strong>, the <strong>tack room</strong>, the <strong>hay barn</strong>, and a
+      <strong>very large shade</strong> that included <strong>three horse corrals</strong> opposite the wash/tack/hay side.
+    </p>
+
+    <div class="note">
+      <strong>The real cost is in the invisible decisions:</strong> spacing that allows a vehicle to pass through,
+      keeping water out of tack storage, sequencing steel and concrete correctly, and building it so horses can’t turn a “feature”
+      into a hazard.
+    </div>
+
+    <h2 id="layout">The layout: wash station + tack room + hay barn + shade with 3 corrals</h2>
+    <p>
+      We built the mare motel to function like a clean, efficient loop—<strong>not a tight maze</strong>.
+      On one side: a <strong>triple wash station</strong>, the <strong>tack room</strong>, and the <strong>hay barn</strong>.
+      Opposite: a <strong>massive shade structure</strong> with <strong>three horse corrals</strong>.
+    </p>
+
+    <p>
+      The spacing was intentional. This wasn’t “just enough room.”
+      It was designed so you could <strong>drive a car between the corrals and the wash/tack/hay area</strong>.
+      That one detail changes everything: easier deliveries, easier cleaning, easier access when you’re tired,
+      and less stress when you’re moving horses, equipment, or feed.
+    </p>
+
+    <div class="grid">
+      <section class="card half">
+        <h3>What the layout solved</h3>
+        <ul>
+          <li><strong>Traffic flow:</strong> no choke points where horses get nervous.</li>
+          <li><strong>Work flow:</strong> tack and supplies are close, but protected.</li>
+          <li><strong>Access:</strong> vehicle clearance for hauling, maintenance, and daily chores.</li>
+          <li><strong>Comfort:</strong> shade coverage where horses spend the most time.</li>
+        </ul>
+      </section>
+
+      <section class="card half">
+        <h3>What we avoided on purpose</h3>
+        <ul>
+          <li><strong>Dead-end corners:</strong> places horses feel trapped.</li>
+          <li><strong>Wet tack storage:</strong> water + tack is a slow disaster.</li>
+          <li><strong>“Too tight” spacing:</strong> looks fine on paper, fails in real life.</li>
+          <li><strong>Afterthought concrete:</strong> drainage problems that never go away.</li>
+        </ul>
+      </section>
+    </div>
+
+    <hr />
+
+    <h2 id="wash-station">The custom welded wash station (built low on purpose)</h2>
+    <p>
+      The wash station was custom welded to be <strong>strong</strong>, <strong>cleanable</strong>, and <strong>safe</strong>.
+      And here’s the fun fact that most people wouldn’t expect:
+      we set that wash station <strong>directly into the dirt</strong> <em>before</em> the concrete slab was poured.
+    </p>
+
+    <p>
+      That sequencing matters. It locks the wash station into the final slab height so the finished result feels
+      intentional—not “added later.” It’s one of those behind-the-scenes moves that makes everything line up cleanly
+      when the project is done.
+    </p>
+
+    <div class="note">
+      <strong>Fun fact (and a safety detail):</strong> the wash station was designed to be <em>too low for a horse to duck underneath</em>.
+      That’s not aesthetics—that’s hazard prevention.
+    </div>
+
+    <h2 id="tack-room">The tack room: designed to stay dry, even next to a wash bay</h2>
+    <p>
+      If you’ve ever had wet tack, you already know: it’s not just inconvenient—it’s expensive.
+      Mold, stiffness, ruined gear, and that constant battle of “why is everything damp?”
+    </p>
+
+    <p>
+      The tack room in this mare motel was designed specifically so the wash station wouldn’t spray water into it.
+      That meant <strong>smart placement</strong>, <strong>practical separation</strong>, and a build approach that respects how
+      water behaves in the real world—not how it behaves in a drawing.
+    </p>
+
+    <ul>
+      <li><strong>Goal:</strong> keep tack storage dry, clean, and predictable.</li>
+      <li><strong>Result:</strong> wash where you need it—without sacrificing your gear.</li>
+    </ul>
+
+    <h2 id="hay-barn">The hay barn: storage, access, and day-to-day efficiency</h2>
+    <p>
+      The hay barn was built for what owners actually do: unload, stack, access quickly, and keep things protected.
+      In a facility like this, hay storage is part of the daily rhythm—so it needs to be placed where it’s easy to reach
+      without turning chores into a chore.
+    </p>
+
+    <p>
+      Having the hay barn integrated with the rest of the mare motel means the facility works as one system:
+      you’re not dragging supplies across the property or fighting tight turns with equipment.
+    </p>
+
+    <hr />
+
+    <h2 id="concrete">Concrete work: why we subcontracted it and how sequencing mattered</h2>
+    <p>
+      This project required concrete done correctly—grade, forms, finish, and the kind of execution that holds up.
+      For that reason, we <strong>subcontracted the concrete to a concrete company</strong>.
+    </p>
+
+    <p>
+      The win for the customer is simple: the steel and fabrication are handled by us, and the slab work is handled by
+      specialists who do it every day—so the final product feels tight, clean, and built to last.
+    </p>
+
+    <div class="checklist">
+      <strong>Sequencing lesson from this build:</strong>
+      <ul>
+        <li>Place the custom wash station in position <strong>before</strong> pouring the slab.</li>
+        <li>Coordinate concrete elevations so finished height and drainage work together.</li>
+        <li>Protect the tack room by design (not by hoping people “spray carefully”).</li>
+        <li>Keep vehicle clearance in mind from the start—retrofits are expensive.</li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h2 id="details">Details people don’t see: clearance, drainage, and “future-proofing”</h2>
+    <p>
+      The best compliment you can get on a build like this is:
+      <em>“It just works.”</em>
+      And “it just works” usually comes from details most people overlook.
+    </p>
+
+    <h3>1) Vehicle clearance changes your whole life</h3>
+    <p>
+      We built this mare motel so you can drive a car between the corrals and the wash/tack/hay area.
+      That’s the difference between easy maintenance and constant friction.
+      It’s how you keep the facility feeling open, usable, and calm.
+    </p>
+
+    <h3>2) Water goes where you tell it to go (or it goes where it wants)</h3>
+    <p>
+      Wash stations, concrete slabs, and storage areas only stay “nice” if water management is designed in.
+      The tack room staying dry wasn’t luck—it was planning.
+    </p>
+
+    <h3>3) Horse safety is often “boring” on purpose</h3>
+    <p>
+      The wash station being too low for a horse to duck underneath? That’s a perfect example.
+      It’s not glamorous, but it’s the kind of decision that prevents injuries and panic.
+    </p>
+
+    <div class="note">
+      <strong>If you’re planning a mare motel:</strong> build for your worst day—hot weather, rushed chores, tired bodies, and real horse behavior.
+      That’s how a facility becomes something you’re proud of for years, not something you constantly tweak and regret.
+    </div>
+
+    <hr />
+
+    <h2 id="collage">Project collage (quick visual recap)</h2>
+    <p>
+      Here’s a quick visual recap of the build. (If you don’t already have the collage saved in your <code>/pics</code> folder,
+      upload it and keep this filename.)
+    </p>
+
+    <!-- Update this file name to the exact one you saved in /pics -->
+    <div class="card">
+      <h3>Build collage</h3>
+      <p class="small">Recommended path: <code>../pics/MareMotel.png</code></p>
+      <img
+        src="../pics/MareMotel.png"
+        alt="Collage of mare motel build photos showing wash station, tack room, and hay barn"
+        style="width:100%;height:auto;border-radius:14px;border:1px solid var(--border);display:block;"
+        loading="lazy"
+      />
+      <div class="btn-row" style="margin-top:12px;">
+        <a class="btn" href="../contact.html">Build Something Like This →</a>
+        <a class="btn secondary" href="./">Back to Blog</a>
+      </div>
+    </div>
+
+    <hr />
+
+    <h2 id="faq">FAQ</h2>
+    <section class="faq">
+      <details>
+        <summary>Why design the tack room to stay dry next to a wash station?</summary>
+        <p>
+          Because water ruins tack over time—mold, stiffness, corrosion, and constant maintenance. A tack room should be a
+          clean, dry “control center,” not a splash zone.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why subcontract the concrete?</summary>
+        <p>
+          Concrete is its own trade. On a high-end, expensive build, getting the slab, finish, and elevations right is non-negotiable.
+          Subcontracting to a concrete company helps ensure the foundation matches the quality of the steel work.
+        </p>
+      </details>
+
+      <details>
+        <summary>What’s the benefit of leaving enough space to drive through?</summary>
+        <p>
+          It improves everything: deliveries, cleaning, vet/farrier access, equipment movement, and day-to-day chores.
+          Tight layouts look fine on paper and feel bad forever.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why make the wash station too low for a horse to duck under?</summary>
+        <p>
+          Safety. Horses explore and squeeze into places they shouldn’t—especially when stressed or curious.
+          That “too low” design prevents a dangerous scenario before it can happen.
+        </p>
+      </details>
+    </section>
+
+    <div class="callout">
+      <strong>Want a mare motel that people talk about?</strong>
+      We can design a layout that matches your property, protects your tack, keeps cleaning simple, and looks incredible.
+      <br />
+      <a href="../contact.html">Contact Stallion Steelworks →</a>
+    </div>
+
+    <p class="small">
+      Disclaimer: This post is educational and describes one specific project approach. Always follow local code requirements,
+      site conditions, and safety best practices for equine facilities.
+    </p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="small">
+      © Stallion Steelworks •
+      <a href="../services/maremotel.html">Mare Motel</a> •
+      <a href="../services/steel-barns.html">Steel Barns</a> •
+      <a href="../services/shade-structures.html">Shade Structures</a> •
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
