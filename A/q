@@ -1,0 +1,17 @@
+{
+    "Location": "https://cloudfront.amazonaws.com/2020-05-31/distribution/ENWN982XAMBRM/invalidation/ICNKDH9Y5P6TY6ZRXXX8LPFQMS",
+    "Invalidation": {
+        "Id": "ICNKDH9Y5P6TY6ZRXXX8LPFQMS",
+        "Status": "InProgress",
+        "CreateTime": "2025-12-21T04:54:25.789000+00:00",
+        "InvalidationBatch": {
+            "Paths": {
+                "Quantity": 1,
+                "Items": [
+                    "/*"
+                ]
+            },
+            "CallerReference": "cli-1766292868-786513"
+        }
+    }
+}

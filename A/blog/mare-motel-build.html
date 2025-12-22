@@ -6,14 +6,16 @@
 
   <title>Mare Motel Build Story: Wash Station, Tack Room, Hay Barn, Shade & Free-Flow Layout | Stallion Steelworks</title>
   <meta name="description" content="A deep-dive story of an expensive, high-end mare motel build: custom welded wash station, tack room designed to stay dry, hay barn, huge shade with 3 corrals, and a layout wide enough to drive a vehicle through—plus the concrete subcontract and build sequence." />
-  <link rel="canonical" href="https://stallionsteelworks.com/blog/mare-motel-build-story.html" />
+  <link rel="canonical" href="https://stallionsteelworks.com/blog/mare-motel-build.html" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Mare Motel Build Story: Wash Station, Tack Room, Hay Barn, Shade & Free-Flow Layout" />
   <meta property="og:description" content="Behind the scenes of a premium mare motel build—engineering, sequencing, and the details that make it safer, cleaner, and easier to live with." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://stallionsteelworks.com/blog/mare-motel-build-story.html" />
-  <meta property="og:image" content="https://stallionsteelworks.com/pics/MareMotel.png" />
+ 
+  
+  <meta property="og:url" content="https://stallionsteelworks.com/blog/mare-motel-build.html">
+  <meta property="og:image" content="https://stallionsteelworks.com/pics/MareMotel.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -197,26 +199,28 @@
     "author":{"@type":"Organization","name":"Stallion Steelworks"},
     "publisher":{"@type":"Organization","name":"Stallion Steelworks"},
     "image":["https://stallionsteelworks.com/pics/MareMotel.png"],
-    "mainEntityOfPage":{"@type":"WebPage","@id":"https://stallionsteelworks.com/blog/mare-motel-build-story.html"}
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://stallionsteelworks.com/blog/mare-motel-build.html"}
   }
   </script>
 
   <script>
-    // Share helpers (no dependencies)
-    function shareToFacebook(){
-      const url = encodeURIComponent(window.location.href);
-      window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "noopener,noreferrer");
-    }
-    async function copyLink(){
-      try{
-        await navigator.clipboard.writeText(window.location.href);
-        const el = document.getElementById("copyStatus");
-        if(el){ el.textContent = "Link copied ✅"; setTimeout(()=>el.textContent="", 2000); }
-      }catch(e){
-        alert("Copy failed. You can manually copy the URL from your browser.");
-      }
-    }
-  </script>
+  (function () {
+    const btn = document.getElementById("fb-share");
+    if (!btn) return;
+
+    // Always prefer canonical URL (best for SEO + sharing)
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    const shareUrl = canonicalEl
+      ? canonicalEl.href
+      : window.location.href;
+
+    // Build Facebook share URL correctly
+    btn.href =
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+      encodeURIComponent(shareUrl);
+      console.log(shareUrl);
+  })();
+</script>
 </head>
 
 <body>
@@ -255,12 +259,13 @@
 <main>
   <div class="wrap">
 
-   
-    <a class="btn"
-   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstallionsteelworks.com%2Fblog%2Fmare-motel-build.html"
-   target="_blank"
-   rel="noopener">
-  Share to Facebook →
+   <a
+  class="btn"
+  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstallionsteelworks.com%2Fblog%2Fmare-motel-build.html"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Share to Facebook
 </a>
 
 
