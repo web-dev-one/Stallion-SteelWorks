@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- kept all original head meta; only adjusted viewport for mobile-fit -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Stallion Steelworks - Premium Steel Structures for Equestrian Estates</title>
+  <meta name="description" content="Stallion Steelworks crafts premium steel structures for luxury horse estates - from architecturally precise mare motels to refined shade solutions and custom barns.">
+  <meta name="keywords" content="steel horse barns, mare motels, equestrian shade structures, luxury horse facilities, custom steel construction, Stallion Steelworks">
+  <meta name="author" content="Stallion Steelworks">
+  <link rel="icon" type="image/x-icon" href="./pics/favicon.ico">
+  <meta property="og:title" content="Stallion Steelworks | Premium Steel Structures for Equestrian Estates">
+  <meta property="og:description" content="Specializing in steel structures for luxury horse estates - built for strength, crafted for distinction.">
+  <meta property="og:image" content="./pics/Stallions.png">
+  <meta property="og:url" content="https://stallionsteelworks.com">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="./css/styles.css">
+  <meta name="google-site-verification" content="6j0q3flOZ3HhRaz9Q-jzpbYQZMPyVfvs2pHz1aMoHlI" />
+  <style>
+    /* =========
+       Mobile-first tokens & resets
+       ========= */
+    :root {
+      --steel-gold: #f4b942;
+      --rust-red: #c1440e;
+      --dark-steel: #1e1e1e;
+      --black-steel: #0c0c0c;
+      --steel-gray: #d0d0d0;
+
+      /* Neon / conversion-focused palette */
+      --neon-primary: #ff5e00;
+      --neon-secondary: #00ffc8;
+      --neon-accent: #ff00aa;
+
+      --neon-glow-primary: 0 0 10px rgba(255, 94, 0, 0.7),
+                          0 0 20px rgba(255, 94, 0, 0.5),
+                          0 0 30px rgba(255, 94, 0, 0.3);
+
+      --neon-glow-secondary: 0 0 10px rgba(0, 255, 200, 0.7),
+                            0 0 20px rgba(0, 255, 200, 0.5);
+
+      --neon-glow-accent: 0 0 10px rgba(255, 0, 170, 0.7),
+                         0 0 20px rgba(255, 0, 170, 0.5);
+
+      --container: 1200px;
+      --pad-x: clamp(16px, 4vw, 24px);
+      --header-h: 64px;
+      --ring: 0 0 0 3px color-mix(in oklab, var(--rust-red) 40%, transparent);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, var(--dark-steel) 0%, var(--black-steel) 100%);
+      color: var(--steel-gold);
+      font-family: ui-serif, Georgia, serif;
+      line-height: 1.6;
+      min-height: 100svh; /* safer on mobile */
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 8px;
+    }
+
+    /* =========
+       ARIZONA ROC BANNER (TOP)
+       ========= */
+    .roc-banner {
+      background: linear-gradient(90deg, #0b1a2e 0%, #1e3a5f 50%, #0b1a2e 100%);
+      color: white;
+      padding: 10px 0;
+      border-bottom: 3px solid var(--neon-primary);
+      box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
+      position: relative;
+      z-index: 1001;
+    }
+    .roc-container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 max(var(--pad-x), env(safe-area-inset-left));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .roc-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .roc-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 94, 0, 0.15);
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: 2px solid var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+      font-weight: 700;
+    }
+    .roc-badge .label {
+      font-size: 1rem;
+      margin-right: 8px;
+      color: white;
+    }
+    .roc-badge .number {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--neon-primary);
+      text-shadow: 0 0 15px rgba(255, 94, 0, 0.7);
+    }
+    .roc-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .roc-meta .name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--steel-gold);
+    }
+    .roc-meta .detail {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+    .roc-right {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+    }
+    .roc-right strong {
+      color: var(--neon-primary);
+      text-shadow: 0 0 8px rgba(255, 94, 0, 0.5);
+    }
+    @media (max-width: 768px) {
+      .roc-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .roc-left {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .roc-badge .number {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Adjust header to sit below ROC banner */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(12, 12, 12, 0.95);
+      z-index: 1000;
+      padding: 10px 0; /* tighter on mobile */
+      border-bottom: 1px solid var(--rust-red);
+      backdrop-filter: saturate(1.1) blur(6px);
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      box-shadow: 0 0 15px rgba(255, 94, 0, 0.25);
+      margin-top: 0;
+    }
+
+    /* Add padding to body to account for ROC banner + header */
+    body {
+      padding-top: 110px; /* ROC banner (~50px) + header (~60px) */
+    }
+    @media (max-width: 768px) {
+      body {
+        padding-top: 140px; /* taller on mobile due to wrap */
+      }
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0;
+      gap: 12px;
+      min-height: var(--header-h);
+    }
+
+    .logo {
+      width: clamp(140px, 28vw, 180px);
+      filter: drop-shadow(0 0 5px var(--steel-gold))
+              drop-shadow(0 0 10px var(--neon-primary));
+      transition: filter 0.4s ease, transform 0.3s ease;
+    }
+
+    .logo:hover {
+      filter: drop-shadow(0 0 8px var(--steel-gold))
+              drop-shadow(0 0 18px var(--neon-primary))
+              drop-shadow(0 0 26px var(--neon-secondary));
+      transform: translateY(-2px);
+    }
+
+    /* Nav */
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 8px;
+      flex-wrap: wrap;          /* allow wrapping on small screens */
+      justify-content: flex-end;
+    }
+
+    nav li { margin: 0; }       /* remove fixed gap so wrap looks clean */
+
+    nav a {
+      color: var(--steel-gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+      padding: 6px 8px;          /* bigger tap target */
+      border: 1px solid rgba(244,185,66,0.18);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--neon-primary);
+      border-color: var(--neon-primary);
+      box-shadow: 0 0 8px rgba(255, 94, 0, 0.6);
+    }
+
+    /* Make "Services" feel like the main entry / current section */
+    nav a[href="#services"] {
+      position: relative;
+      color: var(--neon-primary);
+      border-color: rgba(255, 94, 0, 0.4);
+      box-shadow: 0 0 5px rgba(255, 94, 0, 0.5);
+      animation: pulse 2.4s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 5px rgba(255, 94, 0, 0.5),
+                    0 0 10px rgba(0, 255, 200, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(255, 94, 0, 0.8),
+                    0 0 20px rgba(0, 255, 200, 0.6);
+      }
+      100% {
+        box-shadow: 0 0 5px rgba(255, 94, 0, 0.5),
+                    0 0 10px rgba(0, 255, 200, 0.3);
+      }
+    }
+
+    /* =========
+       Hero
+       ========= */
+    .hero {
+      min-height: calc(100svh - var(--header-h) - 50px);  /* adjust for ROC banner */
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 40px;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 94, 0, 0.14) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 200, 0.12) 0%, transparent 40%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, var(--neon-primary) 0%, transparent 70%);
+      opacity: 0.12;
+      filter: blur(18px);
+      animation: float 18s infinite ease-in-out;
+      top: 18%;
+      left: 8%;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-30px) translateX(20px); }
+      50% { transform: translateY(0) translateX(40px); }
+      75% { transform: translateY(30px) translateX(20px); }
+    }
+
+    .hero-content {
+      max-width: 820px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: clamp(180px, 46vw, 320px);
+      margin: 0 auto clamp(14px, 3vw, 26px);
+      filter: drop-shadow(0 0 10px var(--steel-gold))
+              drop-shadow(0 0 16px rgba(255, 94, 0, 0.7));
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5.5vw, 3.5rem);
+      margin: 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--steel-gold);
+      text-shadow: 2px 2px #000;
+      letter-spacing: 0.06em;
+      line-height: 1.12;
+      padding: 0 10px;
+    }
+
+    .neon-highlight {
+      color: var(--neon-primary);
+      text-shadow: var(--neon-glow-primary);
+      display: inline-block;
+      transition: text-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    h1:hover .neon-highlight {
+      text-shadow: 0 0 15px rgba(255, 94, 0, 0.9),
+                   0 0 30px rgba(255, 94, 0, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      background-color: var(--rust-red);
+      margin: 18px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+
+    /* Shimmer line */
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 3.2vw, 1.3rem);
+      color: var(--steel-gray);
+      max-width: 700px;
+      margin: 10px auto 22px;
+      padding: 0 var(--pad-x);
+    }
+
+    /* =========
+       CTA Buttons (with shimmer)
+       ========= */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 10px;
+      background: linear-gradient(45deg, var(--rust-red), #a3380b);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-size: 1.02rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 10px rgba(193, 68, 14, 0.55);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 16px rgba(193, 68, 14, 0.5),
+                  0 0 15px var(--neon-accent);
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--neon-primary);
+      color: var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(255, 94, 0, 0.08);
+      box-shadow: 0 0 20px rgba(255, 94, 0, 0.9);
+    }
+
+    .cta-button.outline-light {
+      background: rgba(30, 30, 30, 0.8);
+      border: 1px solid rgba(244, 185, 66, 0.6);
+      color: var(--steel-gold);
+      box-shadow: 0 0 10px rgba(244, 185, 66, 0.25);
+    }
+
+    .cta-button.outline-light:hover {
+      background: rgba(244, 185, 66, 0.12);
+      box-shadow: 0 0 20px rgba(244, 185, 66, 0.6);
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      background: rgba(30, 30, 30, 0.78);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 94, 0, 0.3);
+      box-shadow: 0 0 6px rgba(255, 94, 0, 0.3);
+      transition: all 0.3s ease;
+      font-size: 0.92rem;
+      color: var(--steel-gray);
+    }
+
+    .badge i {
+      margin-right: 8px;
+      color: var(--neon-primary);
+      filter: drop-shadow(0 0 4px rgba(255, 94, 0, 0.7));
+    }
+
+    .badge:hover {
+      border-color: var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+      transform: translateY(-3px);
+      color: var(--steel-gold);
+    }
+
+    /* =========
+       Sections
+       ========= */
+    section {
+      padding: clamp(48px, 8vw, 80px) 0;
+      border-bottom: 1px solid rgba(193, 68, 14, 0.2);
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 4.6vw, 2.5rem);
+      color: var(--steel-gold);
+      text-align: center;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0 var(--pad-x);
+      position: relative;
+    }
+
+    h2 .neon-highlight {
+      position: relative;
+    }
+
+    h2 .neon-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    h3 {
+      font-size: clamp(1.1rem, 3.6vw, 1.8rem);
+      color: var(--steel-gold);
+      margin: 28px 0 10px;
+      padding: 0 var(--pad-x);
+    }
+
+    p {
+      font-size: clamp(0.98rem, 2.9vw, 1.1rem);
+      color: var(--steel-gray);
+      margin: 0 0 16px;
+      padding: 0 var(--pad-x);
+    }
+
+    /* =========
+       Services Grid
+       ========= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* mobile default */
+      gap: 16px;
+      margin-top: 24px;
+      padding: 0 var(--pad-x);
+    }
+    @media (min-width: 600px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    }
+    @media (min-width: 992px) {
+      .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+    }
+
+    .service-card {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
+      border: 1px solid rgba(244, 185, 66, 0.2);
+      border-radius: 12px;
+      padding: clamp(16px, 3.6vw, 30px);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--neon-primary);
+      opacity: 0.85;
+      box-shadow: var(--neon-glow-primary);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: var(--neon-glow-primary);
+      border-color: var(--neon-primary);
+    }
+
+    .service-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .service-card h3 { margin-top: 0; }
+    .service-card a {
+      color: var(--steel-gold);
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      position: relative;
+    }
+    .service-card a::after {
+      content: '›';
+      margin-left: 4px;
+      transition: transform 0.2s ease;
+    }
+    .service-card a:hover {
+      text-decoration: underline;
+      color: var(--neon-primary);
+    }
+    .service-card a:hover::after {
+      transform: translateX(3px);
+    }
+
+    /* =========
+       Gallery
+       ========= */
+    #gallery.container { background-color: transparent; }
+    #gallery {
+      padding-top: clamp(48px, 8vw, 80px);
+    }
+    #gallery .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+      padding: 0 var(--pad-x);
+    }
+    @media (min-width: 560px) {
+      #gallery .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    }
+    @media (min-width: 960px) {
+      #gallery .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      aspect-ratio: 4 / 3; /* stabilize layout on mobile */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item:hover {
+      box-shadow: var(--neon-glow-primary);
+      transform: translateY(-4px);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* =========
+       Testimonials
+       ========= */
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 0 var(--pad-x);
+    }
+    @media (min-width: 820px) {
+      .testimonials { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    }
+
+    .testimonial {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(12, 12, 12, 0.9));
+      border-left: 4px solid var(--neon-primary);
+      padding: clamp(16px, 3.6vw, 25px);
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 94, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .testimonial:before {
+      content: '"';
+      font-size: 4.2rem;
+      color: rgba(255, 94, 0, 0.08);
+      position: absolute;
+      top: 4px;
+      left: 10px;
+      line-height: 1;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-4px);
+      border-color: var(--neon-secondary);
+      box-shadow: var(--neon-glow-secondary);
+    }
+
+    .testimonial p { position: relative; z-index: 1; font-style: italic; }
+    .testimonial-author { font-weight: bold; color: var(--steel-gold); margin-top: 12px; }
+
+    /* =========
+       Contact / Call-to-Action
+       ========= */
+    .contact-form {
+      max-width: 640px;
+      margin: 0 auto;
+      background-color: rgba(30, 30, 30, 0.7);
+      padding: clamp(18px, 4.8vw, 40px);
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(244, 185, 66, 0.3);
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--steel-gold);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      background-color: rgba(12, 12, 12, 0.8);
+      border: 1px solid rgba(244, 185, 66, 0.3);
+      color: var(--steel-gray);
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: var(--rust-red);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(193, 68, 14, 0.4);
+    }
+
+    button:hover {
+      background-color: #a3380b;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(193, 68, 14, 0.6);
+    }
+
+    .contact-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      background: var(--rust-red);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-size: 1rem;
+    }
+
+    .contact-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    .contact-button:hover {
+      background: #a3380b;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(193, 68, 14, 0.4),
+                  0 0 15px var(--neon-accent);
+    }
+
+    .contact-button:hover::before {
+      left: 100%;
+    }
+
+    .contact-button.phone {
+      background: rgba(30, 30, 30, 0.85);
+      border: 1px solid var(--neon-primary);
+      color: var(--neon-primary);
+      box-shadow: var(--neon-glow-primary);
+    }
+
+    .contact-button.phone:hover {
+      background: rgba(255, 94, 0, 0.12);
+      box-shadow: 0 0 22px rgba(255, 94, 0, 0.9);
+    }
+
+    .urgency-note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: rgba(193, 68, 14, 0.08);
+      border-radius: 10px;
+      border-left: 4px solid var(--rust-red);
+      font-size: 0.92rem;
+      position: relative;
+      overflow: hidden;
+      color: var(--steel-gray);
+    }
+
+    .urgency-note::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.08), transparent);
+      animation: shine 3.4s infinite;
+    }
+
+    /* =========
+       Footer
+       ========= */
+    footer {
+      background-color: var(--black-steel);
+      padding: clamp(28px, 6vw, 40px) 0;
+      text-align: center;
+      padding-left: max(var(--pad-x), env(safe-area-inset-left));
+      padding-right: max(var(--pad-x), env(safe-area-inset-right));
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: var(--container);
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    @media (min-width: 780px) {
+      .footer-content { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .footer-section {
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      color: var(--steel-gold);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: clamp(1rem, 2.6vw, 1.3rem);
+    }
+
+    .footer-section a {
+      color: var(--steel-gray);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--neon-primary);
+    }
+
+    .copyright {
+      margin-top: 24px;
+      color: var(--steel-gray);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* ROC badge in footer */
+    .roc-footer {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 94, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .roc-footer-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--steel-gray);
+      font-size: 0.9rem;
+    }
+    .roc-footer-item strong {
+      color: var(--neon-primary);
+      font-size: 1.1rem;
+      margin-right: 4px;
+    }
+
+    /* =========
+       Small responsive tweaks
+       ========= */
+    @media (max-width: 768px) {
+      .header-container { flex-direction: column; align-items: stretch; gap: 10px; }
+      nav ul { justify-content: center; }
+      .hero { padding-top: 20px; }
+      .service-card { padding: 18px; }
+      .hero-actions { gap: 10px; }
+      .contact-cta-buttons { flex-direction: column; align-items: stretch; }
+    }
+
+    @media (max-width: 480px) {
+      .cta-button {
+        padding: 12px 20px;
+        font-size: 0.96rem;
+      }
+      .hero-badges {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ARIZONA ROC COMPLIANCE BANNER - TOP OF PAGE with Neon Styling -->
+  <div class="roc-banner">
+    <div class="roc-container">
+      <div class="roc-left">
+        <div class="roc-badge">
+          <span class="label">AZ ROC</span>
+          <span class="number">#339863</span>
+        </div>
+        <div class="roc-meta">
+          <span class="name">Stallion SteelWorks LLC</span>
+          <span class="detail">Licensed • Bonded • Insured • Regulated by Arizona Registrar of Contractors</span>
+        </div>
+      </div>
+      <div class="roc-right">
+        <strong>Contractor's License</strong> • Est. 2005
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html"><img src="./pics/Stallions.png" alt="Stallion Steelworks Logo" class="logo" /></a>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <img
+        src="./pics/Stallions.png"
+        alt="Stallion Steelworks Logo"
+        class="hero-logo"
+        style="max-width:320px;width:100%;height:auto;display:block;filter:drop-shadow(0 0 10px #f4b942); margin-top: 20px !important;"
+      />
+      <h1>Horse Power to <span class="neon-highlight">Build</span></h1>
+      <div class="divider"></div>
+      <p>
+        Specializing in steel structures for luxury horse estates — from refined shade solutions to architecturally precise mare motels, barns, and corrals. Built for strength. Crafted for distinction.
+      </p>
+
+      <div class="hero-actions">
+        <a href="tel:+16029997756" class="cta-button">
+          📞 Call Now: (602) 999-7756
+        </a>
+        <a
+          href="mailto:stallionsteelworks@gmail.com?subject=Project%20Inquiry"
+          class="cta-button secondary"
+        >
+          ✉️ Email Your Project
+        </a>
+        <a href="#contact" class="cta-button outline-light">
+          📋 Get a Quote
+        </a>
+      </div>
+
+      <div class="hero-badges">
+        <div class="badge">
+          <i>✓</i><span>Bulletproof-looking shade & corrals</span>
+        </div>
+        <div class="badge">
+          <i>✓</i><span>Engineered for Arizona sun</span>
+        </div>
+        <div class="badge">
+          <i>✓</i><span>Luxury equestrian estates</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="container">
+    <h2>Our <span class="neon-highlight">Premium Services</span></h2>
+    <p>Stallion Steelworks delivers uncompromising quality in every structure we build. Our steel fabrication expertise combined with equestrian knowledge results in facilities that stand the test of time while elevating your property's aesthetic.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Luxury Mare Motels</h3>
+        <p>Architecturally designed steel mare motels that provide secure, comfortable housing for your valuable broodmares. Custom configurations available with premium finishes.</p>
+        <a href="services/maremotel.html">View Mare Motel Designs →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>Equestrian Shade Structures</h3>
+        <p>Engineered steel shade solutions that withstand extreme weather while providing optimal protection. Available in various sizes and custom configurations.</p>
+        <a href="services/shade-structures.html">Explore Shade Options →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>Steel Barns & Stables</h3>
+        <p>Custom-designed steel barns that combine functionality with striking architectural elements. From small run-in sheds to expansive stable complexes.</p>
+        <a href="services/steel-barns.html">See Barn Designs →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>Premium Pipe Corrals</h3>
+        <p>Heavy-duty steel corral systems built with schedule 40 pipe for maximum durability. Predator-proof designs with elegant finishes.</p>
+        <a href="services/pipe-corrals.html">View Corral Options →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>Riding Arenas</h3>
+        <p>Clear-span steel riding arenas designed for optimal airflow and light diffusion. Custom sizes and footing systems available.</p>
+        <a href="services/riding-arenas.html">Learn About Arenas →</a>
+      </div>
+
+      <div class="service-card">
+        <h3>Custom Steel Fabrication</h3>
+        <p>Bespoke steel elements including gates, stall fronts, and architectural details to elevate your equestrian facility.</p>
+        <a href="services/custom-fabrication.html">Discuss Your Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="container" style="background-color: rgba(12, 12, 12, 0.7);">
+    <h2>Our <span class="neon-highlight">Work</span></h2>
+    <p>View examples of our premium steel structures crafted for discerning equestrian clients.</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="./pics/Mare.jpg" alt="Luxury Mare Motel">
+      </div>
+      <div class="gallery-item">
+        <img src="./pics/10X10ShedInterior.jpg" alt="Steel Horse Barn">
+      </div>
+      <div class="gallery-item">
+        <img src="./pics/10FTX10FT-Shade-A1.jpg" alt="Equestrian Shade Structure">
+      </div>
+      <div class="gallery-item">
+        <img src="./pics/horse arena 3 pipe post.jpg" alt="Premium Pipe Corral">
+      </div>
+      <div class="gallery-item">
+        <img src="./pics/10x20 Shed.jpg" alt="Custom Steel Gates">
+      </div>
+      <div class="gallery-item">
+        <img src="./pics/40x48-Shade-H.jpg" alt="Riding Arena">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="container">
+    <h2>About <span class="neon-highlight">Stallion Steelworks</span></h2>
+    <p>Founded by master fabricators with a passion for equestrian sports, Stallion Steelworks brings together decades of metalworking expertise with an intimate understanding of high-end equine facilities.</p>
+
+    <h3>Our Philosophy</h3>
+    <p>We believe the structures housing your valuable equine partners should be as strong, elegant, and purposeful as the animals themselves. Every weld, every joint, every finish is executed with this principle in mind.</p>
+
+    <h3>Why Steel?</h3>
+    <p>Steel offers unparalleled strength-to-weight ratio, longevity, and design flexibility. Unlike wood, our steel structures won't rot, warp, or provide habitat for pests. They withstand extreme weather and maintain their structural integrity for decades.</p>
+
+    <h3>Our Process</h3>
+    <ol>
+      <li><strong>Consultation:</strong> We listen to understand your needs, preferences, and property characteristics.</li>
+      <li><strong>Design:</strong> Our team creates custom plans balancing functionality and aesthetics.</li>
+      <li><strong>Fabrication:</strong> Components are precision-fabricated in our climate-controlled workshop.</li>
+      <li><strong>Installation:</strong> Our expert crews install with minimal disruption to your property.</li>
+      <li><strong>Follow-up:</strong> We stand behind our work with comprehensive warranties.</li>
+    </ol>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="container" style="background-color: rgba(12, 12, 12, 0.7);">
+    <h2>Client <span class="neon-highlight">Testimonials</span></h2>
+    <p>Hear what our clients say about working with Stallion Steelworks.</p>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>Your shade looks bullet proof!</p>
+        <div class="testimonial-author">- Real Client in Cave Creek</div>
+      </div>
+
+      <div class="testimonial">
+        <p>I've had 4 mare motels before. Yours beats them all.</p>
+        <div class="testimonial-author">- Real Client in Scottsdale</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container">
+    <h2>Contact <span class="neon-highlight">Us</span></h2>
+    <p>Ready to discuss your project? Complete the form below or contact us directly.</p>
+
+    <div class="contact-form">
+      <h3>Phone: <a href="tel:+16029997756" class="btn" aria-label="Call Stallion SteelWorks at 602-999-7756" style="color: var(--steel-gold);">📞 (602) 999-7756</a></h3>
+      <h3>Email: stallionsteelworks@gmail.com</h3>
+    </div>
+
+    <div class="contact-cta-buttons">
+      <a href="tel:+16029997756" class="contact-button phone" aria-label="Call Stallion SteelWorks at 602-999-7756">
+        📞 Call Now: (602) 999-7756
+      </a>
+      <a href="mailto:stallionsteelworks@gmail.com?subject=Project%20Inquiry" class="contact-button">
+        ✉️ Email Your Project Details
+      </a>
+      <a href="./contact.html" class="contact-button">
+        📋 Open Full Contact Page
+      </a>
+    </div>
+
+    <div class="urgency-note">
+      <p><strong>Limited build slots:</strong> We only take on a select number of equestrian projects each month to keep quality bulletproof. Lock in your spot before the schedule fills.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <p>Or contact us directly:</p>
+      <p style="font-size: 1.3rem; color: var(--steel-gold); margin: 10px 0;">
+        <a href="tel:+16029997756" class="btn" aria-label="Call Stallion SteelWorks at 602-999-7756" style="color: var(--steel-gold);">📞 Call (602) 999-7756</a>
+      </p>
+      <p style="font-size: 1.3rem; color: var(--steel-gold); margin: 10px 0;">
+        Email: <a href="mailto:stallionsteelworks@gmail.com" style="color: var(--steel-gold);">stallionsteelworks@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About Us</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="./contact.html">Contact</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Services</h3>
+        <a href="./services/maremotel.html">Mare Motels</a>
+        <a href="./services/shade-structures.html">Shade Structures</a>
+        <a href="./services/steel-barns.html">Steel Barns</a>
+        <a href="./services/pipe-corrals.html">Pipe Corrals</a>
+        <!-- <a href="./services/riding-arena.html">Riding Arenas</a> -->
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Stallion Steelworks</p>
+        <p>Phoenix, AZ</p>
+        <a href="tel:+16029997756" class="btn" aria-label="Call Stallion SteelWorks at 602-999-7756">📞 Call (602) 999-7756</a>
+        <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- ROC Footer Compliance -->
+    <div class="roc-footer">
+      <div class="roc-footer-item">
+        <span>Arizona ROC License:</span>
+        <strong>#339863</strong>
+      </div>
+      <div class="roc-footer-item">
+        <span>Stallion SteelWorks LLC</span>
+      </div>
+      <div class="roc-footer-item">
+        <span>Licensed • Bonded • Insured</span>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Stallion Steelworks. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+/* Bottom-trigger redirect to the visual link map.
+   - Keyboard: Hold ArrowDown ~2s *while near bottom*.
+   - Touch: Reach bottom with a downward drag, then do a second downward drag within 3s. */
+(() => {
+  const DEST = "/links-map.html";         // << change if you put the map elsewhere
+  const HOLD_MS = 2000;
+  const BOTTOM_LEEWAY = 40;               // px
+  const MOVE_TOL = 16;
+
+  const docEl = document.documentElement, body = document.body;
+  const scrollTop = () => docEl.scrollTop || body.scrollTop || 0;
+  const scrollHeight = () => Math.max(docEl.scrollHeight, body.scrollHeight);
+  const clientHeight = () => window.innerHeight || docEl.clientHeight;
+  const atBottom = () => (scrollHeight() - (scrollTop() + clientHeight())) <= BOTTOM_LEEWAY
+                       || scrollHeight() <= clientHeight() + 1;
+
+  function go(){ window.location.href = DEST; }
+
+  // --- Keyboard hold (ArrowDown) while at bottom
+  let kTimer = null, holding = false;
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowDown' || holding) return;
+    if (!atBottom()) return;
+    holding = true;
+    clearTimeout(kTimer);
+    kTimer = setTimeout(go, HOLD_MS);
+  });
+  window.addEventListener('keyup', (e) => {
+    if (e.key !== 'ArrowDown') return;
+    holding = false;
+    clearTimeout(kTimer); kTimer = null;
+  });
+  window.addEventListener('scroll', () => {
+    if (!atBottom()) { clearTimeout(kTimer); kTimer = null; holding = false; }
+  }, {passive:true});
+
+  // --- Touch double-downward gesture at bottom
+  let touchActive = false, startY = 0, armedOnce = false, armTimeout = null, countedSwipe = false;
+
+  function armSecondSwipe() {
+    armedOnce = true;
+    clearTimeout(armTimeout);
+    armTimeout = setTimeout(() => { armedOnce = false; }, 3000); // 3s to do second downward
+  }
+
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    touchActive = true;
+    startY = e.touches[0].clientY;
+    countedSwipe = false;
+  }, {passive:true});
+
+  window.addEventListener('touchmove', (e) => {
+    if (!touchActive) return;
+    const y = e.touches[0].clientY;
+    const dy = y - startY;
+    if (!countedSwipe && dy > MOVE_TOL && atBottom()) {
+      countedSwipe = true;
+      if (!armedOnce) {
+        // First downward at bottom: arm
+        armSecondSwipe();
+      } else {
+        // Second downward at bottom: GO
+        clearTimeout(armTimeout);
+        go();
+      }
+    }
+  }, {passive:true});
+
+  window.addEventListener('touchend', () => {
+    touchActive = false;
+    countedSwipe = false;
+  }, {passive:true});
+})();
+  </script>
+</body>
+</html>
