@@ -82,90 +82,8 @@
     }
 
     /* =========
-       ARIZONA ROC BANNER (TOP)
+       Header
        ========= */
-    .roc-banner {
-      background: linear-gradient(90deg, #0b1a2e 0%, #1e3a5f 50%, #0b1a2e 100%);
-      color: white;
-      padding: 10px 0;
-      border-bottom: 3px solid var(--neon-primary);
-      box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
-      position: relative;
-      z-index: 1001;
-    }
-    .roc-container {
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 max(var(--pad-x), env(safe-area-inset-left));
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .roc-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .roc-badge {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(255, 94, 0, 0.15);
-      padding: 8px 20px;
-      border-radius: 40px;
-      border: 2px solid var(--neon-primary);
-      box-shadow: var(--neon-glow-primary);
-      font-weight: 700;
-    }
-    .roc-badge .label {
-      font-size: 1rem;
-      margin-right: 8px;
-      color: white;
-    }
-    .roc-badge .number {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--neon-primary);
-      text-shadow: 0 0 15px rgba(255, 94, 0, 0.7);
-    }
-    .roc-meta {
-      display: flex;
-      flex-direction: column;
-    }
-    .roc-meta .name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--steel-gold);
-    }
-    .roc-meta .detail {
-      color: rgba(255,255,255,0.8);
-      font-size: 0.9rem;
-    }
-    .roc-right {
-      color: rgba(255,255,255,0.9);
-      font-size: 0.95rem;
-    }
-    .roc-right strong {
-      color: var(--neon-primary);
-      text-shadow: 0 0 8px rgba(255, 94, 0, 0.5);
-    }
-    @media (max-width: 768px) {
-      .roc-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .roc-left {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .roc-badge .number {
-        font-size: 1.3rem;
-      }
-    }
-
-    /* Adjust header to sit below ROC banner */
     header {
       position: fixed;
       top: 0;
@@ -179,17 +97,6 @@
       padding-left: max(var(--pad-x), env(safe-area-inset-left));
       padding-right: max(var(--pad-x), env(safe-area-inset-right));
       box-shadow: 0 0 15px rgba(255, 94, 0, 0.25);
-      margin-top: 0;
-    }
-
-    /* Add padding to body to account for ROC banner + header */
-    body {
-      padding-top: 110px; /* ROC banner (~50px) + header (~60px) */
-    }
-    @media (max-width: 768px) {
-      body {
-        padding-top: 140px; /* taller on mobile due to wrap */
-      }
     }
 
     .header-container {
@@ -277,11 +184,11 @@
        Hero
        ========= */
     .hero {
-      min-height: calc(100svh - var(--header-h) - 50px);  /* adjust for ROC banner */
+      min-height: calc(100svh - var(--header-h));  /* avoid iOS URL bar jump */
       display: grid;
       place-items: center;
       text-align: center;
-      padding-top: 20px;
+      padding-top: calc(var(--header-h) + 20px);   /* ensure not under fixed header */
       padding-bottom: 40px;
       padding-left: max(var(--pad-x), env(safe-area-inset-left));
       padding-right: max(var(--pad-x), env(safe-area-inset-right));
@@ -923,36 +830,13 @@
       text-align: center;
     }
 
-    /* ROC badge in footer */
-    .roc-footer {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 94, 0, 0.3);
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .roc-footer-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--steel-gray);
-      font-size: 0.9rem;
-    }
-    .roc-footer-item strong {
-      color: var(--neon-primary);
-      font-size: 1.1rem;
-      margin-right: 4px;
-    }
-
     /* =========
        Small responsive tweaks
        ========= */
     @media (max-width: 768px) {
       .header-container { flex-direction: column; align-items: stretch; gap: 10px; }
       nav ul { justify-content: center; }
-      .hero { padding-top: 20px; }
+      .hero { padding-top: calc(var(--header-h) + 28px); }
       .service-card { padding: 18px; }
       .hero-actions { gap: 10px; }
       .contact-cta-buttons { flex-direction: column; align-items: stretch; }
@@ -971,25 +855,6 @@
   </style>
 </head>
 <body>
-  <!-- ARIZONA ROC COMPLIANCE BANNER - TOP OF PAGE with Neon Styling -->
-  <div class="roc-banner">
-    <div class="roc-container">
-      <div class="roc-left">
-        <div class="roc-badge">
-          <span class="label">AZ ROC</span>
-          <span class="number">#339863</span>
-        </div>
-        <div class="roc-meta">
-          <span class="name">Stallion SteelWorks LLC</span>
-          <span class="detail">Licensed • Bonded • Insured • Regulated by Arizona Registrar of Contractors</span>
-        </div>
-      </div>
-      <div class="roc-right">
-        <strong>Contractor's License</strong> • Est. 2005
-      </div>
-    </div>
-  </div>
-
   <!-- Header -->
   <header>
     <div class="header-container">
@@ -1013,7 +878,7 @@
         src="./pics/Stallions.png"
         alt="Stallion Steelworks Logo"
         class="hero-logo"
-        style="max-width:320px;width:100%;height:auto;display:block;filter:drop-shadow(0 0 10px #f4b942); margin-top: 20px !important;"
+        style="max-width:320px;width:100%;height:440px;display:block;filter:drop-shadow(0 0 10px #f4b942); margin-top: 65px !important; padding-top: 65px !important;"
       />
       <h1>Horse Power to <span class="neon-highlight">Build</span></h1>
       <div class="divider"></div>
@@ -1224,20 +1089,6 @@
         <p>Phoenix, AZ</p>
         <a href="tel:+16029997756" class="btn" aria-label="Call Stallion SteelWorks at 602-999-7756">📞 Call (602) 999-7756</a>
         <a href="mailto:stallionsteelworks@gmail.com">stallionsteelworks@gmail.com</a>
-      </div>
-    </div>
-
-    <!-- ROC Footer Compliance -->
-    <div class="roc-footer">
-      <div class="roc-footer-item">
-        <span>Arizona ROC License:</span>
-        <strong>#339863</strong>
-      </div>
-      <div class="roc-footer-item">
-        <span>Stallion SteelWorks LLC</span>
-      </div>
-      <div class="roc-footer-item">
-        <span>Licensed • Bonded • Insured</span>
       </div>
     </div>
 

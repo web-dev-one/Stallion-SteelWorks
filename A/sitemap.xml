@@ -6,7 +6,7 @@
   <!-- Core pages -->
   <url>
     <loc>https://stallionsteelworks.com/</loc>
-    <lastmod>2025-09-17</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,9 +15,28 @@
     </image:image>
   </url>
 
+  <!-- NEW: Premium Metal Barn House Guide (High Priority) -->
+  <url>
+    <loc>https://stallionsteelworks.com/how-to-build-metal-barn-house.html</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <!-- Featured images from the guide -->
+    <image:image>
+      <image:loc>https://stallionsteelworks.com/pics/RustRedBarn.jpg</image:loc>
+      <image:title>Rust-Red Metal Barn House Arizona - Stallion Steelworks</image:title>
+      <image:caption>Signature rust-red steel barn shell built by Stallion Steelworks in Phoenix, Arizona</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://stallionsteelworks.com/pics/RustRedBarn2.jpg</image:loc>
+      <image:title>Modern Rustic Metal Barn - Desert Estate Project</image:title>
+      <image:caption>Stunning rust-red corrugated steel barn with block wall integration in the Arizona desert</image:caption>
+    </image:image>
+  </url>
+
   <url>
     <loc>https://stallionsteelworks.com/contact.html</loc>
-    <lastmod>2025-09-17</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -38,6 +57,13 @@
 
   <!-- Services hub and detail pages -->
   <url>
+    <loc>https://stallionsteelworks.com/services/steel-barns.html</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.92</priority>
+  </url>
+
+  <url>
     <loc>https://stallionsteelworks.com/services/maremotel.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -46,13 +72,6 @@
 
   <url>
     <loc>https://stallionsteelworks.com/services/shade-structures.html</loc>
-    <lastmod>2025-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://stallionsteelworks.com/services/steel-barns.html</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -122,13 +141,23 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Gallery images (helps Image Search discover and rank your work) -->
+  <!-- Gallery images hub (for better image indexing) -->
   <url>
     <loc>https://stallionsteelworks.com/index.html</loc>
-    <lastmod>2025-09-17</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 
+    <image:image>
+      <image:loc>https://stallionsteelworks.com/pics/RustRedBarn.jpg</image:loc>
+      <image:title>Rust Red Metal Barn House Arizona</image:title>
+      <image:caption>Premium rust-red steel barn built by Stallion Steelworks</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://stallionsteelworks.com/pics/RustRedBarn2.jpg</image:loc>
+      <image:title>Rustic Metal Barn in Desert Landscape</image:title>
+      <image:caption>Stallion Steelworks rust-red barn shell with block wall and desert setting</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://stallionsteelworks.com/pics/Mare.jpg</image:loc>
       <image:title>Luxury Mare Motel</image:title>
@@ -144,14 +173,6 @@
     <image:image>
       <image:loc>https://stallionsteelworks.com/pics/horse%20arena%203%20pipe%20post.jpg</image:loc>
       <image:title>Premium Pipe Corral Arena</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://stallionsteelworks.com/pics/10x20%20Shed.jpg</image:loc>
-      <image:title>10x20 Shed</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://stallionsteelworks.com/pics/40x48-Shade-H.jpg</image:loc>
-      <image:title>40×48 Riding Arena Shade</image:title>
     </image:image>
   </url>
 

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stallion Steelworks • Legacy Metal Barn Houses • Arizona</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+        :root {
+            --rust: #9c3f2b;
+            --gold: #d4af77;
+            --deep: #1a120f;
+        }
+
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: #0f0a07;
+            color: #f5e8d3;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(26,18,15,0.75), rgba(26,18,15,0.85)), 
+                        url('/pics/RustRedBarn.jpg') center/cover no-repeat fixed;
+        }
+
+        .rust-card {
+            background: linear-gradient(145deg, #2b1f1a, #1a120f);
+            border: 1px solid #9c3f2b33;
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #f5e8d3, #d4af77, #f5e8d3);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 5s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--rust), var(--gold));
+        }
+
+        .barn-image {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .barn-image:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="bg-[#0f0a07]/95 backdrop-blur-xl border-b border-[#9c3f2b]/30 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-10 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span class="text-4xl text-[#d4af77]">♞</span>
+                <div class="heading-font text-4xl tracking-tight shimmer-text">Stallion Steelworks</div>
+            </div>
+            <div class="hidden md:flex items-center gap-x-10 text-sm uppercase tracking-widest font-medium">
+                <a href="#master-guide" class="nav-link">The Journey</a>
+                <a href="#step7" class="nav-link text-[#d4af77]">Step 7 • Our Craft</a>
+                <a href="#estates" class="nav-link">Legacy Estates</a>
+                <a href="#contact" class="nav-link">Begin Your Build</a>
+            </div>
+            <a href="tel:6029997756" class="px-8 py-3 bg-[#9c3f2b] hover:bg-[#d4af77] hover:text-[#0f0a07] text-white font-semibold rounded-3xl flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> 602-999-7756
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center relative">
+        <div class="max-w-screen-2xl mx-auto px-10 md:px-20">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-3 bg-[#1a120f]/80 backdrop-blur-md px-6 py-3 rounded-3xl border border-[#d4af77]/30 mb-8">
+                    <span class="text-[#d4af77]">PHOENIX • ARIZONA</span>
+                    <span class="w-px h-5 bg-[#d4af77]/40"></span>
+                    <span class="text-xs uppercase tracking-widest">Est. 2026</span>
+                </div>
+                
+                <h1 class="heading-font text-7xl md:text-8xl leading-none tracking-[-2px] mb-6">
+                    BUILD YOUR<br><span class="shimmer-text">RUSTIC LEGACY</span>
+                </h1>
+                
+                <p class="text-2xl text-[#f5e8d3]/90 max-w-lg">A complete master guide to crafting a luxury metal barn house in the Arizona desert — with Stallion Steelworks mastering the soul of the build.</p>
+                
+                <div class="mt-12 flex gap-5">
+                    <a href="#step7" class="px-10 py-6 bg-[#d4af77] text-[#0f0a07] font-semibold text-xl rounded-3xl hover:scale-105 flex items-center gap-3">
+                        SEE STEP 7 — THE STEEL SHELL
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#master-guide" class="px-10 py-6 border-2 border-[#d4af77] text-[#d4af77] font-medium text-xl rounded-3xl hover:bg-[#d4af77] hover:text-[#0f0a07]">
+                        Full 10-Step Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-12 right-12 hidden lg:flex flex-col items-end text-right">
+            <div class="text-[#d4af77] text-sm tracking-widest">Featured Project</div>
+            <div class="text-2xl heading-font">Rust-Red Desert Barn</div>
+        </div>
+    </section>
+
+    <!-- MASTER GUIDE TEASER -->
+    <section id="master-guide" class="py-24 bg-[#1a120f]">
+        <div class="max-w-screen-2xl mx-auto px-10">
+            <div class="text-center mb-16">
+                <span class="px-8 py-3 bg-[#9c3f2b]/10 text-[#d4af77] rounded-3xl text-sm">THE COMPLETE JOURNEY</span>
+                <h2 class="heading-font text-6xl mt-6">10 Steps to Your Dream Metal Barn House</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Other steps abbreviated for focus -->
+                <div class="rust-card p-8 rounded-3xl">
+                    <div class="text-6xl text-[#9c3f2b]/30 font-light">01–06</div>
+                    <h3 class="text-2xl heading-font mt-4">Planning to Foundation</h3>
+                    <p class="text-[#f5e8d3]/70 mt-3">Land, design, permits, and the perfect monolithic slab — prepared for Arizona heat and monsoons.</p>
+                </div>
+                
+                <!-- STEP 7 - HERO CARD -->
+                <div id="step7" class="rust-card p-10 rounded-3xl border-2 border-[#d4af77] relative overflow-hidden">
+                    <div class="absolute top-6 right-6 bg-[#9c3f2b] text-white text-xs px-6 py-2 rounded-3xl font-medium">THE HEART OF THE BUILD</div>
+                    
+                    <div class="text-7xl font-light text-[#d4af77]">07</div>
+                    <h3 class="heading-font text-5xl mt-4 leading-none">Exterior Steel Barn Shell</h3>
+                    <p class="text-[#f5e8d3] text-xl mt-6">Where Stallion Steelworks brings your vision to life with American steel and unmatched craftsmanship.</p>
+                    
+                    <div class="mt-10 space-y-6">
+                        <div class="flex gap-5">
+                            <span class="font-mono text-4xl text-[#d4af77]">A</span>
+                            <div>Primary frame erection with precision</div>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="font-mono text-4xl text-[#d4af77]">B</span>
+                            <div>Secondary framing &amp; monsoon-rated bracing</div>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="font-mono text-4xl text-[#d4af77]">C</span>
+                            <div>Signature rust-red or custom panel installation</div>
+                        </div>
+                    </div>
+                    
+                    <a href="tel:6029997756" class="mt-12 block text-center py-5 bg-gradient-to-r from-[#9c3f2b] to-[#d4af77] text-white font-semibold rounded-3xl">
+                        SCHEDULE YOUR SHELL ERECTION
+                    </a>
+                </div>
+                
+                <div class="rust-card p-8 rounded-3xl">
+                    <div class="text-6xl text-[#9c3f2b]/30 font-light">08–10</div>
+                    <h3 class="text-2xl heading-font mt-4">Interior &amp; Move-In</h3>
+                    <p class="text-[#f5e8d3]/70 mt-3">Rough-ins, finishes, final inspections — your rustic luxury barn home is complete.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS / YOUR IMAGES -->
+    <section id="estates" class="py-24 bg-[#0f0a07]">
+        <div class="max-w-screen-2xl mx-auto px-10">
+            <h2 class="heading-font text-6xl text-center mb-16">Legacy in Rust &amp; Steel</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Image 1 -->
+                <div class="group">
+                    <img src="./pics/RustRedBarn.jpg" alt="Rust Red Metal Barn Arizona" 
+                         class="barn-image w-full rounded-3xl shadow-2xl shadow-black/70">
+                    <div class="mt-6 flex justify-between items-end">
+                        <div>
+                            <div class="text-[#d4af77] text-sm">Phoenix, Arizona</div>
+                            <div class="heading-font text-3xl">Signature Rust-Red Barn</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs uppercase tracking-widest">Stallion Steelworks</div>
+                            <div class="text-[#9c3f2b]">Step 7 Masterpiece</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="group">
+                    <img src="./pics/RustRedBarn2.jpg" alt="Rust Red Metal Barn Side View" 
+                         class="barn-image w-full rounded-3xl shadow-2xl shadow-black/70">
+                    <div class="mt-6 flex justify-between items-end">
+                        <div>
+                            <div class="text-[#d4af77] text-sm">Desert Edge Estate</div>
+                            <div class="heading-font text-3xl">Modern Rustic Barn Shell</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs uppercase tracking-widest">Built in 7 Days</div>
+                            <div class="text-[#9c3f2b]">Weather-Tight &amp; Iconic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY STALLION -->
+    <section class="py-24 bg-[#1a120f]">
+        <div class="max-w-screen-2xl mx-auto px-10 text-center">
+            <h2 class="heading-font text-6xl mb-8">Why Arizona Chooses Stallion Steelworks</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="rust-card p-10 rounded-3xl">
+                    <i class="fa-solid fa-horse text-6xl text-[#d4af77] mb-6"></i>
+                    <h4 class="text-2xl heading-font">Rustic Elegance</h4>
+                    <p class="text-[#f5e8d3]/80 mt-4">Signature rust-red panels and custom detailing that blend perfectly with the Arizona desert.</p>
+                </div>
+                <div class="rust-card p-10 rounded-3xl">
+                    <i class="fa-solid fa-wind text-6xl text-[#d4af77] mb-6"></i>
+                    <h4 class="text-2xl heading-font">Monsoon Tough</h4>
+                    <p class="text-[#f5e8d3]/80 mt-4">Engineered for 140 mph winds and extreme temperature swings.</p>
+                </div>
+                <div class="rust-card p-10 rounded-3xl">
+                    <i class="fa-solid fa-clock text-6xl text-[#d4af77] mb-6"></i>
+                    <h4 class="text-2xl heading-font">Fast &amp; Precise</h4>
+                    <p class="text-[#f5e8d3]/80 mt-4">Full exterior shell erected in just 4–8 days by our expert local crew.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="contact" class="py-28 bg-gradient-to-b from-[#1a120f] to-[#0f0a07]">
+        <div class="max-w-screen-2xl mx-auto px-10 text-center">
+            <h2 class="heading-font text-6xl max-w-2xl mx-auto">Ready to build your rustic steel legacy?</h2>
+            <p class="text-2xl text-[#f5e8d3]/80 mt-6">Call Stallion Steelworks today and let’s bring your metal barn house to life.</p>
+            
+            <div class="mt-12">
+                <a href="tel:6029997756" 
+                   class="inline-flex items-center gap-4 px-16 py-8 bg-[#9c3f2b] hover:bg-[#d4af77] hover:text-black text-white text-3xl font-semibold rounded-3xl">
+                    <i class="fa-solid fa-phone"></i>
+                    602-999-7756
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-[#d4af77]">AZ ROC #364194 • Licensed • Bonded • Insured</p>
+        </div>
+    </section>
+
+    <footer class="bg-[#0a0604] py-16 text-center text-sm text-[#f5e8d3]/60">
+        <div class="max-w-screen-2xl mx-auto px-10">
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <span class="text-3xl">♞</span>
+                <span class="heading-font text-2xl text-[#d4af77]">Stallion Steelworks</span>
+            </div>
+            <p>Phoenix, Arizona • Crafting Rustic Luxury Metal Barn Houses</p>
+            <p class="mt-2">© 2026 • Built with passion for the desert</p>
+        </div>
+    </footer>
+
+</body>
+</html>
